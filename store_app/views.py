@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import User
+from .models import *
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -60,7 +60,8 @@ def logout(request):
     
 
 
-def show_book(request):
-    return render(request,'show_book.html')
+def show_book(request,bookID):
+    data = {'book': Book.objects.get(id=bookID)}
+    return render(request,'show_book.html', data)
 
 
