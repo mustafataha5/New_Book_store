@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import User
+from .models import User,Book
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -7,8 +7,12 @@ import datetime
 
 def index (request): 
     if  not 'userID' in request.session : 
-        return render(request,'user_main_page.html')
-    data = {'user': User.objects.get(id=int(request.session['userID']))}
+        data = { 'books': Book.objects.all(),}
+        return render(request,'user_main_page.html',data)
+    data = {
+        'user': User.objects.get(id=int(request.session['userID'])),
+        'books': Book.objects.all(),
+    }
     return render(request,'user_main_page.html',data) 
 
 
