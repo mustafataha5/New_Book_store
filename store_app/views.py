@@ -64,4 +64,7 @@ def show_book(request,bookID):
     data = {'book': Book.objects.get(id=bookID)}
     return render(request,'show_book.html', data)
 
+def contact(request): 
+    return render(request,'contact_about.html')
+
 
