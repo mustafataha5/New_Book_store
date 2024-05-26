@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_book.css' %}">
+</head>
+<body>
+    <!-- Main content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{ book.url_image }}" class="img-fluid book-image" alt="{{ book.title }}">
+                        </div>
+                        <div class="col-md-8 details">
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>Title:</strong> {{ book.title }}</h5>
+                                <p class="card-text"><strong>Category:</strong> {{ book.category.name }}</p>
+                                <p class="card-text"><strong>Language:</strong> {{ book.language.name }}</p>
+                                <p class="card-text"><strong>Author:</strong> {{ book.author.first_name }} {{ book.author.last_name }}</p>
+                                <p class="card-text"><strong>Description:</strong> {{ book.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small><em style="background-color: #FBF3D5; padding: 2px 5px; border-radius: 3px;">Created at:</em> {{ book.created_at }}</small><br>
+                                <small><em>Updated at:</em> {{ book.updated_at }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="mb-4">Reviews:</h3>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="star-rating mb-3">
+                            <input type="hidden" name="review_level" id="review_level" value="0">
+                            <i class="far fa-star star" data-rating="1"></i>
+                            <i class="far fa-star star" data-rating="2"></i>
+                            <i class="far fa-star star" data-rating="3"></i>
+                            <i class="far fa-star star" data-rating="4"></i>
+                            <i class="far fa-star star" data-rating="5"></i>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Write your review here..." rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                </div>
+                <div class="col-md-12 mt-5 reviews">
+                    <h3>Latest Reviews</h3>
+                    <ul>
+                        {% for review in latest_reviews %}
+                        <li>{{ review.created_at }} - {{ review.message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS for star rating -->
+</body>
+</html>

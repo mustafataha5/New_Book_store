@@ -1,0 +1,66 @@
+body {
+    background-color: #D6DAC8;
+    color: #333;
+}
+
+.card {
+    background-color: #FBF3D5;
+    border-color: transparent;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: #FBF3D5; /* Updated background color */
+    border-top: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 10px 20px;
+}
+
+.star-rating {
+    color: #EFBC9B;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.star {
+    cursor: pointer;
+}
+
+.star:hover, .star:hover ~ .star {
+    color: #EFBC9B;
+}
+
+.reviews {
+    margin-top: 50px;
+}
+
+.reviews h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.reviews ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.reviews li {
+    border-bottom: 1px solid #D6DAC8;
+    padding: 10px 0;
+}
+
+.btn-primary {
+    background-color: #EFBC9B; /* Updated background color */
+    border-color: #EFBC9B; /* Updated border color */
+}
+
+.btn-primary:hover {
+    background-color: #E5A67D;
+    border-color: #E5A67D;
+}
