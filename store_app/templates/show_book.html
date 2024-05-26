@@ -9,8 +9,8 @@
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    {%load static%}
-    <link rel="stylesheet" href="static 'css/show_book.css'">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/show_book.css' %}">
 </head>
 <body>
     <!-- Main content -->
@@ -31,7 +31,7 @@
                                 <p class="card-text"><strong>Description:</strong> {{ book.description }}</p>
                             </div>
                             <div class="card-footer">
-                                <small><em>Created at:</em> {{ book.created_at }}</small><br>
+                                <small><em style="background-color: #FBF3D5; padding: 2px 5px; border-radius: 3px;">Created at:</em> {{ book.created_at }}</small><br>
                                 <small><em>Updated at:</em> {{ book.updated_at }}</small>
                             </div>
                         </div>
