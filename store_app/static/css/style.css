@@ -1,0 +1,21 @@
+*{
+padding: 0px; 
+margin: 0px;
+
+}
+
+body{
+    background-color: #D6DAC8 ;
+}
+
+.register_btn{
+    background-color: #9CAFAA;
+    color : white;
+
+}
+
+.error{
+    color: #e4281b ; 
+    font-size: 12px;
+    list-style-type: none;
+}
