@@ -1,0 +1,29 @@
+body {
+    background-color: #D6DAC8;
+    color: #333;
+}
+.container {
+    margin-top: 50px;
+}
+h1 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.contact-card {
+    background-color: #FBF3D5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.btn-primary {
+    background-color: #EFBC9B;
+    border-color: #EFBC9B;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #E5A67D;
+    border-color: #E5A67D;
+}
