@@ -60,6 +60,7 @@ def logout(request):
     
 
 
-
+def show_book(request):
+    return render(request,'show_book.html')
 
 
