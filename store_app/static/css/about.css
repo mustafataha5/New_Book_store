@@ -81,3 +81,16 @@ h1 {
     font-size: 1.2rem;
     color: #333;
   }
+
+  .container1 {
+    margin-top: 25px;
+  }
+
+  .content {
+    margin-top: 20px;
+  }
+
+  .mypost {
+    margin-top: 1%;
+  }
+
