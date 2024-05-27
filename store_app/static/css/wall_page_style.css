@@ -1,16 +1,20 @@
 body,
 .card {
-  background-color: #EDEBE4;
-  font-family: Arial, sans-serif;
-  font-size: 1.2rem;
+  background-color: #faf8ed;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 1.3rem;
+  color: rgb(64, 59, 59);
+  border-radius: 10px;
 }
 
 .mybtn,
 .btn {
-  background-color: #C5A992;
+  background-color: #c5a992;
+  font: bold;
   color: rgb(255, 238, 238);
   border: none;
   padding: 10px 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   cursor: pointer;
   font-size: 1.2rem;
   height: 45px;
@@ -19,12 +23,17 @@ body,
 .mybtn:hover,
 .btn:hover {
   background-color: #A68D79;
+  color: black;
 }
 
 .custom-textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #C5A992;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.2rem;
+}
+
+.page-bottom-margin {
+  height: 20px; /* Adjust the height as needed */
 }

@@ -102,7 +102,7 @@
       <div class="col-md-8">
         <div class="card border-dark">
           <div class="card-body form-container">
-            <h5 class="card-title mb-4">Post a message
+            <h5 class="card-title mb-4">Post a message:
               {% if messages %}
               {% for message in messages %}
               {% if message.extra_tags == 'error_post_message' %}
@@ -150,7 +150,7 @@
               <div class="col-md-8">
                 <div class="card card-bg-custom">
                   <div class="card-body px-3">
-                    <p class="card-title pt-1 px-1">Post a comment
+                    <p class="card-title pt-1 px-1">Post a comment:
                       {% if messages %}
                       {% with myextra_tags="comment_message-"|add:user.id|add:post.id %}
                       {% for message in messages %}
@@ -178,6 +178,8 @@
     </div>
     {% endfor %}
   </div>
+
+  <div class="page-bottom-margin"></div>
 </body>
 
 </html>
