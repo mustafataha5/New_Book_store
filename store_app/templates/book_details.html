@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<title>Book Store</title>
-		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta name="format-detection" content="telephone=no">
-	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <meta name="author" content="">
-	    <meta name="keywords" content="">
-	    <meta name="description" content="">
+<html lang="en">
 
-        {%load static%}
-	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
-	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+<head>
+    <title>Book Store</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-		<!-- script
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+
+    <!-- script
 		================================================== -->
-		<script src="js/modernizr.js"></script>
+    <script src="js/modernizr.js"></script>
 
-	</head>
+</head>
+
 <body>
     <div id="header-wrap">
-	
+
         <div class="top-content">
             <div class="container">
                 <div class="row">
@@ -32,55 +36,61 @@
                     </div>
                     <div class="col-md-6">
                         <div class="right-element">
-                            
+
                             {% if not 'userID' in request.session %}
-                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            <a href="#" class="user-account for-buy"><i
+                                    class="icon icon-user"></i><span>Account</span></a>
                             {% else %}
-                            <img class="profile-img1" src="{% static 'images/png-transparent-circle-silhouette-user-user-interface-avatar-menu-bar-css-sprites-data-personalization.png' %}" alt="">
+                            <img class="profile-img1"
+                                src="{% static 'images/png-transparent-circle-silhouette-user-user-interface-avatar-menu-bar-css-sprites-data-personalization.png' %}"
+                                alt="">
                             <a href="/user/{{user.id}}" class="btn btn-outline-warning">{{user.first_name}}</a>
                             <a href="/logout" class="btn btn-outline-warning">logout</a>
-                            
+
                             {% endif %}
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0
+                                    $)</span></a>
                             <div class="action-menu">
-    
+
                                 <div class="search-bar">
                                     <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
                                         <i class="icon icon-search"></i>
                                     </a>
                                     <form role="search" method="get" class="search-box">
-                                        <input class="search-field text search-input" placeholder="Search" type="search">
+                                        <input class="search-field text search-input" placeholder="Search"
+                                            type="search">
                                     </form>
                                 </div>
                             </div>
-    
+
                         </div><!--top-right-->
                     </div>
-                    
+
                 </div>
             </div>
         </div><!--top-content-->
-    
+
         <header id="header">
             <div class="container">
                 <div class="row">
-    
+
                     <div class="col-md-2">
                         <div class="main-logo">
                             <a href="/"><img src="{% static 'img/main-logo.png' %}" /></a>
                         </div>
-    
+
                     </div>
-    
+
                     <div class="col-md-10">
-                        
+
                         <nav id="navbar">
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
-                                    <li class="menu-item active"><a href="#home" data-effect="Home">{{book.title}}</a></li>
+                                    <li class="menu-item active"><a href="#home" data-effect="Home">{{book.title}}</a>
+                                    </li>
                                     <li class="menu-item has-sub">
                                         <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
-    
+
                                         <ul>
                                             <li class="active"><a href="index.html">1</a></li>
                                             <li><a href="about.html">2</a></li>
@@ -89,26 +99,29 @@
                                             <li><a href="single-post.html">5</a></li>
                                             <li><a href="shop.html">6</a></li>
                                             <li><a href="single-product.html">7</a></li>
-                                         </ul>
-    
+                                        </ul>
+
                                     </li>
-                                    <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
-                                    <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                                    <li class="menu-item"><a href="#latest-blog" class="nav-link"
+                                            data-effect="Articles">Book Club</a></li>
+                                    <li class="menu-item"><a href="#about" class="nav-link"
+                                            data-effect="About">About</a></li>
+                                    <li class="menu-item"><a href="#contact" class="nav-link"
+                                            data-effect="Contact">Contact</a></li>
 
                                 </ul>
-    
+
                                 <div class="hamburger">
                                     <span class="bar"></span>
                                     <span class="bar"></span>
                                     <span class="bar"></span>
                                 </div>
-    
+
                             </div>
                         </nav>
-    
+
                     </div>
-    
+
                 </div>
             </div>
         </header>
@@ -119,10 +132,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-    
-                        <i class="icon icon-arrow-left"></i>
+
+                    <i class="icon icon-arrow-left"></i>
                     </button>
-    
+
                     <div class="main-slider pattern-overlay">
                         <div class="slider-item">
                             <div class="banner-content">
@@ -130,7 +143,8 @@
                                 <h4>By: {{book.author.first_name}} {{book.author.last_name}}</h4>
                                 <p>{{book.description}}</p>
                                 <form action="/add_to_cart" method="post" class="btn-wrap">
-                                    <button href="#" class="btn btn-outline-accent btn-accent-arrow">Add To Cart<i class="icon icon-ns-arrow-right"></i></button>
+                                    <button href="#" class="btn btn-outline-accent btn-accent-arrow">Add To Cart<i
+                                            class="icon icon-ns-arrow-right"></i></button>
                                 </form>
                             </div><!--banner-content-->
 
@@ -154,23 +168,35 @@
                                                 <i class="far fa-star star" data-rating="5"></i>
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="message" class="texts" class="form-control" placeholder="Write your review here..." rows="3"></textarea>
+                                                <textarea name="message" class="texts" class="form-control"
+                                                    placeholder="Write your review here..." rows="3"></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit Review</button>
                                         </form>
                                     </div>
-                                    <div class="col-md-12 mt-5 reviews">
-                                        <h3>Latest Reviews</h3>
-    
-                
-                    <button class="next slick-arrow">
-                        <i class="icon icon-arrow-right"></i>
-                    </button>
-                    
-                </div>
-            </div>
-        </div>
-        
+                                </div>
+                            </div>
+                            <h3>Latest Reviews</h3>
+                            {% for review in reviews%}
+                            <div class="row">
+                                <div class="col-md-12 mt-5 reviews">
+                                    <div class="star-rating mb-3">
+                                        <input type="hidden" name="review_level" id="review_level" value="0">
+                                        <i class="far fa-star star" data-rating="1"></i>
+                                        <i class="far fa-star star" data-rating="2"></i>
+                                        <i class="far fa-star star" data-rating="3"></i>
+                                        <i class="far fa-star star" data-rating="4"></i>
+                                        <i class="far fa-star star" data-rating="5"></i>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>review.message</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
     </section>
 </body>
+
 </html>
