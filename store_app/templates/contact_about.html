@@ -7,68 +7,112 @@
   <title>About Us & Contact Us</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <style>
-    body {
-      background-color: #EDEBE4;
-      font-family: Arial, sans-serif;
-      font-size: 1.2rem;
-      color: #333;
-    }
+    
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
 
-    .header {
-      background-color: #C5A992;
-      color: white;
-      padding: 100px 0;
-      text-align: center;
-    }
+    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
 
-    .content {
-      padding: 50px 0;
-    }
+  <!-- script
+  ================================================== -->
+  <script src="js/modernizr.js"></script>
 
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .title {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .text {
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-
-    .contact-form {
-      background: white;
-      padding: 30px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-form .form-control,
-    .contact-form .btn {
-      font-size: 1.2rem;
-    }
-
-    .btn-custom {
-      background-color: #C5A992;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-
-    .btn-custom:hover {
-      background-color: #A68D79;
-    }
-  </style>
 </head>
 
 <body>
+
+<div id="header-wrap">
+
+<div class="top-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        <div class="right-element">
+          {% if not 'userID' in request.session %}
+          <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+          {% else %}
+          <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+          <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+          {% endif %}
+          
+          <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+
+          <!-- <div class="action-menu">
+
+            <div class="search-bar">
+              <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+                <i class="icon icon-search"></i>
+              </a>
+              <form role="search" method="get" class="search-box">
+                <input class="search-field text search-input" placeholder="Search" type="search">
+              </form>
+            </div>
+          </div> -->
+
+        </div><!--top-right-->
+      </div>
+      
+    </div>
+  </div>
+</div><!--top-content-->
+
+<header id="header">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2">
+        <div class="main-logo">
+          <a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+        </div>
+
+      </div>
+
+      <div class="col-md-10">
+        
+        <nav id="navbar">
+          <div class="main-menu stellarnav">
+            <ul class="menu-list">
+                              <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                              <li class="menu-item has-sub">
+                                  <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+
+                                  <ul>
+                                      <li class="active"><a href="index.html">1</a></li>
+                                      <li><a href="about.html">2</a></li>
+                                      <li><a href="styles.html">3</a></li>
+                                      <li><a href="blog.html">4</a></li>
+                                      <li><a href="single-post.html">5</a></li>
+                                      <li><a href="shop.html">6</a></li>
+                                      <li><a href="single-product.html">7</a></li>
+                                   </ul>
+
+                              </li>
+                              <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
+                              <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
+                              <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
+            </ul>
+
+          </div>
+        </nav>
+
+      </div>
+
+    </div>
+  </div>
+<!-- </header>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
+    </div>
+      </div> -->
+  
+
   <div class="header">
-    <div class="container">
+    <div class="container1">
       <h1>About Us</h1>
       <p>Learn more about our Book Store</p>
     </div>
@@ -78,39 +122,30 @@
     <div class="row section">
       <div class="col-md-6">
         <h2 class="title">Our Mission</h2>
-        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique
-          convallis. Aenean vel ligula eu erat laoreet consequat. Duis nec libero at orci dapibus aliquam sit amet
-          quis metus. Curabitur dictum nisl et libero dapibus dignissim. Aliquam convallis risus a velit tincidunt,
-          sit amet varius erat pulvinar.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="path_to_image.jpg" alt="Our Mission" class="img-fluid">
+        <p class="text">At Galaxy Book Store, our mission is to cultivate a deep appreciation for literature and learning within our community. We strive to provide a welcoming space where readers can explore new ideas, discover new favorites, and engage 
+          with fellow book lovers. Our goal is to make reading accessible and enjoyable for everyone, 
+          whether you're seeking the latest bestseller, a rare find, or educational resources. 
+          We are committed to supporting our local community, authors, and artists through various events and programs.</p>
       </div>
     </div>
 
     <div class="row section">
-      <div class="col-md-6 order-md-2">
+      <div class="col-md-6" class="cols">
         <h2 class="title">Our Values</h2>
-        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique
-          convallis. Aenean vel ligula eu erat laoreet consequat. Duis nec libero at orci dapibus aliquam sit amet
-          quis metus. Curabitur dictum nisl et libero dapibus dignissim. Aliquam convallis risus a velit tincidunt,
-          sit amet varius erat pulvinar.</p>
-      </div>
-      <div class="col-md-6 order-md-1">
-        <img src="path_to_image.jpg" alt="Our Values" class="img-fluid">
+        <p class="text">Our core values are rooted in our passion for books and our commitment to our community. We believe in promoting diversity and inclusivity through our selection of books and our programming.
+           We value exceptional customer service and strive to provide personalized recommendations
+            to each visitor. By hosting book clubs, author signings, and community events, we aim to
+             create a vibrant cultural space where everyone feels welcome. We also prioritize sustainability and ethical
+              sourcing in our business practices, ensuring that our bookstore positively impacts both people and the planet.</p>
       </div>
     </div>
 
     <div class="row section">
       <div class="col-md-6">
         <h2 class="title">Our Team</h2>
-        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique
-          convallis. Aenean vel ligula eu erat laoreet consequat. Duis nec libero at orci dapibus aliquam sit amet
-          quis metus. Curabitur dictum nisl et libero dapibus dignissim. Aliquam convallis risus a velit tincidunt,
-          sit amet varius erat pulvinar.</p>
-      </div>
-      <div class="col-md-6">
-        <img src="path_to_image.jpg" alt="Our Team" class="img-fluid">
+        <p class="text">The team at Galaxy Book Store is comprised of dedicated book lovers who are passionate about
+           sharing their love of reading with you. Our knowledgeable staff is always on hand to help you find your next great read, recommend a new favorite, or simply chat about books. Each team member brings their own unique perspective and expertise, from children's literature to contemporary fiction and non-fiction. We believe that our bookstore is defined by the people who work here,
+           and we are proud to have a team that is as diverse and dynamic as the stories on our shelves.</p>
       </div>
     </div>
 
@@ -119,11 +154,12 @@
         <h2 class="title text-center">Contact Us</h2>
         <p class="text text-center">Feel free to reach out to us with any questions or concerns.</p>
       </div>
+
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" class="mypost">
       <div class="col-md-8">
         <div class="contact-form">
-          <form action="/submitContactForm" method="post">
+          <form action="https://formsubmit.co/andreh.ayad@gmail.com" method="POST">
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input type="text" class="form-control" id="name" name="name" required>

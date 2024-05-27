@@ -1,5 +1,9 @@
 from django.shortcuts import render , redirect
+<<<<<<< HEAD
 from .models import User,Book,Post,Comment, Category
+=======
+from .models import User,Book,Post,Comment,Review
+>>>>>>> master
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -68,7 +72,10 @@ def logout(request):
 
 
 def show_book(request,bookID):
-    data = {'book': Book.objects.get(id=bookID)}
+    book = Book.objects.get(id=bookID)
+    data = {'book': book,
+            'reviews': book.reviews.all(),
+           }
 
     return render (request, 'book_details.html', data)
 
@@ -99,18 +106,29 @@ def main(request):
 
 
 
+def create_review(request,bookID): 
+    
+    if request.method == 'POST': 
+        if not 'userID' in request.session: 
+            return redirect(f'/book/{bookID}')
+        
+        errors = Review.objects.review_validation(request.POST)
+        
+        if len(errors) > 0 : 
+            for key,val in errors.items() : 
+                messages.error(request,val,extra_tags=key)
+                return redirect(f'/book/{bookID}')
 
+        rev_message = request.POST['review_message']
+        rev_level = request.POST['review_level']
+        user = User.objects.get(id=request.session['userID'])
+        book = Book.objects.get(id=bookID)
+        Review.objects(message=rev_message,review_level=rev_level,user=user,book=book)
 
-
-
-
-
-
-
-
-
-
-
+    return redirect(f'/book/{bookID}')   
+    
+    
+    
 
 
 
