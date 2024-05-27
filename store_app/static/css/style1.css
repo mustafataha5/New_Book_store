@@ -1732,3 +1732,29 @@ span.prev-price {
   }
 }
 
+
+
+.logoutbtn{
+  background-color: #C5A992;
+  color: white;
+
+}
+
+#logout{
+  /* margin-right: 30px; */
+  color: white;
+  padding: 5px 15px;
+}
+
+
+#account{
+  background-color: #C5A992;
+  color: white;
+  /* margin-right: 15px; */
+  color: white;
+  padding: 4.5px 15px;
+  font-weight: normal;
+  margin-top: -3px;
+
+}
+
