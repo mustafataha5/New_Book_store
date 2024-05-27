@@ -7,9 +7,6 @@
   <title>Wall</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/wall_page_style.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
@@ -17,15 +14,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}">
 
 </head>
-<style>
-body {
-  background-color: #EDEBE4;;
-}
-</style>
 
 <body>
   <div id="header-wrap">
-	
     <div class="top-content">
       <div class="container">
         <div class="row">
@@ -37,13 +28,13 @@ body {
               <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
               {% else %}
               <a id="account" href="/user/{{user.id}}">{{user.first_name}}</a>
-              <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+              <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
               {% endif %}
-              
+
               <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
-  
+
               <div class="action-menu">
-  
+
                 <div class="search-bar">
                   <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
                     <i class="icon icon-search"></i>
@@ -53,126 +44,130 @@ body {
                   </form>
                 </div>
               </div>
-  
-            </div><!--top-right-->
+
+            </div><!-- top-right -->
           </div>
-          
+
         </div>
       </div>
-    </div><!--top-content-->
-  
+    </div><!-- top-content -->
+
     <header id="header">
       <div class="container">
         <div class="row">
-  
+
           <div class="col-md-2">
             <div class="main-logo">
-              <a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+              <a href="index.html"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
             </div>
-  
+
           </div>
-  
+
           <div class="col-md-10">
-            
+
             <nav id="navbar">
               <div class="main-menu stellarnav">
                 <ul class="menu-list">
-                                  <li class="menu-item active"><a href="#home" data-effect="Home">Home</a></li>
-                                  <li class="menu-item has-sub">
-                                      <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
-  
-                                      <ul>
-                                          <li class="active"><a href="index.html">1</a></li>
-                                          <li><a href="about.html">2</a></li>
-                                          <li><a href="styles.html">3</a></li>
-                                          <li><a href="blog.html">4</a></li>
-                                          <li><a href="single-post.html">5</a></li>
-                                          <li><a href="shop.html">6</a></li>
-                                          <li><a href="single-product.html">7</a></li>
-                                       </ul>
-  
-                                  </li>
-                                  <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                  <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
-                                  <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                  <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                  <li class="menu-item has-sub">
+                    <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+
+                    <ul>
+                      <li class="active"><a href="index.html">1</a></li>
+                      <li><a href="about.html">2</a></li>
+                      <li><a href="styles.html">3</a></li>
+                      <li><a href="blog.html">4</a></li>
+                      <li><a href="single-post.html">5</a></li>
+                      <li><a href="shop.html">6</a></li>
+                      <li><a href="single-product.html">7</a></li>
+                    </ul>
+
+                  </li>
+                  <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
+                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
+                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
                 </ul>
-  
+
               </div>
             </nav>
+          </div>
 
-  <div class="row justify-content-center mt-2" class="rows">
-    <div class="col-md-8">
-      <div class="card border-dark card-bg-custom">
-        <div class="card-body p-1">
-          <h5 class="card-title pt-1 px-4">Post a message
-            {% if messages %}
-            {% for message in messages %}
-            {% if message.extra_tags == 'error_post_message' %}
-            <li{% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card border-dark">
+          <div class="card-body form-container">
+            <h5 class="card-title mb-4">Post a message
+              {% if messages %}
+              {% for message in messages %}
+              {% if message.extra_tags == 'error_post_message' %}
+              <li {% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
               {% endif %}
               {% endfor %}
               {% endif %}
-          </h5>
-          <form class="d-flex flex-column mx-5 my-3" action="/addPost" method="post">
-            {% csrf_token %}
-            <textarea class="w80 p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
-    <div class="d-flex justify-content-end">
-      <button class="mybtn color-light mt-3" type="submit"> Add Post</button>
-    </div>
-  </form>
+            </h5>
+
+            <form class="d-flex flex-column" action="/addPost" method="post">
+              {% csrf_token %}
+              <textarea class="p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
+              <div class="d-flex justify-content-end">
+                <button class="btn mt-3" type="submit">Add Post</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  {% for post in posts %}
-    <div class="row justify-content-center mt-2">
+    {% for post in posts %}
+    <div class="row justify-content-center mt-4">
       <div class="col-md-8">
-        <div class="card m-1 px-3 border-dark card-bg-custom">
-          <div class="card-body p-1">
-            <div class="mt-2 d-flex justify-content-between">
-              <h5 class="card-title pt-1 px-4">{{ post.user.first_name }} {{ post.user.last_name }} -
-                <span>{{ post.updated_at }}</span>
-              </h5>
+        <div class="card m-1 border-dark">
+          <div class="card-body p-3">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">{{ post.user.first_name }} {{ post.user.last_name }} - <span>{{ post.updated_at }}</span></h5>
               {% if post.user.id == user.id %}
-              {% if post %}
-              <a class='btn btn-sm btn-danger' href="/deletePost/{{ post.id }}">Delete</a>
-              {% endif %}
+              <a class="btn btn-danger" href="/deletePost/{{ post.id }}">Delete</a>
               {% endif %}
             </div>
-            <p class="mx-5"> {{ post.message }}</p>
-            <div class="row justify-content-center mt-1">
+            <p class="mt-2">{{ post.message }}</p>
+            <div class="row mt-3">
               {% for comment in post.comments.all %}
               <div class="col-md-8">
                 <div class="card card-bg-custom">
-                  <div class="card-body p-1">
-                    <h5 class="card-title pt-1 px-4">{{ comment.user.first_name }} {{ comment.user.last_name }} -
-                      <span>{{ comment.updated_at }}</span>
-                    </h5>
-                    <p class="mx-5"> {{ comment.message }}</p>
+                  <div class="card-body">
+                    <h6 class="card-title">{{ comment.user.first_name }} {{ comment.user.last_name }} - <span>{{ comment.updated_at }}</span></h6>
+                    <p>{{ comment.message }}</p>
                   </div>
                 </div>
               </div>
               {% endfor %}
               <div class="col-md-8">
-                <div class="card w80 card-bg-custom">
+                <div class="card card-bg-custom">
                   <div class="card-body px-3">
                     <p class="card-title pt-1 px-1">Post a comment
                       {% if messages %}
                       {% with myextra_tags="comment_message-"|add:user.id|add:post.id %}
                       {% for message in messages %}
                       {% if message.extra_tags == myextra_tags %}
-                      <li{% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
+                      <li {% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
                       {% endif %}
                       {% endfor %}
                       {% endwith %}
                       {% endif %}
                     </p>
-                    <form class="d-flex flex-column mx-5 my-3" action="/addPost" method="post">
+                    <form class="d-flex flex-column mx-5 my-3" action="/addComment/{{ post.id }}" method="post">
                       {% csrf_token %}
-                      <textarea class="w80 p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
-              <div class="d-flex justify-content-end">
-                    </div>
+                      <textarea class="custom-textarea" name="comment_message" id="comment" rows="3"></textarea>
+                      <div class="d-flex justify-content-end">
+                        <button class="mybtn mt-3" type="submit">Add Comment</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -180,9 +175,9 @@ body {
           </div>
         </div>
       </div>
+    </div>
     {% endfor %}
-  <div style="height: 100px;"></div> <!-- Add extra space at the bottom -->
-  </body>
-  
-  </html>
-  
+  </div>
+</body>
+
+</html>
