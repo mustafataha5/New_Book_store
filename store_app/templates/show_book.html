@@ -1,84 +1,268 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/show_book.css' %}">
-</head>
+<!-- <!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Book Store</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="">
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+
+        {%load static %}
+	    <link rel="stylesheet" href="{% static 'css/style1.css' %}"> 
+	    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+	    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+	    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+
+		<!-- script
+		================================================== -->
+		<script src="js/modernizr.js"></script>
+
+	</head>
 <body>
-    <!-- Main content -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{{ book.url_image }}" class="img-fluid book-image" alt="{{ book.title }}">
-                        </div>
-                        <div class="col-md-8 details">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Title:</strong> {{ book.title }}</h5>
-                                <p class="card-text"><strong>Category:</strong> {{ book.category.name }}</p>
-                                <p class="card-text"><strong>Language:</strong> {{ book.language.name }}</p>
-                                <p class="card-text"><strong>Author:</strong> {{ book.author.first_name }} {{ book.author.last_name }}</p>
-                                <p class="card-text"><strong>Description:</strong> {{ book.description }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <small><em style="background-color: #FBF3D5; padding: 2px 5px; border-radius: 3px;">Created at:</em> {{ book.created_at }}</small><br>
-                                <small><em>Updated at:</em> {{ book.updated_at }}</small>
-                            </div>
-                        </div>
+    <div id="header-wrap">
+	
+        <div class="top-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
                     </div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+    
+                            <div class="action-menu">
+    
+                                <div class="search-bar">
+                                    <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+                                        <i class="icon icon-search"></i>
+                                    </a>
+                                    <form role="search" method="get" class="search-box">
+                                        <input class="search-field text search-input" placeholder="Search" type="search">
+                                    </form>
+                                </div>
+                            </div>
+    
+                        </div><!--top-right-->
+                    </div>
+                    
                 </div>
             </div>
-        </div>
+        </div><!--top-content-->
+    
+        <header id="header">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                        </div>
+    
+                    </div>
+    
+                    <div class="col-md-10">
+                        
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item active"><a href="#home" data-effect="Home">Home</a></li>
+                                    <li class="menu-item has-sub">
+                                        <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+    
+                                        <ul>
+                                            <li class="active"><a href="index.html">1</a></li>
+                                            <li><a href="about.html">2</a></li>
+                                            <li><a href="styles.html">3</a></li>
+                                            <li><a href="blog.html">4</a></li>
+                                            <li><a href="single-post.html">5</a></li>
+                                            <li><a href="shop.html">6</a></li>
+                                            <li><a href="single-product.html">7</a></li>
+                                         </ul>
+    
+                                    </li>
+                                    <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
+                                    <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
+                                    <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
+
+                                </ul>
+    
+                                <div class="hamburger">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+    
+                            </div>
+                        </nav>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </header>
     </div>
 
-    <!-- Footer -->
-    <footer class="mt-5">
+    <section id="billboard">
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="mb-4">Reviews:</h3>
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="star-rating mb-3">
-                            <input type="hidden" name="review_level" id="review_level" value="0">
-                            <i class="far fa-star star" data-rating="1"></i>
-                            <i class="far fa-star star" data-rating="2"></i>
-                            <i class="far fa-star star" data-rating="3"></i>
-                            <i class="far fa-star star" data-rating="4"></i>
-                            <i class="far fa-star star" data-rating="5"></i>
+    
+                    <button class="prev slick-arrow">
+                        <i class="icon icon-arrow-left"></i>
+                    </button>
+    
+                    <div class="main-slider pattern-overlay">
+                        <div class="slider-item">
+                            <div class="banner-content">
+                                <h2 class="banner-title">Life of the Wild</h2>
+                                <h4>By: Sanchit Howdy</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.</p>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i class="icon icon-ns-arrow-right"></i></a>
+                                </div>
+                            </div><!--banner-content--> 
+                            <img src="images/main-banner1.jpg" alt="banner" class="banner-image">
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-control" placeholder="Write your review here..." rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Review</button>
-                    </form>
-                </div>
-                <div class="col-md-12 mt-5 reviews">
-                    <h3>Latest Reviews</h3>
-                    <ul>
-                        {% for review in latest_reviews %}
-                        <li>{{ review.created_at }} - {{ review.message }}</li>
-                        {% endfor %}
-                    </ul>
+                        <footer class="mt-5">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="mb-4">Reviews:</h3>
+                                        <form method="post" action="">
+                                            {% csrf_token %}
+                                            <div class="star-rating mb-3">
+                                                <input type="hidden" name="review_level" id="review_level" value="0">
+                                                <i class="far fa-star star" data-rating="1"></i>
+                                                <i class="far fa-star star" data-rating="2"></i>
+                                                <i class="far fa-star star" data-rating="3"></i>
+                                                <i class="far fa-star star" data-rating="4"></i>
+                                                <i class="far fa-star star" data-rating="5"></i>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea name="message" class="form-control" placeholder="Write your review here..." rows="3"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-12 mt-5 reviews">
+                                        <h3>Latest Reviews</h3>
+    
+                
+                        
+                    <button class="next slick-arrow">
+                        <i class="icon icon-arrow-right"></i>
+                    </button>
+                    
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JS for star rating -->
+        
+    </section>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- Footer
+   <footer class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-4">Reviews:</h3>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="star-rating mb-3">
+                        <input type="hidden" name="review_level" id="review_level" value="0">
+                        <i class="far fa-star star" data-rating="1"></i>
+                        <i class="far fa-star star" data-rating="2"></i>
+                        <i class="far fa-star star" data-rating="3"></i>
+                        <i class="far fa-star star" data-rating="4"></i>
+                        <i class="far fa-star star" data-rating="5"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Write your review here..." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </div>
+            <div class="col-md-12 mt-5 reviews">
+                <h3>Latest Reviews</h3>
+                <ul>
+                    {% for review in latest_reviews %}
+                    <li>{{ review.created_at }} - {{ review.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Custom JS for star rating -->
+</body>
+</html> -->

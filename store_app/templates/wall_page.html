@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wall</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/wall_page_style.css' %}">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid mt-1 mx-3 ">
+      <a class="navbar-brand" href="/wall">CodingDogo Wall</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/wall">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex flex-row align-items-center mt-1">
+      <p class="navbar-brand mt-2 mx-5"> Welcome {{ user.first_name }}</p>
+      <form action='/logout' class="d-flex  mx-5">
+        {% csrf_token %}
+        <button class="mybtn btn btn-outline-danger" type="submit">Logout</button>
+      </form>
+    </div>
+
+  </nav>
+
+  <div class="row justify-content-center mt-2">
+    <div class="col-md-8">
+      <div class="card border-dark">
+        <div class="card-body p-1">
+          <h5 class="card-title pt-1 px-4">Post a message
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.extra_tags == 'error_post_message' %}
+            <li{% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+
+          </h5>
+          <form class="d-flex flex-column mx-5 my-3 " action="/addPost" method="post">
+            {% csrf_token %}
+            <textarea class="w80 p-2" name="post_message" id="post" rows="3"></textarea>
+            <div class="d-flex justify-content-end">
+              <button class="mybtn btn-primary color-light mt-3" type="submit"> Add Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% for post in posts %}
+    <div class="row justify-content-center mt-2">
+      <div class="col-md-8">
+        <div class="card m-1 px-3 border-dark">
+          <div class="card-body p-1">
+            <div class="mt-2 d-flex justify-content-between">
+              <h5 class="card-title pt-1 px-4">{{ post.user.first_name }} {{ post.user.last_name }} -
+                <span>{{ post.updated_at }}</span>
+              </h5>
+              {% if post.user.id == user.id %}
+              {% if post %}
+              <a class='btn btn-danger' href="/deletePost/{{ post.id }}">Delete</a>
+              {% endif %}
+              {% endif %}
+            </div>
+            <p class="mx-5"> {{ post.message }}</p>
+            <div class="row justify-content-center mt-1">
+              {% for comment in post.comments.all %}
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body p-1">
+                    <h5 class="card-title pt-1 px-4">{{ comment.user.first_name }} {{ comment.user.last_name }} -
+                      <span>{{ comment.updated_at }}</span>
+                    </h5>
+                    <p class="mx-5"> {{ comment.message }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              <!--  -->
+              <div class="col-md-8">
+                <div class="card w80 ">
+                  <div class="card-body px-3">
+                    <p class="card-title pt-1 px-1">Post a comment
+                      {% if messages %}
+                      {% with myextra_tags="comment_message-"|add:user.id|add:post.id %}
+                      {% for message in messages %}
+
+                      {% if message.extra_tags == myextra_tags %}
+                      <li{% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
+                      {% endif %}
+                      {% endfor %}
+                      {% endwith %}
+                      {% endif %}
+
+                    </p>
+                    <form class="d-flex flex-column  mx-1 " action="/addComment/{{ post.id }}" method="post">
+                      {% csrf_token %}
+                      <textarea class="w80 p-2" name="comment_message" rows="2"></textarea>
+                      <div class="d-flex justify-content-end">
+                        <button class="mybtn btn btn-success  mt-3" type="submit"> Add Comment</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</body>
+
+</html>
