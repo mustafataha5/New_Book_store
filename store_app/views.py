@@ -197,3 +197,120 @@ def delete_post(request,postID):
 
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def about(request):
+
+    if  not 'userID' in request.session : 
+        data = { 'books': Book.objects.all(),}
+        return render (request, 'contact_about.html',data)
+        #return render(request,'user_main_page.html',data)
+  
+
+    data = {
+        "user":User.objects.get(id=request.session['userID']),
+        'books' : Book.objects.all(), 
+    }
+    return render (request, 'contact_about.html',data)

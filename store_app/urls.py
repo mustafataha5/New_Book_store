@@ -13,7 +13,7 @@ urlpatterns = [
     path('check_login',views.check_login),
     path('create_user',views.create_user), 
     path('book/<int:bookID>',views.show_book),
-    path('contact',views.contact),
+    path('contact',views.about),
     path('main', views.main,name='main'),
     path('wall',views.main_wall,name='wall'),
     path('addPost',views.add_post),
