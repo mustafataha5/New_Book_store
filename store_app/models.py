@@ -52,7 +52,7 @@ class PostManager(models.Manager):
             errors['error_post_message'] = 'Please fill the Post message field'
         return errors 
     def can_delete(self,postID): 
-        post = Message.objects.get(id=postID)
+        post = Post.objects.get(id=postID)
         pass_time =  abs(post.updated_at.timestamp() - datetime.datetime.timestamp(datetime.datetime.today())) 
         print("Pass ->>>>>>>>>>>>>>>>. ********",pass_time )
         print(pass_time < 30*60)
