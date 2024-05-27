@@ -72,3 +72,6 @@ def contact(request):
     return render(request,'contact_about.html')
 
 
+def main(request):
+    return render (request, 'the_main_page.html')
+
