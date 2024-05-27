@@ -68,17 +68,16 @@ def logout(request):
 
 def show_book(request,bookID):
     data = {'book': Book.objects.get(id=bookID)}
-<<<<<<< HEAD
+
     return render (request, 'book_details.html', data)
-=======
-    return render(request,'book_details.html', data)
->>>>>>> master
+
 
 def contact(request): 
     return render(request,'contact_about.html')
 
 
 def main(request):
+    
     data = {
         'books' : Book.objects.all(), 
     }
