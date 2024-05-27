@@ -20,6 +20,8 @@ urlpatterns = [
     path('addComment/<int:postID>',views.add_comment),
     path('deletePost/<int:postID>',views.delete_post),
     
+    path('create_review/<int:bookID>',views.create_review),
+    
 
 ]
 

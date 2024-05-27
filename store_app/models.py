@@ -80,7 +80,7 @@ class OrderManger(models.Manager):
 class CommentManger(models.Manager):
     def comment_validation(self,postData,postID,userID): 
         errors ={}
-        if len(postData['comment_message']) == 0 :
+        if len(postData['comment_message']) >= 0 :
             errors['comment_message-'+str(userID)+str(postID)] = 'Please fill the comment message field'
         
         return errors   
@@ -98,10 +98,23 @@ class CategoryManger(models.Manager):
 class LanguageManger(models.Manager):
     def language_validation(self,postData): 
         errors = {}
+        # if len(postData['review_message']) == 0 :
+        #     errors['review_message'] = 'Please fill the review message field'
+        if int(postData['review_level']) == 0 : 
+            errors['review_level'] = "Please choose your review level"    
         
+        return errors    
         
         
         return errors  
+    
+class ReviewManger(models.Manager):
+    def review_validation(self,postData): 
+        errors = {}
+        
+        
+        
+        return errors     
 
 
 class User(models.Model): 
@@ -182,7 +195,8 @@ class Review (models.Model):
     review_level = models.IntegerField()
     message = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)   
+    updated_at = models.DateTimeField(auto_now=True) 
+    objects = ReviewManger() 
 
 
 
