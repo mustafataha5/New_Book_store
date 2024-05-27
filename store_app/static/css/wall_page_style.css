@@ -1,32 +1,30 @@
-.mybtn{
-    box-shadow: 3px 3px black;
-    border: 2px solid black;
-    height: 45px;
+body,
+.card {
+  background-color: #EDEBE4;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
 }
 
-.error{
-    color: #f12b1d;
-    list-style-type: none;
-    font-size: 12px;
-    
+.mybtn,
+.btn {
+  background-color: #C5A992;
+  color: rgb(255, 238, 238);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 45px;
 }
 
-
-.card-title > span {
-    font-size: 12px;
+.mybtn:hover,
+.btn:hover {
+  background-color: #A68D79;
 }
 
-.mybtn {
-    background-color: #c5a992;
+.custom-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #C5A992;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }
-
-.col-md-8 {
-    margin-top: 50px
-}
-
-.card-bg-custom {
-    background-color: #fbf3d5;
-}
-.background-container {
-    background-color: #C5A992;
-  }
