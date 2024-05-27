@@ -25,77 +25,80 @@ body {
 
 <body>
   <div id="header-wrap">
+	
     <div class="top-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    <div class="right-element">
-                        {% if not 'userID' in request.session %}
-                        <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-                        {% else %}
-                        <img class="profile-img1" src="{% static 'images/png-transparent-circle-silhouette-user-user-interface-avatar-menu-bar-css-sprites-data-personalization.png' %}" alt="">
-                        <a href="/user/{{user.id}}" class="btn btn-outline-warning">{{user.first_name}}</a>
-                        <a href="/logout" class="btn btn-outline-warning">logout</a>
-                        {% endif %}
-                        <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
-                        <div class="action-menu">
-                            <div class="search-bar">
-                                <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-                                    <i class="icon icon-search"></i>
-                                </a>
-                                <form role="search" method="get" class="search-box">
-                                    <input class="search-field text search-input" placeholder="Search" type="search">
-                                </form>
-                            </div>
-                        </div>
-                    </div><!--top-right-->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <div class="right-element">
+              {% if not 'userID' in request.session %}
+              <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+              {% else %}
+              <a id="account" href="/user/{{user.id}}">{{user.first_name}}</a>
+              <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+              {% endif %}
+              
+              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+  
+              <div class="action-menu">
+  
+                <div class="search-bar">
+                  <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+                    <i class="icon icon-search"></i>
+                  </a>
+                  <form role="search" method="get" class="search-box">
+                    <input class="search-field text search-input" placeholder="Search" type="search">
+                  </form>
                 </div>
-            </div>
+              </div>
+  
+            </div><!--top-right-->
+          </div>
+          
         </div>
+      </div>
     </div><!--top-content-->
-
+  
     <header id="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="main-logo">
-                        <a href="/"><img src="{% static 'img/main-logo.png' %}" /></a>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <nav id="navbar">
-                        <div class="main-menu stellarnav">
-                            <ul class="menu-list">
-                                <li class="menu-item active"><a href="#home" data-effect="Home">Hello, {{user.first_name}}</a></li>
-                                <li class="menu-item has-sub">
-                                    <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
-                                    <ul>
-                                        <li class="active"><a href="index.html">1</a></li>
-                                        <li><a href="about.html">2</a></li>
-                                        <li><a href="styles.html">3</a></li>
-                                        <li><a href="blog.html">4</a></li>
-                                        <li><a href="single-post.html">5</a></li>
-                                        <li><a href="shop.html">6</a></li>
-                                        <li><a href="single-product.html">7</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
-                                <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
-                            </ul>
-                            <div class="hamburger">
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                                <span class="bar"></span>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-md-2">
+            <div class="main-logo">
+              <a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
             </div>
-        </div>
-    </header>
-</div>
+  
+          </div>
+  
+          <div class="col-md-10">
+            
+            <nav id="navbar">
+              <div class="main-menu stellarnav">
+                <ul class="menu-list">
+                                  <li class="menu-item active"><a href="#home" data-effect="Home">Home</a></li>
+                                  <li class="menu-item has-sub">
+                                      <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+  
+                                      <ul>
+                                          <li class="active"><a href="index.html">1</a></li>
+                                          <li><a href="about.html">2</a></li>
+                                          <li><a href="styles.html">3</a></li>
+                                          <li><a href="blog.html">4</a></li>
+                                          <li><a href="single-post.html">5</a></li>
+                                          <li><a href="shop.html">6</a></li>
+                                          <li><a href="single-product.html">7</a></li>
+                                       </ul>
+  
+                                  </li>
+                                  <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a></li>
+                                  <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
+                                  <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                </ul>
+  
+              </div>
+            </nav>
 
   <div class="row justify-content-center mt-2" class="rows">
     <div class="col-md-8">
@@ -110,13 +113,13 @@ body {
               {% endfor %}
               {% endif %}
           </h5>
-          <form class="d-flex flex-column mx-5 my-3 " action="/addPost" method="post">
+          <form class="d-flex flex-column mx-5 my-3" action="/addPost" method="post">
             {% csrf_token %}
-            <textarea class="w80 p-2" name="post_message" id="post" rows="3"></textarea>
-            <div class="d-flex justify-content-end">
-              <button class="mybtn color-light mt-3" type="submit"> Add Post</button>
-            </div>
-          </form>
+            <textarea class="w80 p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
+    <div class="d-flex justify-content-end">
+      <button class="mybtn color-light mt-3" type="submit"> Add Post</button>
+    </div>
+  </form>
         </div>
       </div>
     </div>
@@ -165,13 +168,10 @@ body {
                       {% endwith %}
                       {% endif %}
                     </p>
-                    <form class="d-flex flex-column mx-1 " action="/addComment/{{ post.id }}" method="post">
+                    <form class="d-flex flex-column mx-5 my-3" action="/addPost" method="post">
                       {% csrf_token %}
-                      <textarea class="w80 p-2" name="comment_message" rows="2"></textarea>
-                      <div class="d-flex justify-content-end">
-                        <button class="mybtn btn mt-3" type="submit">Add Comment</button>
-                      </div>
-                      </form>
+                      <textarea class="w80 p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
+              <div class="d-flex justify-content-end">
                     </div>
                   </div>
                 </div>
