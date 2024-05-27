@@ -69,6 +69,11 @@ textarea {
 .texts{
   margin-right: 100px;
 }
+
+#logout {
+  background-color: #C5A992;
+
+}
 /* .container1 {
   display: flex; flex-direction: column; align-items: center;} */
 
