@@ -22,18 +22,12 @@ urlpatterns = [
     path('create_review/<int:bookID>',views.create_review),
     
 
+
+
+
+
+
+
+
+path('category', views.cat),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
