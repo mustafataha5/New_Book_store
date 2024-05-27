@@ -14,7 +14,11 @@ urlpatterns = [
     path('create_user',views.create_user), 
     path('book/<int:bookID>',views.show_book),
     path('contact',views.contact),
+<<<<<<< HEAD
     path('main', views.main),
     
+=======
+    path('main', views.main,name='main'),
+>>>>>>> master
 
 ]

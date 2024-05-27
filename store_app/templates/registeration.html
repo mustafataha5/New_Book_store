@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
 
 </head>
 
@@ -25,6 +26,7 @@
                         <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                             
                         {% endfor %}
+                    </ul>
                         {% endif %}
                             <div class="card-body">
                                 <form class="p-2" action="/create_user" method="post">
@@ -67,13 +69,7 @@
                                     <button class="btn btn-primary" type="submit">Sign Up</button>
                                 </form>
                                 <hr>
-                                {% if messages %}
-                                <ul class="messages">
-                                    {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                                        {% endfor %}
-                                </ul>
-                                {% endif %}
+                                
                             </div>
                 </div>
             </div>
