@@ -1,0 +1,16 @@
+.mybtn{
+    box-shadow: 3px 3px black;
+    border: 2px solid black;
+}
+
+.error{
+    color: #f12b1d;
+    list-style-type: none;
+    font-size: 12px;
+    
+}
+
+
+.card-title > span {
+    font-size: 12px;
+}

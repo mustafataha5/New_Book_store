@@ -76,6 +76,7 @@ def contact(request):
 
 def main(request):
     data = {
+         "user":User.objects.get(id=request.session['userID']),
         'books' : Book.objects.all(), 
     }
     
