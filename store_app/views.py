@@ -68,7 +68,7 @@ def logout(request):
 
 def show_book(request,bookID):
     data = {'book': Book.objects.get(id=bookID)}
-    return render(request,'show_book.html', data)
+    return render(request,'book_details.html', data)
 
 def contact(request): 
     return render(request,'contact_about.html')
