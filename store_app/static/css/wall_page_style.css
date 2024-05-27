@@ -1,6 +1,7 @@
 .mybtn{
     box-shadow: 3px 3px black;
     border: 2px solid black;
+    height: 45px;
 }
 
 .error{
@@ -14,3 +15,18 @@
 .card-title > span {
     font-size: 12px;
 }
+
+.mybtn {
+    background-color: #c5a992;
+}
+
+.col-md-8 {
+    margin-top: 50px
+}
+
+.card-bg-custom {
+    background-color: #fbf3d5;
+}
+.background-container {
+    background-color: #C5A992;
+  }

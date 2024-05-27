@@ -56,6 +56,12 @@ Version: 1.1
   object-fit: cover;
 }
 
+.card-title.pt-1.px-4 {
+  font-size: 1.3rem;
+  text-align: start;
+}
+
+
 textarea {
   width: 50%;
   height: 180px; /* Increase the height for a larger textarea */
@@ -78,6 +84,15 @@ textarea {
 html {
   box-sizing: border-box;
 }
+
+h5 {
+  font-family: var(--body-font);
+  font-size: 2rem;
+  line-height: 2;
+  color: var(--body-text-color);
+  background-color: var(--light-color);
+}
+
 body {
   font-family: var(--body-font);
   font-size: 16px;
@@ -1756,6 +1771,14 @@ span.prev-price {
 }
 
 
+<<<<<<< HEAD
+#post{
+  width: 700px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+=======
 
 .logoutbtn{
   background-color: #C5A992;
@@ -1789,3 +1812,4 @@ span.prev-price {
 
 
 
+>>>>>>> master
