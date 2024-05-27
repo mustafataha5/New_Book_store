@@ -1,5 +1,8 @@
 from django.shortcuts import render , redirect
+from .models import User,Book,Post,Comment, Category
+
 from .models import User,Book,Post,Comment,Review
+
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -86,7 +89,7 @@ def main(request):
         data = { 'books': Book.objects.all(),}
         return render (request, 'the_main_page.html',data)
         #return render(request,'user_main_page.html',data)
-  
+
 
     data = {
         "user":User.objects.get(id=request.session['userID']),
@@ -196,6 +199,36 @@ def delete_post(request,postID):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# display books in categories(categories page)
+
+def cat(request):
+    categories = Category.objects.all()
+    
+    if not 'userID' in request.session:
+        data = {
+            'categories': categories,
+        }
+        return render(request, 'the_main_page.html', data)
+    
+    data = {
+        "user": User.objects.get(id=request.session['userID']),
+        'categories': categories,
+    }
+    
+    return render(request, 'catergories.html', data)
     
 
 
