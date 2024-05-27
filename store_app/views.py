@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import User,Book
+from .models import User,Book,Post,Comment
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -73,5 +73,92 @@ def contact(request):
 
 
 def main(request):
-    return render (request, 'the_main_page.html')
+    data = {
+        'books' : Book.objects.all(), 
+    }
+    
+    return render (request, 'the_main_page.html',data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def add_post(request):
+    if request.method == 'POST': 
+        errors = Post.objects.post_validation(request.POST)
+        user =User.objects.get(id=request.session['userID']) # for testing
+        if len(errors) > 0 : 
+            for key,val in errors.items(): 
+                messages.error(request,val,extra_tags=key)
+        else: 
+            Post.objects.create(message=request.POST['post_message'],user=user)       
+    return redirect("wall_app:main_page")
+
+
+def add_comment(request,postID):
+    if request.method == 'POST': 
+        errors = Comment.objects.comment_validation(request.POST,postID,request.session['userID'])
+        if len(errors) > 0 : 
+            for key,val in errors.items():
+                messages.error(request,val,key)
+            return redirect("wall_app:main_page")    
+        post = Post.objects.get(id=postID) 
+        user = User.objects.get(id=request.session['userID'])       
+        Comment.objects.create(comment_message=request.POST['comment_message'],user=user,message=post)
+                
+    
+    return redirect('wall_app:main_page')
+
+
+def delete_post(request,postID):
+    if Post.objects.can_delete(postID) :
+        post = Post.objects.get(id=postID)
+        post.delete()    
+    return redirect('wall_app:main_page')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
