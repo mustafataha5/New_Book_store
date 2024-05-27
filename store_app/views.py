@@ -6,14 +6,14 @@ import datetime
 # Create your views here.
 
 def index (request): 
-    if  not 'userID' in request.session : 
-        data = { 'books': Book.objects.all(),}
-        return redirect('app:main')
-        #return render(request,'user_main_page.html',data)
-    data = {
-        'user': User.objects.get(id=int(request.session['userID'])),
-        'books': Book.objects.all(),
-    }
+    # if  not 'userID' in request.session : 
+    #     data = { 'books': Book.objects.all(),}
+    #     return redirect('app:main')
+    #     #return render(request,'user_main_page.html',data)
+    # data = {
+    #     'user': User.objects.get(id=int(request.session['userID'])),
+    #     'books': Book.objects.all(),
+    # }
     return redirect('app:main')
     #return render(request,'user_main_page.html',data) 
 
@@ -75,11 +75,15 @@ def contact(request):
 
 
 def main(request):
+    if  not 'userID' in request.session : 
+        data = { 'books': Book.objects.all(),}
+        return render (request, 'the_main_page.html',data)
+        #return render(request,'user_main_page.html',data)
+  
     data = {
-         "user":User.objects.get(id=request.session['userID']),
+        "user":User.objects.get(id=request.session['userID']),
         'books' : Book.objects.all(), 
     }
-    
     return render (request, 'the_main_page.html',data)
 
 
