@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Book Store</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="">
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+		{%load static%}
+	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
+	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
+		<link rel="stylesheet" type="text/css" href="{%static 'css/cat.css'%}">
+
+
+		<!-- script
+		================================================== -->
+		<script src="js/modernizr.js"></script>
+
+	</head>
+
+<body>
+
+<div id="header-wrap">
+	
+	<div class="top-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-6">
+					<div class="right-element">
+						{% if not 'userID' in request.session %}
+						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+						{% else %}
+						<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+						{% endif %}
+						
+						<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+
+						<!-- search bar -->
+
+						<!-- <div class="action-menu">
+
+							<div class="search-bar">
+								<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+									<i class="icon icon-search"></i>
+								</a>
+								<form role="search" method="get" class="search-box">
+									<input class="search-field text search-input" placeholder="Search" type="search">
+								</form>
+							</div>
+						</div> -->
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div><!--top-content-->
+
+	<header id="header">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-2">
+					<div class="main-logo">
+						<a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+					</div>
+
+				</div>
+
+				<div class="col-md-10">
+					
+					<nav id="navbar">
+						<div class="main-menu stellarnav">
+							<ul class="menu-list">
+                                <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                                <li class="menu-item has-sub">
+                                    <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+
+                                    <ul>
+                                        <li class="active"><a href="index.html">1</a></li>
+                                        <li><a href="about.html">2</a></li>
+                                        <li><a href="styles.html">3</a></li>
+                                        <li><a href="blog.html">4</a></li>
+                                        <li><a href="single-post.html">5</a></li>
+                                        <li><a href="shop.html">6</a></li>
+                                        <li><a href="single-product.html">7</a></li>
+                                    </ul>
+
+                                </li>
+                                <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
+                                <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
+                                <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
+							</ul>
+
+						</div>
+					</nav>
+
+				</div>
+
+			</div>
+		</div>
+	</header>
+	<!-- Main Image  -->
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+		  <img class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
+		</div>
+	</div>
+
+<!-- first category -->
+<section id="featured-books">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+			<div class="section-header align-center">
+				<div class="title">
+					<span>Some quality items</span>
+				</div>
+				<h2 class="section-title">Categories</h2>
+			</div>
+			<div class="product-list" data-aos="fade-up">
+				<div class="row">
+						<div class="container">
+							{% for category in categories %}
+								<div class="category-section">
+									<h2>{{ category.name }}</h2>
+									<div class="books-grid">
+										{% for book in category.books.all %}
+											<div class="book-item">
+												<img src="{{ book.image_url }}" alt="{{ book.title }}">
+												<h3>{{ book.title }}</h3>
+												<p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
+											</div>
+										{% endfor %}
+									</div>
+								</div>
+								<hr>
+							{% endfor %}
+						</div>
+			
+			
+							</div><!--ft-books-slider-->				
+						</div><!--grid-->
+			
+			
+						</div><!--inner-content-->
+					</div>
+
+
+				</div><!--ft-books-slider-->				
+			</div><!--grid-->
+
+
+			</div><!--inner-content-->
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				
+			</div>		
+		</div>
+	</div>
+</section>

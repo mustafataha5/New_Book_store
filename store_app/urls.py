@@ -21,18 +21,12 @@ urlpatterns = [
     path('deletePost/<int:postID>',views.delete_post),
     
 
+
+
+
+
+
+
+
+path('category', views.cat),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
