@@ -48,8 +48,8 @@ def create_user(request):
                 messages.error(request,val,extra_tags=key)
             return redirect('app:register')
         
-        user_fname = request.POST['first_name']
-        user_lname = request.POST['last_name']
+        user_fname = request.POST['first_name'].capitalize()
+        user_lname = request.POST['last_name'].capitalize()
         user_email = request.POST['email']
         password =bcrypt.hashpw(request.POST['password'].encode(),bcrypt.gensalt()).decode()
         brithday =request.POST['birthday']
@@ -107,29 +107,25 @@ def create_review(request,bookID):
     if request.method == 'POST': 
         if not 'userID' in request.session: 
             return redirect(f'/book/{bookID}')
+        userID= int(request.session['userID'])
+        errors = Review.objects.review_validation(request.POST,userID,bookID)
         
-        errors = Review.objects.review_validation(request.POST)
-        
+             
         if len(errors) > 0 : 
             for key,val in errors.items() : 
                 messages.error(request,val,extra_tags=key)
-                return redirect(f'/book/{bookID}')
+            return redirect(f'/book/{bookID}')
 
         rev_message = request.POST['review_message']
         rev_level = request.POST['review_level']
-        user = User.objects.get(id=request.session['userID'])
+        user = User.objects.get(id=userID)
         book = Book.objects.get(id=bookID)
-        Review.objects(message=rev_message,review_level=rev_level,user=user,book=book)
+        Review.objects.create(message=rev_message,review_level=rev_level,user=user,book=book)
 
     return redirect(f'/book/{bookID}')   
     
     
     
-
-
-
-
-
 
 
 
