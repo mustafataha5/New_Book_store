@@ -1,10 +1,46 @@
-body,
-.card {
+.container {
+  width: 600px;
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+h5.card-title {
+  align-items: center;
+  padding-top: 20px;
   background-color: #faf8ed;
-  font-family:'Times New Roman', Times, serif;
+}
+
+.card {
+  /* margin-top: 30px; */
+ background-color: #faf8ed;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.3rem;
   color: rgb(64, 59, 59);
   border-radius: 10px;
+  width: 500px; /* Set width to 50% */
+  margin-right: 10px; /* Add margin-right as needed */
+  margin-top: -10px;
+  margin-bottom: -5px;
+  box-sizing: border-box; /* Include padding and border in width */
+  padding: 20px; /* Adjust padding as needed */
+}
+
+
+
+.card.border-dark {
+  margin-top: -40px;
+}
+
+.card-bg-custom {
+  background-color: #f9f8f1;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: -15px;
+  padding-top: 20px;
+  font-size: 1.3rem;
+  color: rgb(64, 59, 59);
+  border-radius: 10px;
+  width: 400px; /* Set width to 50% */
+  margin-right: 10px; /* Add margin-right as needed */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
 .mybtn,
@@ -27,7 +63,7 @@ body,
 }
 
 .custom-textarea {
-  width: 100%;
+  width: calc(100% - 20px); /* Subtract padding */
   padding: 10px;
   border: 1px solid #C5A992;
   border-radius: 10px;
@@ -37,3 +73,4 @@ body,
 .page-bottom-margin {
   height: 20px; /* Adjust the height as needed */
 }
+

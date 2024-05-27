@@ -132,7 +132,7 @@
             <div class="d-flex justify-content-between">
               <h5 class="card-title">{{ post.user.first_name }} {{ post.user.last_name }} - <span>{{ post.updated_at }}</span></h5>
               {% if post.user.id == user.id %}
-              <a class="btn btn-danger" href="/deletePost/{{ post.id }}">Delete</a>
+              <a class="btn btn-danger" style="margin: left 5px; margin-bottom: 10px; text-align: center;" href="/deletePost/{{ post.id }}">Delete</a>
               {% endif %}
             </div>
             <p class="mt-2">{{ post.message }}</p>
