@@ -1770,6 +1770,22 @@ span.prev-price {
   }
 }
 
+#category-photo{
+  max-width: none;
+  width: 1100px;
+  margin-left: 150px;
+}
+
+
+
+#footer-logo{
+  margin-top: 50px;
+}
+
+
+.footer-title{
+  font-size: large;
+}
 
 <<<<<<< HEAD
 #post{
@@ -1787,19 +1803,21 @@ span.prev-price {
 }
 
 #logout{
-  /* margin-right: 30px; */
-  color: white;
+  margin-right: 50px;
+  color: #6F6F6F;
   padding: 5px 15px;
+  font-size: large;
+  border: 1px solid #6F6F6F;
 }
 
 
 #account{
-  background-color: #C5A992;
-  color: white;
-  margin-right: 15px;
-  padding: 4.5px 15px;
+  color: #6F6F6F;
+  padding: 4.5px 5px;
   font-weight: normal;
   margin-top: -3px;
+  font-size: large;
+  border: 1px solid #6F6F6F;
 
 } 
 
@@ -1813,3 +1831,6 @@ span.prev-price {
 
 
 >>>>>>> master
+
+
+
