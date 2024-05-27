@@ -8,13 +8,13 @@ import datetime
 def index (request): 
     if  not 'userID' in request.session : 
         data = { 'books': Book.objects.all(),}
-        return render (request, 'the_main_page.html',data)
+        return redirect('app:main')
         #return render(request,'user_main_page.html',data)
     data = {
         'user': User.objects.get(id=int(request.session['userID'])),
         'books': Book.objects.all(),
     }
-    return render (request, 'the_main_page.html',data)
+    return redirect('app:main')
     #return render(request,'user_main_page.html',data) 
 
 
@@ -111,6 +111,15 @@ def main(request):
 
 
 
+def main_wall(request):
+    if not 'userID' in request.session:
+        #messages.warning(request,'You need to regiester or login',extra_tags='invalid_accuess')
+        return redirect('/')
+    data={
+        "user":User.objects.get(id=request.session['userID']),
+        "posts":Post.objects.all().order_by('-updated_at'),
+    } 
+    return render(request,'wall_page.html',data)
 
 
 
@@ -123,7 +132,7 @@ def add_post(request):
                 messages.error(request,val,extra_tags=key)
         else: 
             Post.objects.create(message=request.POST['post_message'],user=user)       
-    return redirect("wall_app:main_page")
+    return redirect("app:wall")
 
 
 def add_comment(request,postID):
@@ -132,20 +141,19 @@ def add_comment(request,postID):
         if len(errors) > 0 : 
             for key,val in errors.items():
                 messages.error(request,val,key)
-            return redirect("wall_app:main_page")    
+            return redirect("app:wall")   
         post = Post.objects.get(id=postID) 
         user = User.objects.get(id=request.session['userID'])       
-        Comment.objects.create(comment_message=request.POST['comment_message'],user=user,message=post)
+        Comment.objects.create(message=request.POST['comment_message'],user=user,post=post)
                 
     
-    return redirect('wall_app:main_page')
-
+    return redirect("app:wall")
 
 def delete_post(request,postID):
     if Post.objects.can_delete(postID) :
         post = Post.objects.get(id=postID)
         post.delete()    
-    return redirect('wall_app:main_page')
+    return redirect("app:wall")
 
 
 

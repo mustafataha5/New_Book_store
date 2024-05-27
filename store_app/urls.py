@@ -15,5 +15,9 @@ urlpatterns = [
     path('book/<int:bookID>',views.show_book),
     path('contact',views.contact),
     path('main', views.main,name='main'),
+    path('wall',views.main_wall,name='wall'),
+    path('addPost',views.add_post),
+    path('addComment/<int:postID>',views.add_comment),
+    path('deletePost/<int:postID>',views.delete_post),
 
 ]
