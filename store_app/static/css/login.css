@@ -1,0 +1,9 @@
+body {
+    background-color: #D6DAC8;
+}
+
+.error{
+    color: #f12b1d;
+    list-style-type: none;
+    font-size: 12px;    
+}

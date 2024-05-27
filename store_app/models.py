@@ -45,12 +45,18 @@ class UserManager(models.Manager):
         return errors   
 
 class PostManager(models.Manager):
-    def post_validation(self,postData): 
-        errors = {}
-        
-        
-        
+    def post_validation(self,postData):
+        errors ={}
+       # print("*"*80,postData)
+        if len(postData['post_message']) ==0 :
+            errors['error_post_message'] = 'Please fill the Post message field'
         return errors 
+    def can_delete(self,postID): 
+        post = Message.objects.get(id=postID)
+        pass_time =  abs(post.updated_at.timestamp() - datetime.datetime.timestamp(datetime.datetime.today())) 
+        print("Pass ->>>>>>>>>>>>>>>>. ********",pass_time )
+        print(pass_time < 30*60)
+        return pass_time < 30*60 # 30 min 
         
 
 
@@ -72,12 +78,12 @@ class OrderManger(models.Manager):
 
 
 class CommentManger(models.Manager):
-    def comment_validation(self,postData): 
-        errors = {}
+    def comment_validation(self,postData,postID,userID): 
+        errors ={}
+        if len(postData['comment_message']) == 0 :
+            errors['comment_message-'+str(userID)+str(postID)] = 'Please fill the comment message field'
         
-        
-        
-        return errors  
+        return errors   
     
 
 class CategoryManger(models.Manager):
