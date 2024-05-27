@@ -32,7 +32,13 @@
 				</div>
 				<div class="col-md-6">
 					<div class="right-element">
-						<a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+						{% if not 'userID' in request.session %}
+						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+						{% else %}
+						<a id="account" href="/user/{{user.id}}">{{user.first_name}}</a>
+						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+						{% endif %}
+						
 						<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
 
 						<div class="action-menu">
@@ -103,6 +109,21 @@
               <img class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
 			</div>
         </div>
+
+<!-- 
+		<div class="">
+			<h2 class="mx-5 mt-5">Favorite Books</h2>
+			<div class="row mt-2 justify-content-center">
+				{%for book in books%}
+				<div class="col-sm-3 mt-1 mx-1">
+					<div class="card text-center ">
+						<a href="/book/{{book.id}}"> <img class="card_img" src="{{book.url_image}}" class="card-img-top" alt="{{book.title}} image"> </a>  
+						<div class="card-body">
+							<a href="/book/{{book.id}}" class="title_link">{{book.title}}</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %} -->
 		
 
 <section id="featured-books">
@@ -114,25 +135,25 @@
 				<div class="title">
 					<span>Some quality items</span>
 				</div>
-				<h2 class="section-title">Featured Books</h2>
+				<h2 class="section-title">Favorite Books</h2>
 			</div>
-
 			<div class="product-list" data-aos="fade-up">
 				<div class="row">
-
+					{%for book in books%}
 					<div class="col-md-3">
 						<figure class="product-style">
-							<img src="{% static 'images/product-item1.jpg'%}" alt="Books" class="product-item">
+							<img src="{{book.url_image}}"  alt="Books" class="product-item">
 								<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
 							<figcaption>
-								<h3>Simple way of piece life</h3>
-								<p>Armor Ramsey</p>
-								<div class="item-price">$ 40.00</div>
+								<a href="/book/{{book.id}}" class="title_link">{{book.title}}</a>
+								<p>{{book.author.first_name}}  {{book.author.last_name}}</p>
+								<div class="item-price">{{book.price}}</div>
 							</figcaption>
 						</figure>
 					</div>
+				{% endfor %}
 				
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<figure class="product-style">
 							<img src="{% static 'images/product-item2.jpg'%}" alt="Books" class="product-item">
 								<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
@@ -166,9 +187,9 @@
 								<div class="item-price">$ 35.00</div>
 							</figcaption>
 						</figure>
-					</div>
+					</div> -->
 
-			    </div><!--ft-books-slider-->				
+				</div><!--ft-books-slider-->				
 			</div><!--grid-->
 
 
