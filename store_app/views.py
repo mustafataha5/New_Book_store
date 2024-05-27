@@ -6,6 +6,7 @@ import datetime
 # Create your views here.
 
 def index (request): 
+    # test
     # if  not 'userID' in request.session : 
     #     data = { 'books': Book.objects.all(),}
     #     return redirect('app:main')
