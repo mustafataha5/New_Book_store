@@ -1771,9 +1771,45 @@ span.prev-price {
 }
 
 
+<<<<<<< HEAD
 #post{
   width: 700px;
   height: 150px;
   margin: 0 auto;
 }
 
+=======
+
+.logoutbtn{
+  background-color: #C5A992;
+  color: white;
+
+}
+
+#logout{
+  /* margin-right: 30px; */
+  color: white;
+  padding: 5px 15px;
+}
+
+
+#account{
+  background-color: #C5A992;
+  color: white;
+  margin-right: 15px;
+  padding: 4.5px 15px;
+  font-weight: normal;
+  margin-top: -3px;
+
+} 
+
+
+
+#book-img{
+  height: 400px;
+
+}
+
+
+
+>>>>>>> master
