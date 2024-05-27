@@ -1,6 +1,7 @@
 .mybtn{
     box-shadow: 3px 3px black;
     border: 2px solid black;
+    height: 45px;
 }
 
 .error{
@@ -10,7 +11,39 @@
     
 }
 
+.custom-textarea {
+    width: 100%; /* Set the width */
+    height: 150px; /* Set the height */
+  }
 
 .card-title > span {
-    font-size: 12px;
+    font-size: 15px;
 }
+
+.mybtn {
+    background-color: #c5a992;
+}
+
+.col-md-8 {
+    margin-top: 50px;
+    border-radius: 40px;
+}
+
+.card-bg-custom {
+    background-color: #fbf3d5;
+}
+.background-container {
+    background-color: #C5A992;
+  }
+
+  .logoutbtn{
+    background-color: #C5A992;
+    color: white;
+  
+  }
+  
+  #logout{
+    /* margin-right: 30px; */
+    color: white;
+    padding: 5px 15px;
+  }
