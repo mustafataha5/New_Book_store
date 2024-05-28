@@ -9,7 +9,7 @@ urlpatterns = [
     path('login',views.login,name='login'),
     path('register',views.register, name='register'),
     path('login',views.login), 
-    path('logout',views.logout),
+    path('logout/',views.logout),
     path('check_login',views.check_login),
     path('create_user',views.create_user), 
     path('book/<int:bookID>',views.show_book),
@@ -21,8 +21,17 @@ urlpatterns = [
     path('deletePost/<int:postID>',views.delete_post),
     path('create_review/<int:bookID>',views.create_review),
     path('ajax/<int:bookID>',views.get_ajax),
+<<<<<<< HEAD
     path('user/<int:userID>',views.account) , 
     path('ajax/postData',views.post_data_ajax), 
+=======
+
+
+
+    path('category', views.cat),
+
+    path('user/<int:userID>',views.account) ,  
+>>>>>>> master
 
 
 
@@ -38,11 +47,4 @@ urlpatterns = [
 
 
 
-
-
-
-
-
-path('category', views.cat),
-path('account', views.account),
 ]
