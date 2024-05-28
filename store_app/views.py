@@ -237,7 +237,7 @@ def cat(request):
     }
     
     return render(request, 'catergories.html', data)
-<<<<<<< HEAD
+
 
 
 # view user profile
@@ -248,7 +248,7 @@ def account(request):
     return render(request, 'profile.html', context)
 
     
-=======
+
     
 
 
