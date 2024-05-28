@@ -1,9 +1,6 @@
 from django.shortcuts import render , redirect
-<<<<<<< HEAD
 from .models import User,Book,Post,Comment, Category
-=======
 from .models import User,Book,Post,Comment,Review
->>>>>>> master
 from  django.contrib import messages
 import bcrypt
 import datetime
@@ -230,4 +227,13 @@ def cat(request):
     }
     
     return render(request, 'catergories.html', data)
+
+
+# view user profile
+def account(request):
+    context = {
+        'user': User.objects.all()
+    }
+    return render(request, 'profile.html', context)
+
     

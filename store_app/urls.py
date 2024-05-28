@@ -30,4 +30,5 @@ urlpatterns = [
 
 
 path('category', views.cat),
+path('account', views.account),
 ]
