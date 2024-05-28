@@ -13,14 +13,27 @@ urlpatterns = [
     path('check_login',views.check_login),
     path('create_user',views.create_user), 
     path('book/<int:bookID>',views.show_book),
-    path('contact',views.contact),
+    path('contact',views.about),
     path('main', views.main,name='main'),
     path('wall',views.main_wall,name='wall'),
     path('addPost',views.add_post),
     path('addComment/<int:postID>',views.add_comment),
     path('deletePost/<int:postID>',views.delete_post),
     path('create_review/<int:bookID>',views.create_review),
+    path('ajax/<int:bookID>',views.get_ajax),
     
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
