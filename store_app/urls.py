@@ -44,4 +44,6 @@ urlpatterns = [
 
 path('category', views.cat),
 path('account', views.account),
+path('addFav/<int:bookID>', views.add_fev_book),
+path('removeFav/<int:bookID>', views.unfav_book),
 ]

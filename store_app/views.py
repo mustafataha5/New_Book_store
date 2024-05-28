@@ -1,16 +1,9 @@
 from django.shortcuts import render , redirect
 from .models import User,Book,Post,Comment, Category
-<<<<<<< HEAD
-from .models import User,Book,Post,Comment,Review
-
-
-
-
-=======
 
 from .models import User,Book,Post,Comment,Review
 
->>>>>>> master
+
 from  django.contrib import messages
 from django.http import JsonResponse
 import bcrypt
@@ -251,6 +244,9 @@ def account(request):
     }
     return render(request, 'profile.html', context)
 
+
+
+
     
 
     
@@ -371,4 +367,21 @@ def about(request):
         'books' : Book.objects.all(), 
     }
     return render (request, 'contact_about.html',data)
+
+def add_fev_book(request, bookID):
+    user = User.objects.get(id=request.session['userID'])
+    book = Book.objects.get(id=bookID)
+    book.liked_by_users.add(user)
+
+    return redirect (f'/book/{bookID}')
+
+def unfav_book(request, bookID):
+    user = User.objects.get(id=request.session['userID'])
+    book = Book.objects.get(id=bookID)
+    book.liked_by_users.remove(user)
+
+    return redirect (f'/book/{bookID}')
+
+
+
 
