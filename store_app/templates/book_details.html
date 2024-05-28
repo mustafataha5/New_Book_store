@@ -140,10 +140,14 @@
                                 <h2 class="banner-title">{{book.title}}</h2>
                                 <h4>By: {{book.author.first_name}} {{book.author.last_name}}</h4>
                                 <p>{{book.description}}</p>
-                                <form action="/add_to_cart" method="post" class="btn-wrap">
-                                    <button href="#" class="btn btn-outline-accent btn-accent-arrow">Add To Cart<i
-                                            class="icon icon-ns-arrow-right"></i></button>
-                                </form>
+                                {% if user in book.liked_by_users.all %}
+                                <a href="/removeFav/{{book.id}}"><button  id="fav-btn" class="btn  ">UnFavorite</button></a>
+                            {%else%}
+                            <a href="/addFav/{{book.id}}"><button  id="fav-btn" class="btn  ">Add To Favorite</button></a>
+                        
+                            {%endif%}
+                            <a href="/add_to_cart"><button href="#" class="btn add-to-cart" >Add To Cart</button></a>
+                            
                             </div><!--banner-content-->
 
                             <img src="{{book.url_image}}" alt="banner" class="banner-image">

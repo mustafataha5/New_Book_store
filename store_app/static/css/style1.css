@@ -1792,6 +1792,23 @@ span.prev-price {
   font-size: large;
 }
 
+#author-name{
+  margin-left: 40px;
+}
+
+.product-style{
+  margin-left: 70px;
+}
+
+#view_book_btn{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+#fav-btn{
+  display: block;
+}
+
 <<<<<<< HEAD
 #post{
   width: 700px;
