@@ -20,15 +20,8 @@ urlpatterns = [
     path('addComment/<int:postID>',views.add_comment),
     path('deletePost/<int:postID>',views.delete_post),
     path('create_review/<int:bookID>',views.create_review),
-    path('ajax/<int:bookID>',views.get_ajax)
-    
+    path('ajax/<int:bookID>',views.get_ajax),
 
 
-
-
-
-
-
-
-path('category', views.cat),
+    path('category', views.cat),
 ]
