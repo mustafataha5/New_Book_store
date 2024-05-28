@@ -176,7 +176,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author,related_name='books',on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='books', on_delete=models.CASCADE)
     language = models.ForeignKey(Language, related_name='books', on_delete=models.CASCADE)
-    liked_by_users= models.ManyToManyField(User,related_name='likes_books',)
+    liked_by_users= models.ManyToManyField(User,related_name='likes_books')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = BookManager()
