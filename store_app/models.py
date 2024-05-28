@@ -52,11 +52,12 @@ class PostManager(models.Manager):
             errors['error_post_message'] = 'Please fill the Post message field'
         return errors 
     def can_delete(self,postID): 
-        post = Post.objects.get(id=postID)
-        pass_time =  abs(post.updated_at.timestamp() - datetime.datetime.timestamp(datetime.datetime.today())) 
-        print("Pass ->>>>>>>>>>>>>>>>. ********",pass_time )
-        print(pass_time < 30*60)
-        return pass_time < 30*60 # 30 min 
+        # post = Post.objects.get(id=postID)
+        # pass_time =  abs(post.updated_at.timestamp() - datetime.datetime.timestamp(datetime.datetime.today())) 
+        # print("Pass ->>>>>>>>>>>>>>>>. ********",pass_time )
+        # print(pass_time < 30*60)
+        #return pass_time < 30*60 # 30 min 
+        return True
         
 
 
@@ -100,8 +101,7 @@ class LanguageManger(models.Manager):
         errors = {}
         # if len(postData['review_message']) == 0 :
         #     errors['review_message'] = 'Please fill the review message field'
-        if int(postData['review_level']) == 0 : 
-            errors['review_level'] = "Please choose your review level"    
+          
         
         return errors    
         
@@ -109,11 +109,13 @@ class LanguageManger(models.Manager):
         return errors  
     
 class ReviewManger(models.Manager):
-    def review_validation(self,postData): 
+    def review_validation(self,postData,userId,bookID): 
         errors = {}
-        
-        
-        
+       
+        if int(postData['review_level']) == 0 : 
+            errors['review_level'] = "Please choose your review level"  
+        if len(Review.objects.filter(user__id=userId))>0 and len(Review.objects.filter(book__id=bookID)):
+             errors['review_level'] = "You can not review book more than one , You can edit pervious "  
         return errors     
 
 
@@ -190,8 +192,8 @@ class Order(models.Model):
     objects = OrderManger()
     
 class Review (models.Model): 
-    users = models.ForeignKey(User,related_name='reviews', on_delete=models.CASCADE)
-    books = models.ForeignKey(Book,related_name='reviews', on_delete=models.CASCADE) 
+    user = models.ForeignKey(User,related_name='reviews', on_delete=models.CASCADE)
+    book = models.ForeignKey(Book,related_name='reviews', on_delete=models.CASCADE) 
     review_level = models.IntegerField()
     message = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
