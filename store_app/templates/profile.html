@@ -44,7 +44,7 @@
                             <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
                             
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{tatal}} $)</span></a>
     
                             <!-- <div class="action-menu">
     
@@ -71,7 +71,7 @@
     
                     <div class="col-md-2">
                         <div class="main-logo">
-                            <a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+                            <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
                         </div>
     
                     </div>
@@ -120,7 +120,7 @@
                         <div class="m-b-25">
                             <img src="{%static 'images/user-profile-icon-free-vector.jpg'%}" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600">USER NAME</h6>
+                        <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
                         <button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button>                    </div>
                 </div>
                 <div class="col-sm-8">
@@ -129,15 +129,15 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">NickName</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                <h6 class="text-muted f-w-400">{{user.first_name}} {{user.last_name}}</h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Email</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                <h6 class="text-muted f-w-400">{{user.email}}</h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Address</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                <h6 class="text-muted f-w-400">{{user.email}}</h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Phone</p>
@@ -147,21 +147,21 @@
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">item 1</p>
-                                <p class="m-b-10 f-w-600">item 2</p>
-                                <p class="m-b-10 f-w-600">item 3</p>
-                                
+                                {% for book in order.books.all %}
+                                <p class="m-b-10 f-w-600">{{book.title}}  <a href="/cart/{{book.id}}/delete">del</a></p>
+                                {% endfor %}
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600"></p>
                                 <h6 class="text-muted f-w-400"></h6>
                             </div>
                         </div>
-                        <button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Check Out</button>
+    
+                        <a href="/cart/confirm"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Check Out</button></a>
                         <hr>
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
                         <ul>
-                            {% for book in user_likes %}
+                            {% for book in user.likes_books.all %}
                             <li>{{book.title}} </li>
                             {% endfor %}
                         </ul>

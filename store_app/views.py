@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect,HttpResponse
-from .models import User,Book,Post,Comment, Category
+from .models import User,Book,Post,Comment, Category,Order
 
 from .models import User,Book,Post,Comment,Review
 
@@ -9,6 +9,8 @@ from django.http import JsonResponse
 import bcrypt
 import json
 import datetime
+import math
+
 # Create your views here.
 
 def index (request): 
@@ -71,27 +73,50 @@ def logout(request):
     return redirect('app:index')         
     
     
-
-
+def get_total_order(order): 
+    total = 0
+    if(order == ''): 
+        return 0
+    for book in order.books.all(): 
+        total = total + book.price 
+    return math.floor(total * 100)/100.0     
 def show_book(request,bookID):
     
     book = Book.objects.get(id=bookID)
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID']))  
     
     if not 'userID' in request.session :  
-        data = {'book': book,
+        data = {
+            'book': book,
             'reviews': book.reviews.all(),
-            
+            'order':order , 
+            'total':get_total_order(order)
             }
     else: 
+        
+               
         data = {'book': book,
             'reviews': book.reviews.all(),
             "user":User.objects.get(id=request.session['userID']),
+             'order':order , 
+             'total':get_total_order(order)
             }
     return render (request, 'book_details.html', data)
 
 
 def contact(request): 
-    return render(request,'contact_about.html')
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
+    data ={
+        'total': get_total_order(order),
+    }    
+    
+    return render(request,'contact_about.html',data)
 
 
 def main(request):
@@ -100,11 +125,16 @@ def main(request):
         data = { 'books': Book.objects.all(),}
         return render (request, 'the_main_page.html',data)
         #return render(request,'user_main_page.html',data)
-
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID']))  
+    
 
     data = {
         "user":User.objects.get(id=request.session['userID']),
         'books' : Book.objects.all(), 
+        'total': get_total_order(order),
     }
     return render (request, 'the_main_page.html',data)
 
@@ -211,9 +241,14 @@ def main_wall(request):
     if not 'userID' in request.session:
         #messages.warning(request,'You need to regiester or login',extra_tags='invalid_accuess')
         return redirect('/')
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
     data={
         "user":User.objects.get(id=request.session['userID']),
         "posts":Post.objects.all().order_by('-updated_at'),
+        "total":get_total_order(order),
     } 
     return render(request,'wall_page.html',data)
 
@@ -253,21 +288,46 @@ def delete_post(request,postID):
 
 
 
-def add_to_cart(request):
-     if not 'userID' in request.session: 
+def add_to_cart(request,bookID):
+    if not 'userID' in request.session: 
         messages.error(request,'Need to Login/SignUp')
         return redirect(f'/login') 
+    
+    userID = int(request.session['userID'])
+    user = User.objects.get(id=userID)
+    book = Book.objects.get(id=bookID)
+    if ( not 'orderID' in request.session):
+        order = Order.objects.create(user=user)
+        order.books.add(book)
+        #request.session['total'] = book.price
+        request.session['orderID']= order.id 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID']))
+        order.books.add(book)  
+    return redirect(f'/book/{bookID}')
            
 
+def delete_book_from_order(request,bookID):
+    if not 'userID' in request.session or  not 'orderID' in request.session: 
+        messages.error(request,'No order yet , Need to Login/SignUp')
+        return redirect(f'/login') 
+    userID = int(request.session['userID'])
+    orderID = int(request.session['orderID'])
+    order = Order.objects.get(id=orderID)
+    book = Book.objects.get(id=bookID)
+    order.books.remove(book)
+    return redirect(f'/user/{userID}')
 
-
-
-
-
-
-
-
-
+def confirm_order(request): 
+    if not 'userID' in request.session or  not 'orderID' in request.session: 
+        messages.error(request,'No order yet , Need to Login/SignUp')
+        return redirect(f'/login')  
+    if  'orderID' in  request.session :  
+        order = Order.objects.get(id=int(request.session['orderID'])) 
+        order.confirm_buy = True
+        del request.session['orderID']
+        userID = request.session['userID']
+        return redirect(f'/user/{userID}')
 
 
 
@@ -294,10 +354,18 @@ def cat(request):
             'categories': categories,
         }
         return render(request, 'the_main_page.html', data)
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
+
+        
     
     data = {
         "user": User.objects.get(id=request.session['userID']),
         'categories': categories,
+        'order':order , 
+        'total' : get_total_order(order),
     }
     
     return render(request, 'catergories.html', data)
@@ -310,8 +378,15 @@ def account(request, userID):
         return redirect('/')
 
     user = User.objects.get(id=request.session['userID'])
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
+    
     context = {
         'user': user ,
+        'order': order , 
+        'total' : get_total_order(order),
     }
 
     return render(request, 'profile.html', context)
@@ -429,14 +504,17 @@ def account(request, userID):
 def about(request):
 
     if  not 'userID' in request.session : 
-        data = { 'books': Book.objects.all(),}
-        return render (request, 'contact_about.html',data)
+        
+        return render (request, 'contact_about.html')
         #return render(request,'user_main_page.html',data)
-  
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
 
     data = {
         "user":User.objects.get(id=request.session['userID']),
-        'books' : Book.objects.all(), 
+        'total': get_total_order(order)
     }
     return render (request, 'contact_about.html',data)
 #add to favitore books
