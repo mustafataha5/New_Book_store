@@ -85,15 +85,24 @@ function get_ajax(bookID) {
     var xhr = new XMLHttpRequest();
     console.log('/ajax/'+bookID)
     xhr.open('GET', '/ajax/'+bookID, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);
             var itemsList = document.getElementById('items-list');
             itemsList.innerHTML = '';
-            data.forEach(function(item) {
+            console.log(data)
+            data['reviews_list'].forEach(function(item) {
                 var listItem = document.createElement('li');
-                listItem.textContent = item.user + ': ' + item.review_level+" : "+item.book+"  "+item.message
+                username = '' 
+                for (var i in data['user_list']) {
+                    if (data['user_list'][i].id === item.user_id) {
+                        username = data['user_list'][i].first_name + ' ' + data['user_list'][i].last_name; 
+                        break; // Break the loop once the user is found
+                    }
+                }
+
+                listItem.textContent =username + ': ' + item.review_level+" : "+item.book_id+"  "+item.message
                 itemsList.appendChild(listItem);
             });
         }
