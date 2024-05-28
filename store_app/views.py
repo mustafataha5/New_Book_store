@@ -1,10 +1,16 @@
 from django.shortcuts import render , redirect
 from .models import User,Book,Post,Comment, Category
+<<<<<<< HEAD
 from .models import User,Book,Post,Comment,Review
 
 
 
 
+=======
+
+from .models import User,Book,Post,Comment,Review
+
+>>>>>>> master
 from  django.contrib import messages
 from django.http import JsonResponse
 import bcrypt
