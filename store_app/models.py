@@ -81,7 +81,7 @@ class OrderManger(models.Manager):
 class CommentManger(models.Manager):
     def comment_validation(self,postData,postID,userID): 
         errors ={}
-        if len(postData['comment_message']) >= 0 :
+        if len(postData['comment_message']) == 0 :
             errors['comment_message-'+str(userID)+str(postID)] = 'Please fill the comment message field'
         
         return errors   

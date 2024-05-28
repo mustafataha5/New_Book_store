@@ -21,7 +21,33 @@ urlpatterns = [
     path('deletePost/<int:postID>',views.delete_post),
     path('create_review/<int:bookID>',views.create_review),
     path('ajax/<int:bookID>',views.get_ajax),
+<<<<<<< HEAD
 
 
     path('category', views.cat),
+=======
+    path('user/<int:userID>',views.account) ,  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+path('category', views.cat),
+path('account', views.account),
+>>>>>>> 495d843d910e4ddf70498f054dfafaa9deb414af
 ]

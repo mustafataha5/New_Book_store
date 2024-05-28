@@ -10,19 +10,24 @@
 	    <meta name="author" content="">
 	    <meta name="keywords" content="">
 	    <meta name="description" content="">
-
+<!--  -->
         {%load static%}
-	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-        <!-- <link rel="stylesheet" href="./css/style.css"> -->
-
+	    <link rel="stylesheet" type="text/css" href="{%static 'css/profile.css'%}">
+          <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+       <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    
 		<!-- script
 		================================================== -->
 		<script src="js/modernizr.js"></script>
 
 	</head>
 <body>
+    
     <div id="header-wrap">
 	
         <div class="top-content">
@@ -32,10 +37,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="right-element">
-                            <a href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            {% if not 'userID' in request.session %}
+                            <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            {% else %}
+                            <a id="account" href="/account">Welcome, {{user.first_name}}</a>
+                            <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+                            {% endif %}
+                            
                             <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
     
-                            <div class="action-menu">
+                            <!-- <div class="action-menu">
     
                                 <div class="search-bar">
                                     <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
@@ -45,7 +56,7 @@
                                         <input class="search-field text search-input" placeholder="Search" type="search">
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
     
                         </div><!--top-right-->
                     </div>
@@ -60,7 +71,7 @@
     
                     <div class="col-md-2">
                         <div class="main-logo">
-                            <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
                         </div>
     
                     </div>
@@ -70,9 +81,9 @@
                         <nav id="navbar">
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
-                                    <li class="menu-item active"><a href="#home" data-effect="Home">Home</a></li>
+                                    <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
                                     <li class="menu-item has-sub">
-                                        <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
+                                        <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
     
                                         <ul>
                                             <li class="active"><a href="index.html">1</a></li>
@@ -82,20 +93,13 @@
                                             <li><a href="single-post.html">5</a></li>
                                             <li><a href="shop.html">6</a></li>
                                             <li><a href="single-product.html">7</a></li>
-                                        </ul>
+                                         </ul>
     
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="#about" class="nav-link" data-effect="About">About</a></li>
-                                    <li class="menu-item"><a href="#contact" class="nav-link" data-effect="Contact">Contact</a></li>
-
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
                                 </ul>
-    
-                                <div class="hamburger">
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                </div>
     
                             </div>
                         </nav>
@@ -105,85 +109,80 @@
                 </div>
             </div>
         </header>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-xl-12 col-md-12 ">
+        <div class="card user-card-full">
+            <div class="row m-l-0 m-r-0">
+                <div class="col-sm-4 bg-c-lite-green user-profile">
+                    <div class="card-block text-center text-white">
+                        <div class="m-b-25">
+                            <img src="static/images/user-profile-icon-free-vector.jpg" class="img-radius" alt="User-Profile-Image">
+                        </div>
+                        <h6 class="f-w-600">USER NAME</h6>
+                        <button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button>                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card-block">
+                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">NickName</p>
+                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Email</p>
+                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Address</p>
+                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Phone</p>
+                                <h6 class="text-muted f-w-400">98979989898</h6>
+                            </div>
+                        </div>
+                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">item 1</p>
+                                <p class="m-b-10 f-w-600">item 2</p>
+                                <p class="m-b-10 f-w-600">item 3</p>
+                                
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600"></p>
+                                <h6 class="text-muted f-w-400"></h6>
+                            </div>
+                        </div>
+                        <button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Buy</button>
+                        <hr>
+                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Last Posts</h6>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">1</p>
+                                <p class="m-b-10 f-w-600">2</p>
+                                <p class="m-b-10 f-w-600">3</p>
+                                
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600"></p>
+                                <h6 class="text-muted f-w-400"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="CodeHim">
-      <title> Dashboard Profile Page Theme Color CSS Vanilla JS Example </title>
-      <!-- Style CSS -->
-      <link rel="stylesheet" href="./css/style.css">
-      <!-- Demo CSS (No need to include it into your project) -->
-      <!-- <link rel="stylesheet" href="./css/demo.css">   </head> -->
-   <body>
-      <header class="cd__intro">
-         <h1> Dashboard Profile Page Theme Color CSS Vanilla JS Example </h1>
-         <p> Dashboard Profile Page Theme Color CSS Vanilla JS </p>
-         <div class="cd__action">
-         </div>
-      </header>
-      <!--$%adsense%$-->
-      <main class="cd__main">
-         <!-- Start DEMO HTML (Use the following code into your project)-->
-         <div class="profile-page">
-  <div class="content">
-    <div class="content__cover">
-      <div class="content__avatar"></div>
-      <div class="content__bull"><span></span><span></span><span></span><span></span><span></span>
-      </div>
+        </div>
+        </div>
     </div>
-    <div class="content__actions"><a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-          <path fill="currentColor" d="M192 256A112 112 0 1 0 80 144a111.94 111.94 0 0 0 112 112zm76.8 32h-8.3a157.53 157.53 0 0 1-68.5 16c-24.6 0-47.6-6-68.5-16h-8.3A115.23 115.23 0 0 0 0 403.2V432a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48v-28.8A115.23 115.23 0 0 0 268.8 288z"></path>
-          <path fill="currentColor" d="M480 256a96 96 0 1 0-96-96 96 96 0 0 0 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592a48 48 0 0 0 48-48 111.94 111.94 0 0 0-112-112z"></path>
-        </svg><span>Connect</span></a><a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-          <path fill="currentColor" d="M208 352c-41 0-79.1-9.3-111.3-25-21.8 12.7-52.1 25-88.7 25a7.83 7.83 0 0 1-7.3-4.8 8 8 0 0 1 1.5-8.7c.3-.3 22.4-24.3 35.8-54.5-23.9-26.1-38-57.7-38-92C0 103.6 93.1 32 208 32s208 71.6 208 160-93.1 160-208 160z"></path>
-          <path fill="currentColor" d="M576 320c0 34.3-14.1 66-38 92 13.4 30.3 35.5 54.2 35.8 54.5a8 8 0 0 1 1.5 8.7 7.88 7.88 0 0 1-7.3 4.8c-36.6 0-66.9-12.3-88.7-25-32.2 15.8-70.3 25-111.3 25-86.2 0-160.2-40.4-191.7-97.9A299.82 299.82 0 0 0 208 384c132.3 0 240-86.1 240-192a148.61 148.61 0 0 0-1.3-20.1C522.5 195.8 576 253.1 576 320z"></path>
-        </svg><span>Message</span></a></div>
-    <div class="content__title">
-      <h1>Samantha Jones</h1><span>New York, United States</span>
-    </div>
-    <div class="content__description">
-      <p>Web Producer - Web Specialist</p>
-      <p>Columbia University - New York</p>
-    </div>
-    <ul class="content__list">
-      <li><span>65</span>Friends</li>
-      <li><span>43</span>Photos</li>
-      <li><span>21</span>Comments</li>
-    </ul>
-    <div class="content__button"><a class="button" href="#">
-        <div class="button__border"></div>
-        <div class="button__bg"></div>
-        <p class="button__text">Show more</p></a></div>
-  </div>
-  <div class="bg">
-    <div><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-  </div>
-  <div class="theme-switcher-wrapper" id="theme-switcher-wrapper"><span>Themes color</span>
-    <ul>
-      <li><em class="is-active" data-theme="orange"></em></li>
-      <li><em data-theme="green"></em></li>
-      <li><em data-theme="purple"></em></li>
-      <li><em data-theme="blue"></em></li>
-    </ul>
-  </div>
-  <div class="theme-switcher-button" id="theme-switcher-button">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-      <path fill="currentColor" d="M352 0H32C14.33 0 0 14.33 0 32v224h384V32c0-17.67-14.33-32-32-32zM0 320c0 35.35 28.66 64 64 64h64v64c0 35.35 28.66 64 64 64s64-28.65 64-64v-64h64c35.34 0 64-28.65 64-64v-32H0v32zm192 104c13.25 0 24 10.74 24 24 0 13.25-10.75 24-24 24s-24-10.75-24-24c0-13.26 10.75-24 24-24z"></path>
-    </svg>
-  </div>
-</div>
-         <!-- END EDMO HTML (Happy Coding!)-->
-      </main>
-      <footer class="cd__credit">Author: adrien - Distributed By: <a title="Free web design code & scripts" href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
-      
+
       <!-- Script JS -->
-      <script src="./js/script.js"></script>
+
       <!--$%analytics%$-->
    </body>
 </html>
