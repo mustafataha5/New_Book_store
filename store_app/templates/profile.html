@@ -40,7 +40,7 @@
                             {% if not 'userID' in request.session %}
                             <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
                             {% else %}
-                            <a id="account" href="/account">Welcome, {{user.first_name}}</a>
+                            <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
                             
@@ -118,7 +118,7 @@
                 <div class="col-sm-4 bg-c-lite-green user-profile">
                     <div class="card-block text-center text-white">
                         <div class="m-b-25">
-                            <img src="static/images/user-profile-icon-free-vector.jpg" class="img-radius" alt="User-Profile-Image">
+                            <img src="{%static 'images/user-profile-icon-free-vector.jpg'%}" class="img-radius" alt="User-Profile-Image">
                         </div>
                         <h6 class="f-w-600">USER NAME</h6>
                         <button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button>                    </div>
@@ -157,14 +157,19 @@
                                 <h6 class="text-muted f-w-400"></h6>
                             </div>
                         </div>
-                        <button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Buy</button>
+                        <button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Check Out</button>
                         <hr>
-                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Last Posts</h6>
+                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
+                        <ul>
+                            {% for book in user_likes %}
+                            <li>{{book.title}} </li>
+                            {% endfor %}
+                        </ul>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">1</p>
-                                <p class="m-b-10 f-w-600">2</p>
-                                <p class="m-b-10 f-w-600">3</p>
+                                <p class="m-b-10 f-w-600"></p>
+                                <p class="m-b-10 f-w-600"></p>
+                                <p class="m-b-10 f-w-600"></p>
                                 
                             </div>
                             <div class="col-sm-6">

@@ -33,14 +33,14 @@
 				</div>
 				<div class="col-md-6">
 					<div class="right-element">
-						<div class="right-element">
-							{% if not 'userID' in request.session %}
-							<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-							{% else %}
-							<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-							<a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-							{% endif %}
-						
+
+						{% if not 'userID' in request.session %}
+						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+						{% else %}
+						<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+						{% endif %}
+		
 						<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
 
 						<!-- <div class="action-menu">
@@ -130,12 +130,9 @@
 					<div class="col-md-3">
 						<figure class="product-style">
 							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
-								<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-							<figcaption>
-								<a href="/book/{{book.id}}" class="title_link">{{book.title}}</a>
-								<p>{{book.author.first_name}}  {{book.author.last_name}}</p>
-								<div class="item-price">{{book.price}}</div>
-							</figcaption>
+								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
+								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">View Book</button>
+						
 						</figure>
 					</div>
 				{% endfor %}
@@ -177,12 +174,14 @@
 				
 					   
 								<ul class="tabs">
-								  <li data-tab-target="#all-genre" class="active tab">All Genre</li>
-								  <li data-tab-target="#business" class="tab">Business</li>
-								  <li data-tab-target="#technology" class="tab">Technology</li>
-								  <li data-tab-target="#romantic" class="tab">Romantic</li>
-								  <li data-tab-target="#adventure" class="tab">Adventure</li>
-								  <li data-tab-target="#fictional" class="tab">Fictional</li>
+								  <li data-tab-target="#all-genre" class="active tab">All Categories</li>
+								  <li  data-tab-target="#business" class="tab">Fiction</li>
+								  <li href="/category"  data-tab-target="#technology" class="tab">Mystery</li>
+								  <li href="/category"  data-tab-target="#romantic" class="tab">Romance</li>
+								  <li href="/category"  data-tab-target="#adventure" class="tab">Travel</li>
+								  <li href="/category"  data-tab-target="#fictional" class="tab">Horror</li>
+								  <li href="/category"  data-tab-target="#fictional" class="tab">Philosophy</li>
+
 								</ul>
 					
 								<div class="tab-content">

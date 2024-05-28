@@ -116,6 +116,14 @@ class ReviewManger(models.Manager):
             errors['review_level'] = "Please choose your review level"  
         if len(Review.objects.filter(user__id=userId))>0 and len(Review.objects.filter(book__id=bookID)):
              errors['review_level'] = "You can not review book more than one , You can edit pervious "  
+        return errors  
+    def review_ajax_validation(self,postData): 
+        errors = {}
+       
+        if int(postData['review_level']) == 0 : 
+            errors['review_level'] = "Please choose your review level"  
+        if len(Review.objects.filter(user__id=postData['userID']))>0 and len(Review.objects.filter(book__id=postData['bookID'])):
+             errors['review_level'] = "You can not review book more than one "  
         return errors     
 
 
@@ -176,7 +184,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author,related_name='books',on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='books', on_delete=models.CASCADE)
     language = models.ForeignKey(Language, related_name='books', on_delete=models.CASCADE)
-    liked_by_users= models.ManyToManyField(User,related_name='likes_books',)
+    liked_by_users= models.ManyToManyField(User,related_name='likes_books')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = BookManager()

@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="{%static 'css/star.css'%}">
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -32,22 +33,23 @@
 
 <body>
     <div class="top-content">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-				</div>
-				<div class="col-md-6">
-					<div class="right-element">
-						{% if not 'userID' in request.session %}
-						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-						{% else %}
-						<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-						{% endif %}
-						
-						<a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="right-element">
+                        {% if not 'userID' in request.session %}
+                        <a href="/login" class="user-account for-buy"><i
+                                class="icon icon-user"></i><span>Account</span></a>
+                        {% else %}
+                        <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+                        <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+                        {% endif %}
 
-						<!-- <div class="action-menu">
+                        <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+
+                        <!-- <div class="action-menu">
 
 							<div class="search-bar">
 								<a href="#" class="search-button search-toggle" data-selector="#header-wrap">
@@ -59,69 +61,59 @@
 							</div>
 						</div> -->
 
-					</div><!--top-right-->
-				</div>
-				
-			</div>
-		</div>
-	</div><!--top-content-->
+                    </div><!--top-right-->
+                </div>
+
+            </div>
+        </div>
+    </div><!--top-content-->
 
 
-        <header id="header">
-            <div class="container">
-                <div class="row">
+    <header id="header">
+        <div class="container">
+            <div class="row">
 
-                    <div class="col-md-2">
-                        <div class="main-logo">
-                            <a href="/"><img src="{% static 'img/main-logo.png' %}" /></a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-10">
-
-                        <nav id="navbar">
-                            <div class="main-menu stellarnav">
-                                <ul class="menu-list">
-                                    <li class="menu-item active"><a href="/" data-effect="Home">Home</a>
-                                    </li>
-                                    <li class="menu-item has-sub">
-                                        <a href="#pages" class="nav-link" data-effect="Pages">Categories</a>
-
-                                        <ul>
-                                            <li class="active"><a href="index.html">1</a></li>
-                                            <li><a href="about.html">2</a></li>
-                                            <li><a href="styles.html">3</a></li>
-                                            <li><a href="blog.html">4</a></li>
-                                            <li><a href="single-post.html">5</a></li>
-                                            <li><a href="shop.html">6</a></li>
-                                            <li><a href="single-product.html">7</a></li>
-                                        </ul>
-
-                                    </li>
-                                    <li class="menu-item"><a href="/wall" class="nav-link"
-                                            data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link"
-                                            data-effect="About">About</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link"
-                                            data-effect="Contact">Contact</a></li>
-
-                                </ul>
-
-                                <div class="hamburger">
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                    <span class="bar"></span>
-                                </div>
-
-                            </div>
-                        </nav>
-
+                <div class="col-md-2">
+                    <div class="main-logo">
+                        <a href="/"><img src="{% static 'img/main-logo.png' %}" /></a>
                     </div>
 
                 </div>
+
+                <div class="col-md-10">
+
+                    <nav id="navbar">
+                        <div class="main-menu stellarnav">
+                            <ul class="menu-list">
+                                <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                                <li class="menu-item has-sub">
+                                    <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
+
+                                    <ul>
+                                        <li class="active"><a href="index.html">1</a></li>
+                                        <li><a href="about.html">2</a></li>
+                                        <li><a href="styles.html">3</a></li>
+                                        <li><a href="blog.html">4</a></li>
+                                        <li><a href="single-post.html">5</a></li>
+                                        <li><a href="shop.html">6</a></li>
+                                        <li><a href="single-product.html">7</a></li>
+                                    </ul>
+
+                                </li>
+                                <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book
+                                        Club</a></li>
+                                <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About &
+                                        Contact Us</a></li>
+                            </ul>
+
+                        </div>
+                    </nav>
+
+                </div>
+
             </div>
-        </header>
+        </div>
+    </header>
     </div>
 
     <section id="billboard">
@@ -139,107 +131,103 @@
                                 <h2 class="banner-title">{{book.title}}</h2>
                                 <h4>By: {{book.author.first_name}} {{book.author.last_name}}</h4>
                                 <p>{{book.description}}</p>
-                                <form action="/add_to_cart" method="post" class="btn-wrap">
-                                    <button href="#" class="btn btn-outline-accent btn-accent-arrow">Add To Cart<i
-                                            class="icon icon-ns-arrow-right"></i></button>
-                                </form>
+                                {% if user in book.liked_by_users.all %}
+                                <a href="/removeFav/{{book.id}}"><button id="fav-btn"
+                                        class="btn  ">UnFavorite</button></a>
+                                {%else%}
+                                <a href="/addFav/{{book.id}}"><button id="fav-btn" class="btn  ">Add To
+                                        Favorite</button></a>
+
+                                {%endif%}
+                                <a href="/add_to_cart"><button  class="btn add-to-cart">Add To Cart</button></a>
+
                             </div><!--banner-content-->
 
                             <img src="{{book.url_image}}" alt="banner" class="banner-image">
                         </div>
                         <footer class="mt-5">
                             <hr>
-                            
+
                             <div class="container1">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="mb-4">Reviews:</h3>
+                                        <p id="review_error"></p>
                                         {% if messages %}
                                         <ul class="messages">
                                             {% for message in messages %}
-                                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}</li>
-                                            {% endfor %}
+                                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}
+                                                </li>
+                                                {% endfor %}
                                         </ul>
                                         {% endif %}
-                                        <form  action="/create_review/{{book.id}}" method="post">
+                                        <form action="/create_review/{{book.id}}" method="post">
                                             {% csrf_token %}
                                             <div class="card">
                                                 <input type="hidden" name="review_level" id="review_level" value="0">
-                                                <span onclick="gfg(1)"
-                                                      class="star">★
+                                                <span onclick="gfg(1)" class="star">★
                                                 </span>
-                                                <span onclick="gfg(2)"
-                                                      class="star">★
+                                                <span onclick="gfg(2)" class="star">★
                                                 </span>
-                                                <span onclick="gfg(3)"
-                                                      class="star">★
+                                                <span onclick="gfg(3)" class="star">★
                                                 </span>
-                                                <span onclick="gfg(4)"
-                                                      class="star">★
+                                                <span onclick="gfg(4)" class="star">★
                                                 </span>
-                                                <span onclick="gfg(5)"
-                                                      class="star">★
+                                                <span onclick="gfg(5)" class="star">★
                                                 </span>
                                                 <!-- <h3 id="output">
                                                       Rating is: 0/5
                                                   </h3> -->
                                             </div>
-                                            <!-- <div id="input_start" class="star-rating mb-3">
-                                                
-                                                <i id="input_start-1" class="far fa-star star" data-rating="1"
-                                                    onmouseover="light_start(this)"
-                                                    onmouseout="shutdown_start(this)"
-                                                    onclick="set_star_level(this)"></i>
-                                                <i id="input_start-2" class="far fa-star star" data-rating="2"></i>
-                                                <i id="input_start-3" class="far fa-star star" data-rating="3"></i>
-                                                <i id="input_start-4" class="far fa-star star" data-rating="4"></i>
-                                                <i id="input_start-5" class="far fa-star star" data-rating="5"></i>
-                                            </div> -->
+
                                             <div class="form-group">
-                                                <textarea name="review_message" class="texts" class="form-control"
-                                                    placeholder="Write your review here..." rows="3"></textarea>
+                                                <textarea id="review_message" name="review_message" class="texts"
+                                                    class="form-control" placeholder="Write your review here..."
+                                                    rows="3"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                                            <!-- <button type="submit" class="btn btn-primary">Submit Review</button> -->
                                         </form>
                                     </div>
                                 </div>
                             </div>
+                            {%if 'userID' in request.session %}
+                            <button id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit Review</button>
+                            <!-- <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button> -->
+                            {%else%}
+                            <a href="/login"> <button>Login To Make Review</button></a>
+                            {% endif %}
                             <h3>Latest Reviews</h3>
-                            {% for review in reviews%}
-                            <div class="row">
-                                <div class="col-md-12 mt-5 reviews review_card">
-                                    <h4 class="user_review"> {{review.user.first_name}} {{review.user.last_name}}</h4>
-                                   
-                                    <div class=" myshow" value="{{review.review_level}}">
-                                        <span 
-                                              class="show_star ">★
-                                        </span>
-                                        <span 
-                                              class="show_star">★
-                                        </span>
-                                        <span 
-                                              class="show_star">★
-                                        </span>
-                                        <span 
-                                              class="show_star">★
-                                        </span>
-                                        <span 
-                                              class="show_star">★
-                                        </span>
-                                        <!-- <h3 id="output">
-                                              Rating is: 0/5
-                                          </h3> -->
-                                    </div>
-                                        
-                                    <div class="form-group">
-                                        <p class="user_review">{{review.message}}</p>
-                                        <p class="user_review">{{review.updated_at}}</p>
+                            <div id="reviews-container">
+                                {% for review in reviews%}
+                                <div class="row review_row">
+                                    <div class="col-md-12 mt-5 reviews review_card">
+                                        <h4 class="user_review"> {{review.user.first_name}} {{review.user.last_name}}
+                                        </h4>
+                                        <div class=" myshow" value="{{review.review_level}}">
+                                            <span class="show_star ">★
+                                            </span>
+                                            <span class="show_star">★
+                                            </span>
+                                            <span class="show_star">★
+                                            </span>
+                                            <span class="show_star">★
+                                            </span>
+                                            <span class="show_star">★
+                                            </span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p class="user_review">{{review.message}}</p>
+                                            <p class="user_review">{{review.updated_at}}</p>
+                                        </div>
+
+                                        <!-- <button onclick='deleteReview({{review.id}})' type="submit" class="btn  delete_review ">delete</button> -->
+
                                     </div>
                                 </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
 
-                            <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button>
                             <ul id="items-list"></ul>
 
     </section>

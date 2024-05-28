@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>Login Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- {%load static%}
 
     <link rel="stylesheet" href="{% static 'css/login.css'%}"> -->
 </head>
-<body style="background-image: url('{% static 'images/blog-fullscreen-1-1920x700.jpg' %}');">
 
-<div class="login-container">
-    <h2>Login</h2>
-    <form action="/check_login" method="post">
-        {%csrf_token%}
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-            {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        {% if message.extra_tags == 'login_email'%}
-                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+<body style="background-image: url('{% static 'images/blog-fullscreen-1-1920x700.jpg' %}');">
+    
+    
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}</h5>
+        {% endfor %}
+        {% endif %}
+        <form action="/check_login" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    {% if message.extra_tags == 'login_email'%}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                         {% endif %}
                         {% endfor %}
-                    </ul>
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input  type="password" name="password" class="form-control" id="password" placeholder="Password">
-            {% if messages %}
-            <ul class="messages">
-              {% for message in messages %}
-              {% if message.extra_tags == 'login_password'%}
-              <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-              {% endif %}
-              {% endfor %}
-          </ul>
-          {% endif %}
-        </div>
-        <button type="submit" class="btn btn-custom btn-block">Login</button>
-        <a href="/register" class="btn btn-custom btn-block">Registration</a>
-    </form>
-</div>
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    {% if message.extra_tags == 'login_password'%}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endif %}
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-custom btn-block">Login</button>
+            <a href="/register" class="btn btn-custom btn-block">Registration</a>
+        </form>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
