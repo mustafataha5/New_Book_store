@@ -23,7 +23,7 @@ urlpatterns = [
     path('ajax/<int:bookID>',views.get_ajax),
     path('ajax/review/create',views.ajax_create_review),
     path('ajax/review/delete',views.ajax_delete_review),
-
+    path('add_to_cart',views.add_to_cart),
   
 
 
