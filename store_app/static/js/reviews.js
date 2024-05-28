@@ -81,6 +81,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+function get_ajax(bookID) {
+    var xhr = new XMLHttpRequest();
+    console.log('/ajax/'+bookID)
+    xhr.open('GET', '/ajax/'+bookID, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            var itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = '';
+            data.forEach(function(item) {
+                var listItem = document.createElement('li');
+                listItem.textContent = item.user + ': ' + item.review_level+" : "+item.book+"  "+item.message
+                itemsList.appendChild(listItem);
+            });
+        }
+    };
+    xhr.send();
+} 
+
+
+
+
 
 
 

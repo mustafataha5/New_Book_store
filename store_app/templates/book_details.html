@@ -239,6 +239,9 @@
                             </div>
                             {% endfor %}
 
+                            <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button>
+                            <ul id="items-list"></ul>
+
     </section>
     <script src="{%static 'js/reviews.js'%}"></script>
 </body>

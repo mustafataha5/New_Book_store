@@ -1,7 +1,9 @@
 from django.shortcuts import render , redirect
 from .models import User,Book,Post,Comment,Review
 from  django.contrib import messages
+from django.http import JsonResponse
 import bcrypt
+import json
 import datetime
 # Create your views here.
 
@@ -96,7 +98,12 @@ def main(request):
 
 
 
-
+def get_ajax(request,bookID):
+    book = Book.objects.get(id=bookID) 
+    reviews = book.reviews.all().values() 
+    reviews_list = list(reviews)  
+    data_json = json.dumps(reviews_list)
+    return JsonResponse(data_json,safe=False)
 
 
 
@@ -115,14 +122,15 @@ def create_review(request,bookID):
             for key,val in errors.items() : 
                 messages.error(request,val,extra_tags=key)
             return redirect(f'/book/{bookID}')
-
+           # return redirect('ajax')
         rev_message = request.POST['review_message']
         rev_level = request.POST['review_level']
         user = User.objects.get(id=userID)
         book = Book.objects.get(id=bookID)
         Review.objects.create(message=rev_message,review_level=rev_level,user=user,book=book)
+    return redirect(f'/book/{bookID}')
 
-    return redirect(f'/book/{bookID}')   
+    #return redirect(f'/ajax/{bookID}')   
     
     
     
