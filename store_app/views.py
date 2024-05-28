@@ -1,8 +1,12 @@
 from django.shortcuts import render , redirect
 from .models import User,Book,Post,Comment, Category
+<<<<<<< HEAD
+from .models import User,Book,Post,Comment,Review
+=======
 
 from .models import User,Book,Post,Comment,Review
 
+>>>>>>> master
 from  django.contrib import messages
 from django.http import JsonResponse
 import bcrypt
@@ -233,6 +237,18 @@ def cat(request):
     }
     
     return render(request, 'catergories.html', data)
+
+
+
+# view user profile
+def account(request):
+    context = {
+        'user': User.objects.all()
+    }
+    return render(request, 'profile.html', context)
+
+    
+
     
 
 
@@ -351,3 +367,4 @@ def about(request):
         'books' : Book.objects.all(), 
     }
     return render (request, 'contact_about.html',data)
+>>>>>>> master

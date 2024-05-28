@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f2ec
+    background-color: #f3f2ec;
     margin: 0;
     padding: 0;
 }
@@ -29,23 +29,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-
 .books-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-} 
+}
 
 .book-item {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.3s;
     width: 220px;
-    height: 319px;
     text-align: center;
     padding: 10px;
 }
@@ -60,14 +55,34 @@ h1 {
     display: block;
 }
 
-.book-item h3 {
+.book-info {
+    margin-top: 10px;
+}
+
+.book-info h3 {
     margin: 10px 0;
     color: #333;
     font-size: 1.2em;
 }
 
-.book-item p {
+.book-info p {
     color: #777;
     font-size: 1em;
 }
+
+.add-to-cart {
+    margin-top: 10px;
+    background-color: #C5A992;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #555;
+}
+
 
