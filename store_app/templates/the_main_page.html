@@ -36,7 +36,7 @@
 						{% if not 'userID' in request.session %}
 						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
 						{% else %}
-						<a id="account" href="/account">Welcome, {{user.first_name}}</a>
+						<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
 						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
 						{% endif %}
 						

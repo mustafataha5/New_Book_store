@@ -254,9 +254,12 @@ def cat(request):
 def account(request, userID):
     if not 'userID' in request.session:
         return redirect('/')
+
+    user = User.objects.get(id=request.session['userID'])
     context = {
-        'user': User.objects.get(id=request.session['userID'])
+        'user': user ,
     }
+
     return render(request, 'profile.html', context)
 
 
@@ -382,14 +385,14 @@ def about(request):
         'books' : Book.objects.all(), 
     }
     return render (request, 'contact_about.html',data)
-
+#add to favitore books
 def add_fev_book(request, bookID):
     user = User.objects.get(id=request.session['userID'])
     book = Book.objects.get(id=bookID)
     book.liked_by_users.add(user)
 
     return redirect (f'/book/{bookID}')
-
+#remove book  from favitore books
 def unfav_book(request, bookID):
     user = User.objects.get(id=request.session['userID'])
     book = Book.objects.get(id=bookID)

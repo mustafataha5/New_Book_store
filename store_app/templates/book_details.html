@@ -139,7 +139,7 @@
                                 <h2 class="banner-title">{{book.title}}</h2>
                                 <h4>By: {{book.author.first_name}} {{book.author.last_name}}</h4>
                                 <p>{{book.description}}</p>
-                                {% if request.session.userID in book.liked_by_users.all %}
+                                {% if user in book.liked_by_users.all %}
                                 <a href="/removeFav/{{book.id}}"><button  id="fav-btn" class="btn  ">UnFavorite</button></a>
                             {%else%}
                             <a href="/addFav/{{book.id}}"><button  id="fav-btn" class="btn  ">Add To Favorite</button></a>
