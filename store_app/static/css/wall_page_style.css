@@ -1,22 +1,23 @@
-.container {
-  width: 600px;
-  margin: 0 auto; /* Center the container horizontally */
+.wall-container {
+  width: 100%; /* 600px; */
+  /* margin: 0 auto; /* Center the container horizontally */
+  padding-top: 80px ;
 }
 
-h5.card-title {
+h5.card-title,
+.mypost {
   align-items: center;
-  padding-top: 20px;
-  background-color: #faf8ed;
+  padding: 10px 10px 5px 10px;
+  background-color: white;
 }
 
 .card {
   /* margin-top: 30px; */
- background-color: #faf8ed;
+  background-color: white;
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.3rem;
   color: rgb(64, 59, 59);
   border-radius: 10px;
-
   width: 700px; /* Set width to 50% */
   margin-right: 10px; /* Add margin-right as needed */
   margin-top: -10px;
@@ -25,16 +26,15 @@ h5.card-title {
   padding: 20px; /* Adjust padding as needed */
 }
 
-
-
 .card.border-dark {
   margin-top: -40px;
 }
 
 .card-bg-custom {
-  background-color: #f9f8f1;
+  background-color: white;
   font-family: 'Times New Roman', Times, serif;
   margin-top: -15px;
+  text-align: center;
   padding-top: 20px;
   font-size: 1.3rem;
   height: 100%;
@@ -60,19 +60,47 @@ h5.card-title {
 
 .mybtn:hover,
 .btn:hover {
-  background-color: #A68D79;
+  background-color: #a68d79;
   color: black;
 }
 
 .custom-textarea {
   width: calc(100% - 20px); /* Subtract padding */
   padding: 10px;
-  border: 1px solid #C5A992;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   font-size: 1.2rem;
 }
 
 .page-bottom-margin {
   height: 20px; /* Adjust the height as needed */
+}
+
+body {
+  background: lightgray;
+  margin: 0;
+}
+
+.speech-bubble {
+  position: relative;
+  padding: 15px;
+  margin-left: 10px;
+  text-align: center;
+  color: black;
+  background: white;
+  border-radius: 20px;
+  width: fit-content;
+  max-width: 70%;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #f2f2f2 transparent transparent;
 }
 

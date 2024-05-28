@@ -16,9 +16,11 @@ body {
     margin-top: 30px;
     padding: 60px 0;
 }
+
 .container1 {
     margin-left: 150px;
 }
+
 .header h1 {
     font-size: 3rem;
 }
@@ -35,38 +37,90 @@ body {
 
 .section {
     margin-bottom: 40px;
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    border-radius: 10px;
+    position: relative;
+    color: white;
+    min-height: 400px; /* Adjust the height as needed */
+    width: 100%; /* Ensure the section takes full width */
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    border-radius: 10px; /* Match the border-radius of the section */
+    z-index: 0; /* Ensure the overlay is beneath the text */
+}
+
+.section .col-md-6, .section .col-12 {
+    position: relative; /* Ensure text stays above the overlay */
+    z-index: 1;
+    color: white;
 }
 
 .section .title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: black;
+    color: white;
 }
 
 .section .text {
     font-size: 1rem;
     line-height: 1.5;
-    color: #666;
+    color: white;
+    text-justify: auto;
+}
+
+/* Specific Backgrounds for Each Section */
+.mission {
+    background-image: url('https://wallpapertag.com/wallpaper/full/9/e/2/841601-library-background-images-1920x1440-for-ipad.jpg');
+}
+
+.values {
+    background-image: url('https://wallpapercave.com/wp/WOAttEL.jpg');
+}
+
+.team {
+    background-image: url('https://getwallpapers.com/wallpaper/full/9/5/5/888684-library-background-images-1920x1080-for-pc.jpg');
+}
+
+.contact {
+    background-image: url('https://your-image-url-for-contact.jpg'); /* Add the correct URL for the contact section */
 }
 
 /* Contact Form Styles */
 .contact-form {
-    background: #faf8ed;
+    background: #f3f2ec;
+    border-radius: 25px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form .form-label {
     font-weight: bold;
+    color: black;
+    text-align: center;
+    display: block;
 }
 
 .contact-form .form-control {
     margin-bottom: 15px;
     padding: 10px;
+    text-align: center;
+    color: black;
 }
 
 .contact-form .btn-custom {
-    background: #c5a992;
+    background: #e37e24;
+    text-align: center;
+    margin-left: 40%;
     color: #fff;
     height: 50px;
     border: none;
@@ -76,7 +130,7 @@ body {
 }
 
 .contact-form .btn-custom:hover {
-    background: #c5a992;
+    background: #b18b73;
 }
 
 /* Responsive Styles */
@@ -97,4 +151,16 @@ body {
 /* Margin between nav and body */
 #header-wrap + .header {
     margin-top: 20px;
+}
+
+.row.section.mytxt::before {
+    background-color: #f3f2ec;
+    padding-bottom: 50px;
+}
+#content1 {
+    height: 100px;
+}
+#content > * {
+    color: black;
+    ;
 }

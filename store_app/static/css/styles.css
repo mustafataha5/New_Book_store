@@ -4,7 +4,7 @@ body {
 }
 
 .card {
-    background-color: #FBF3D5;
+    background-color: #f3f2ec;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -18,7 +18,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #EFBC9B;
+    background-color: #e88323;
     border-color: #EFBC9B;
     border-radius: 8px;
     padding: 10px 20px;
