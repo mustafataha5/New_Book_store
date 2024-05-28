@@ -12,49 +12,14 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static '/css/vendor.css'%}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}">
-  <style>
-    body {
-      background: lightgray;
-      margin: 0;
-    }
-
-    .speech-bubble {
-      position: relative;
-      padding: 50px;
-      margin-left: 10px;
-      text-align: center;
-      color: black;
-      background: white;
-      border-radius: 30px;
-    }
-
-    .speech-bubble:before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: -22px;
-      top: 0;
-      width: 40px;
-      border-bottom: 35px solid white;
-      border-top-right-radius: 25px;
-    }
-
-    .speech-bubble:after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: -28px;
-      top: -3px;
-      height: 38px;
-      width: 28px;
-      background: lightgray;
-      border-top-right-radius: 20px;
-    }
-  </style>
 </head>
+
+
+</div>
 
 <body style="background-color: #f3f2ec;">
   <div id="header-wrap">
+	
     <div class="top-content">
       <div class="container">
         <div class="row">
@@ -62,17 +27,18 @@
           </div>
           <div class="col-md-6">
             <div class="right-element">
-              {% if not 'userID' in request.session %}
-              <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-              {% else %}
-              <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-              <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-              {% endif %}
-
+              <div class="right-element">
+                {% if not 'userID' in request.session %}
+                <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                {% else %}
+                <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+                <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+                {% endif %}
+              
               <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
-
-              <div class="action-menu">
-
+  
+              <!-- <div class="action-menu">
+  
                 <div class="search-bar">
                   <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
                     <i class="icon icon-search"></i>
@@ -81,64 +47,60 @@
                     <input class="search-field text search-input" placeholder="Search" type="search">
                   </form>
                 </div>
-              </div>
-
-            </div><!-- top-right -->
+              </div> -->
+  
+            </div><!--top-right-->
           </div>
-
+          
         </div>
       </div>
-    </div><!-- top-content -->
-
+    </div><!--top-content-->
+  
     <header id="header">
       <div class="container">
         <div class="row">
-
+  
           <div class="col-md-2">
             <div class="main-logo">
-              <a href="index.html"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
+              <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
             </div>
-
+  
           </div>
-
+  
           <div class="col-md-10">
-
+            
             <nav id="navbar">
               <div class="main-menu stellarnav">
                 <ul class="menu-list">
-                  <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
-                  <li class="menu-item has-sub">
-                    <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
-
-                    <ul>
-                      <li class="active"><a href="index.html">1</a></li>
-                      <li><a href="about.html">2</a></li>
-                      <li><a href="styles.html">3</a></li>
-                      <li><a href="blog.html">4</a></li>
-                      <li><a href="single-post.html">5</a></li>
-                      <li>
-                        <ahref="shop.html">6</a>
-                      </li>
-                      <li><a href="single-product.html">7</a></li>
-                    </ul>
-
-                  </li>
-                  <li class="menu-item"><a href="#latest-blog" class="nav-link" data-effect="Articles">Book Club</a>
-                  </li>
-                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
-                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                                  <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                                  <li class="menu-item has-sub">
+                                      <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
+  
+                                      <ul>
+                                          <li class="active"><a href="index.html">1</a></li>
+                                          <li><a href="about.html">2</a></li>
+                                          <li><a href="styles.html">3</a></li>
+                                          <li><a href="blog.html">4</a></li>
+                                          <li><a href="single-post.html">5</a></li>
+                                          <li><a href="shop.html">6</a></li>
+                                          <li><a href="single-product.html">7</a></li>
+                                       </ul>
+  
+                                  </li>
+                                  <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
+                                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
                 </ul>
-
+  
               </div>
             </nav>
+  
           </div>
-
+  
         </div>
       </div>
     </header>
-  </div>
 
-  <div class="container mt-5">
+  <div class="wallcontainer mt-5" style="padding-top: 100px; padding-left: 110px; background-image: url({% static 'images/blog-fullscreen-1-1920x700.jpg'%});">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card border-dark p-1 h-100">
@@ -182,19 +144,19 @@
               <div class="row mt-3">
                 {% for comment in post.comments.all %}
               <div class="col-md-8">
-                <div class="card">
+                <div class="card" style="width: 500px; height: 150px; margin-bottom: 40px; margin-left: 60px;">
                   <div class="card-body p-1">
                     <h5 class="card-title pt-1 px-4">{{ comment.user.first_name }} {{ comment.user.last_name }} -
                       <span>{{ comment.updated_at }}</span>
                     </h5>
-                    <p class="mx-5"> {{ comment.comment_message }}</p>
+                    <p class="mx-5"> {{ comment.message }}</p>
                   </div>
                 </div>
               </div>
               {% endfor %}
               <div class="col-md-8" >
-                <div class="card card-bg-custom" style="text-align: start; background-color:#d7c9bd ; padding-left: 10px; border-radius: 10px;">
-                  <div class="card-body px-3">
+                <div class="card card-bg-custom" style="text-align: start; background-color:#e7e4e1 ; padding-left: 10px; border-radius: 10px; height: 260px; padding-bottom: 50px; margin-top: -10px;">
+                  <div class="card-body p-1">
                     <p class="card-title pt-1 px-1 p-1">Post a comment:
                       {% if messages %}
                       {% with myextra_tags="comment_message-"|add:user.id|add:post.id %}
@@ -225,6 +187,79 @@
   </div>
 
   <div class="page-bottom-margin"></div>
+  </div>
+  <hr>
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+  
+        <div class="col-md-4">
+          
+          <div class="footer-item">
+            <div class="company-brand">
+              <img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo">
+            </div>
+          </div>
+          
+        </div>
+  
+        <div class="col-md-2">
+  
+        </div>
+        <div class="col-md-2">
+  
+          <div class="footer-menu">
+            <h5 class="footer-title">Discover</h5>
+            <ul class="menu-list">
+              <li class="menu-item">
+                <a href="/main">Home</a>
+              </li>
+              <li class="menu-item">
+                <a href="/category">Books</a>
+              </li>
+              <li class="menu-item">
+                <a href="/wall">Book Club</a>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+        <div class="col-md-2">
+  
+          <div class="footer-menu">
+            <h5 class="footer-title">My account</h5>
+            <ul class="menu-list">
+              <li class="menu-item">
+                <a href="/login">Sign In</a>
+              </li>
+              <li class="menu-item">
+                <a href="#">My Cart</a>
+              </li>
+              <li class="menu-item">
+                <a href="/register">Sign Up</a>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+        <div class="col-md-2">
+  
+          <div class="footer-menu">
+            <h5 class="footer-title">About & Cotact Us</h5>
+            <ul class="menu-list">
+              <li class="menu-item">
+                <a href="/contact">About & Cotact Us</a>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+  
+      </div>
+      <!-- / row -->
+  
+    </div>
+  </footer>
 </body>
 
 </html>
