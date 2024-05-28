@@ -16,7 +16,8 @@ h5.card-title {
   font-size: 1.3rem;
   color: rgb(64, 59, 59);
   border-radius: 10px;
-  width: 500px; /* Set width to 50% */
+
+  width: 700px; /* Set width to 50% */
   margin-right: 10px; /* Add margin-right as needed */
   margin-top: -10px;
   margin-bottom: -5px;
@@ -36,9 +37,10 @@ h5.card-title {
   margin-top: -15px;
   padding-top: 20px;
   font-size: 1.3rem;
+  height: 100%;
   color: rgb(64, 59, 59);
   border-radius: 10px;
-  width: 400px; /* Set width to 50% */
+  width: 650px; /* Set width to 50% */
   margin-right: 10px; /* Add margin-right as needed */
   box-sizing: border-box; /* Include padding and border in width */
 }
@@ -47,12 +49,12 @@ h5.card-title {
 .btn {
   background-color: #c5a992;
   font: bold;
-  color: rgb(255, 238, 238);
+  color: white;
   border: none;
   padding: 10px 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   height: 45px;
 }
 

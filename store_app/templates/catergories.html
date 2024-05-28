@@ -14,7 +14,6 @@
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-		<link rel="stylesheet" type="text/css" href="{%static 'css/cat.css'%}">
 
 
 		<!-- script
@@ -35,7 +34,7 @@
 						{% if not 'userID' in request.session %}
 						<a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
 						{% else %}
-						<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+						<a id="account" href="/account">Welcome, {{user.first_name}}</a>
 						<a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
 						{% endif %}
 						
@@ -112,7 +111,7 @@
 		</div>
 	</div>
 
-<!-- first category -->
+<!-- first category
 <section id="featured-books">
 	<div class="container">
 		<div class="row">
@@ -126,28 +125,30 @@
 			</div>
 			<div class="product-list" data-aos="fade-up">
 				<div class="row">
-						<div class="container">
-							{% for category in categories %}
-								<div class="category-section">
-									<h2>{{ category.name }}</h2>
-									<div class="books-grid">
-										{% for book in category.books.all %}
-											<div class="book-item">
-												<img src="{{ book.image_url }}" alt="{{ book.title }}">
+					<div class="container">
+						{% for category in categories %}
+							<div class="category-section">
+								<h2>{{ category.name }}</h2>
+								<div class="books-grid">
+									{% for book in category.books.all %}
+										<div class="book-item">
+											<a href="/book/{{book.id}}">
+												<img src="{{book.url_image}}" alt="{{ book.title }}">
+											</a>
+											<div class="book-info">
 												<h3>{{ book.title }}</h3>
 												<p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
-												<p>{{book.price}} $</p>
+												<p>{{ book.price }} $</p>
 												<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-
 											</div>
-										{% endfor %}
-									</div>
+										</div>
+									{% endfor %}
 								</div>
-								<hr>
-							{% endfor %}
-						</div>
-			
-			
+							</div>
+							<hr>
+						{% endfor %}
+					</div>
+					
 							</div><!--ft-books-slider-->				
 						</div><!--grid-->
 			
@@ -168,4 +169,43 @@
 			</div>		
 		</div>
 	</div>
+</section> 
+<section id="featured-books">
+    <div class="container">
+        {% for category in categories %}
+        <div class="row category-section">
+            <div class="col-md-12">
+                <div class="section-header align-center">
+                    <div class="title">
+                        <span>Some quality items</span>
+                    </div>
+                    <h2 class="section-title">{{ category.name }}</h2>
+                </div>
+                <div class="product-list" data-aos="fade-up">
+                    <div class="row">
+                        {% for book in category.books.all %}
+                        <div class="col-md-3">
+                            <figure class="product-style">
+                                <a href="/book/{{book.id}}">
+                                    <img id="book-img" src="{{book.url_image}}" alt="Books" class="product-item">
+                                </a>
+                                <figcaption>
+                                    <a href="/book/{{book.id}}" class="title_link">{{ book.title }}</a>
+                                    <p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
+                                    <div class="item-price">{{ book.price }} $</div>
+                                </figcaption>
+                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                            </figure>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
 </section>
+
+</body>
+</html>
