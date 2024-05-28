@@ -73,11 +73,19 @@ def logout(request):
 
 
 def show_book(request,bookID):
+    
     book = Book.objects.get(id=bookID)
-    data = {'book': book,
+    
+    if not 'userID' in request.session :  
+        data = {'book': book,
             'reviews': book.reviews.all(),
-           }
-
+            
+            }
+    else: 
+        data = {'book': book,
+            'reviews': book.reviews.all(),
+            "user":User.objects.get(id=request.session['userID']),
+            }
     return render (request, 'book_details.html', data)
 
 
@@ -104,9 +112,14 @@ def main(request):
 def get_ajax(request,bookID):
     book = Book.objects.get(id=bookID) 
     reviews = book.reviews.all().values() 
-    reviews_list = list(reviews)  
-    data_json = json.dumps(reviews_list)
-    return JsonResponse(data_json,safe=False)
+    user_ids = book.reviews.all().values('user') 
+    users = User.objects.filter(id__in=user_ids).values('id','first_name','last_name')
+    data = {
+                'reviews_list' : list(reviews ),
+                'user_list' : list(users)  ,
+            }
+    #data_json = json.dumps(reviews_list)
+    return JsonResponse(data,safe=False)
 
 
 
@@ -172,7 +185,7 @@ def add_comment(request,postID):
         if len(errors) > 0 : 
             for key,val in errors.items():
                 messages.error(request,val,key)
-            return redirect("app:wall")   
+            return redirect("app:wall") 
         post = Post.objects.get(id=postID) 
         user = User.objects.get(id=request.session['userID'])       
         Comment.objects.create(message=request.POST['comment_message'],user=user,post=post)
@@ -237,9 +250,11 @@ def cat(request):
 
 
 # view user profile
-def account(request):
+def account(request, userID):
+    if not 'userID' in request.session:
+        return redirect('/')
     context = {
-        'user': User.objects.all()
+        'user': User.objects.get(id=request.session['userID'])
     }
     return render(request, 'profile.html', context)
 
