@@ -123,16 +123,27 @@ def get_ajax(request,bookID):
     return JsonResponse(data,safe=False)
 
 
-def post_data_ajax(request): 
+def ajax_create_review(request): 
     if request.method == 'POST' and request.is_ajax():
         # Process the posted data
-        print("====================",request.POST)
+        #print("====================",request.POST)
         errors = Review.objects.review_ajax_validation(request.POST)
-        print("====================",errors)
-        data ={
-            'message':'sccuessful p;fdas',
-        }
-        book = Book.objects.get(id=request.POST['bookID']) 
+        
+        bookID = request.POST['bookID']
+        if len(errors):
+            data = {
+                'error': errors['review_level'] , 
+            }
+            return JsonResponse(data,safe=False) 
+
+        userID = request.POST['userID']
+        review_message = request.POST['message']
+        review_level = request.POST['review_level']
+        book = Book.objects.get(id=bookID) 
+        user = User.objects.get(id=userID)
+        #Review.objects.create(message=review_message,review_level=review_level,user=user,book=book)
+        Review.objects.create(message=review_message,review_level=review_level,user=user,book=book)
+       
         reviews = book.reviews.all().values() 
         user_ids = book.reviews.all().values('user') 
         users = User.objects.filter(id__in=user_ids).values('id','first_name','last_name')
@@ -141,7 +152,6 @@ def post_data_ajax(request):
                 'user_list' : list(users)  ,
             }
         return JsonResponse(data,safe=False)
-    return HttpResponse('ajax POST dat not work')
 
 def create_review(request,bookID): 
     
@@ -149,6 +159,7 @@ def create_review(request,bookID):
         if not 'userID' in request.session: 
             return redirect(f'/book/{bookID}')
         userID= int(request.session['userID'])
+        
         errors = Review.objects.review_validation(request.POST,userID,bookID)
         
              
@@ -157,6 +168,7 @@ def create_review(request,bookID):
                 messages.error(request,val,extra_tags=key)
             return redirect(f'/book/{bookID}')
            # return redirect('ajax')
+           
         rev_message = request.POST['review_message']
         rev_level = request.POST['review_level']
         user = User.objects.get(id=userID)
@@ -165,8 +177,30 @@ def create_review(request,bookID):
     return redirect(f'/book/{bookID}')
 
     #return redirect(f'/ajax/{bookID}')   
-    
-    
+
+def ajax_delete_review(request):
+    if request.method == 'POST' and request.is_ajax():
+        if not 'userID' in request.session: 
+            return redirect('/login')
+        
+ 
+        reviewID = request.POST['reviewID']
+        
+        review = Review.objects.get(id=reviewID)
+        book = Book.objects.get(id=review.book.id)
+        review.delete()
+        reviews = book.reviews.all().values() 
+        user_ids = book.reviews.all().values('user') 
+        users = User.objects.filter(id__in=user_ids).values('id','first_name','last_name')
+        data = {
+                'reviews_list' : list(reviews ),
+                'user_list' : list(users)  ,
+            }
+        return JsonResponse(data,safe=False)
+    data = {
+                'message': f'Error :can not  delete review ' , 
+            }
+    return JsonResponse(data,safe=False)
     
 
 

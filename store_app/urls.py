@@ -21,7 +21,8 @@ urlpatterns = [
     path('deletePost/<int:postID>',views.delete_post),
     path('create_review/<int:bookID>',views.create_review),
     path('ajax/<int:bookID>',views.get_ajax),
-    path('ajax/postData',views.post_data_ajax)
+    path('ajax/review/create',views.ajax_create_review),
+    path('ajax/review/delete',views.ajax_delete_review),
 
   
 
@@ -46,7 +47,6 @@ urlpatterns = [
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -56,6 +56,6 @@ path('category', views.cat),
 path('user/<int:user>', views.account),
 path('addFav/<int:bookID>', views.add_fev_book),
 path('removeFav/<int:bookID>', views.unfav_book),
-=======
->>>>>>> master
+
+
 ]

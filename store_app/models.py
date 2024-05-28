@@ -123,7 +123,7 @@ class ReviewManger(models.Manager):
         if int(postData['review_level']) == 0 : 
             errors['review_level'] = "Please choose your review level"  
         if len(Review.objects.filter(user__id=postData['userID']))>0 and len(Review.objects.filter(book__id=postData['bookID'])):
-             errors['review_level'] = "You can not review book more than one , You can edit pervious "  
+             errors['review_level'] = "You can not review book more than one "  
         return errors     
 
 

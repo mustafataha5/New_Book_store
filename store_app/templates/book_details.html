@@ -159,6 +159,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="mb-4">Reviews:</h3>
+                                         <p id="review_error"></p>
                                         {% if messages %}
                                         <ul class="messages">
                                             {% for message in messages %}
@@ -194,13 +195,13 @@
                                                 <textarea id="review_message" name="review_message" class="texts" class="form-control"
                                                     placeholder="Write your review here..." rows="3"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                                            <!-- <button type="submit" class="btn btn-primary">Submit Review</button> -->
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             {%if 'userID' in request.session %}
-                            <button id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit by Ajax</button>
+                            <button id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit Review</button>
                             <!-- <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button> -->
                             {%else%}
                              <a href="/login">  <button >Login to Review</button></a>
@@ -233,6 +234,9 @@
                                         <p class="user_review">{{review.message}}</p>
                                         <p class="user_review">{{review.updated_at}}</p>
                                     </div>
+                                   
+                                    <!-- <button onclick='deleteReview({{review.id}})' type="submit" class="btn  delete_review ">delete</button> -->
+                                 
                                 </div>
                             </div>
                             {% endfor %}

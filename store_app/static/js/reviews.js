@@ -6,6 +6,7 @@ let stars = document.getElementsByClassName("star");
 // let output = document.getElementById("output");
 let review_message = document.querySelector("#review_message")
 let review_level = document.querySelector("#review_level")
+let review_error = document.querySelector('#review_error')
 rev_level = document.getElementById('review_level')    
 // Funtion to update rating
 function gfg(n) {
@@ -149,8 +150,32 @@ function generateStars(reviewLevel) {
 }
 
 
+function show_review_error(data){
+    review_error.innerHTML = ''+data['error']
+    review_error.classList.add('error')
+}
 
+function deleteReview(reviewID){
+    dataToSend = {
+        'reviewID': reviewID ,  
+    }
+      // Get CSRF token from cookie
+      var csrftoken = getCookie('csrftoken');
 
+      $.ajax({
+          url: '/ajax/review/delete',
+          type: 'POST',
+          headers: {'X-CSRFToken': csrftoken}, // Include CSRF token in headers
+          data: dataToSend,
+          dataType: 'json',
+          success: function(response) {
+            console.log(response);  // Handle the response
+          },
+          error: function(xhr, status, error) {
+              console.error('Error:', error);
+          }
+      });
+  }
 
 function postData(bookID,userID) {
 
@@ -164,14 +189,26 @@ function postData(bookID,userID) {
       var csrftoken = getCookie('csrftoken');
 
       $.ajax({
-          url: '/ajax/postData',
+          url: '/ajax/review/create',
           type: 'POST',
           headers: {'X-CSRFToken': csrftoken}, // Include CSRF token in headers
           data: dataToSend,
           dataType: 'json',
           success: function(response) {
-              post_data_from_ajax(response);
-              console.log(response);  // Handle the response
+            console.log(response);  // Handle the response
+            if ('error' in response){  // Handle the response
+                show_review_error(response)
+                gfg(0);
+                review_message.value = ''
+            }
+            else{
+                post_data_from_ajax(response);
+                show_review_error({'error':''});
+                gfg(0);
+                review_message.value = ''
+                 
+            }
+              
           },
           error: function(xhr, status, error) {
               console.error('Error:', error);
