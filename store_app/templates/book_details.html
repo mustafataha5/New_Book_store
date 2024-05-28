@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="{%static 'css/star.css'%}">
 
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -184,19 +185,9 @@
                                                       Rating is: 0/5
                                                   </h3> -->
                                             </div>
-                                            <!-- <div id="input_start" class="star-rating mb-3">
-                                                
-                                                <i id="input_start-1" class="far fa-star star" data-rating="1"
-                                                    onmouseover="light_start(this)"
-                                                    onmouseout="shutdown_start(this)"
-                                                    onclick="set_star_level(this)"></i>
-                                                <i id="input_start-2" class="far fa-star star" data-rating="2"></i>
-                                                <i id="input_start-3" class="far fa-star star" data-rating="3"></i>
-                                                <i id="input_start-4" class="far fa-star star" data-rating="4"></i>
-                                                <i id="input_start-5" class="far fa-star star" data-rating="5"></i>
-                                            </div> -->
+                                            
                                             <div class="form-group">
-                                                <textarea name="review_message" class="texts" class="form-control"
+                                                <textarea id="review_message" name="review_message" class="texts" class="form-control"
                                                     placeholder="Write your review here..." rows="3"></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit Review</button>
@@ -204,12 +195,18 @@
                                     </div>
                                 </div>
                             </div>
+                            {%if 'userID' in request.session %}
+                            <button id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit by Ajax</button>
+                            <!-- <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button> -->
+                            {%else%}
+                             <a href="/login">  <button >Login to Review</button></a>
+                            {% endif %}
                             <h3>Latest Reviews</h3>
+                            <div id="reviews-container">
                             {% for review in reviews%}
-                            <div class="row">
+                            <div class="row review_row">
                                 <div class="col-md-12 mt-5 reviews review_card">
                                     <h4 class="user_review"> {{review.user.first_name}} {{review.user.last_name}}</h4>
-                                   
                                     <div class=" myshow" value="{{review.review_level}}">
                                         <span 
                                               class="show_star ">★
@@ -226,9 +223,6 @@
                                         <span 
                                               class="show_star">★
                                         </span>
-                                        <!-- <h3 id="output">
-                                              Rating is: 0/5
-                                          </h3> -->
                                     </div>
                                         
                                     <div class="form-group">
@@ -238,10 +232,10 @@
                                 </div>
                             </div>
                             {% endfor %}
-
-                            <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button>
+                            </div>
+                            
                             <ul id="items-list"></ul>
-
+                           
     </section>
     <script src="{%static 'js/reviews.js'%}"></script>
 </body>

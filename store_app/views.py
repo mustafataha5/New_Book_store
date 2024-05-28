@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect,HttpResponse
 from .models import User,Book,Post,Comment, Category
 
 from .models import User,Book,Post,Comment,Review
@@ -122,8 +122,25 @@ def get_ajax(request,bookID):
     return JsonResponse(data,safe=False)
 
 
-
-
+def post_data_ajax(request): 
+    if request.method == 'POST' and request.is_ajax():
+        # Process the posted data
+        print("====================",request.POST)
+        errors = Review.objects.review_ajax_validation(request.POST)
+        print("====================",errors)
+        data ={
+            'message':'sccuessful p;fdas',
+        }
+        book = Book.objects.get(id=request.POST['bookID']) 
+        reviews = book.reviews.all().values() 
+        user_ids = book.reviews.all().values('user') 
+        users = User.objects.filter(id__in=user_ids).values('id','first_name','last_name')
+        data = {
+                'reviews_list' : list(reviews ),
+                'user_list' : list(users)  ,
+            }
+        return JsonResponse(data,safe=False)
+    return HttpResponse('ajax POST dat not work')
 
 def create_review(request,bookID): 
     
