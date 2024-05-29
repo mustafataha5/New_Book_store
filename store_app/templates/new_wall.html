@@ -108,8 +108,9 @@
 							{% else %}
 							<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
 							<a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+              <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
 							{% endif %}
-							<a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
+						
 						</div>
 					</div>
 				</div>

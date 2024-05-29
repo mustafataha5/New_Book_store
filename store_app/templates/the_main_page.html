@@ -1,388 +1,293 @@
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<title>Book Store</title>
-		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta name="format-detection" content="telephone=no">
-	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <meta name="author" content="">
-	    <meta name="keywords" content="">
-	    <meta name="description" content="">
-		{%load static%}
-	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
-	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
-	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-		<!-- script --><script src="https://kit.fontawesome.com/7e8ed33c5f.js" crossorigin="anonymous"></script>
+<html lang="en">
+<head>
+    <title>Book Store</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/7e8ed33c5f.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+</head>
 
-		<script src="js/modernizr.js"></script>
-	</head>
-	
-	<body>
-		<div id="header-wrap">
-			<div class="top-content">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6"></div>
-						<div class="col-md-6">
-							<div class="right-element">
-								{% if not 'userID' in request.session %}
-								<a href="/login" class="user-account for-buy"><i
-										class="icon icon-user"></i><span>Account</span></a>
-								{% else %}
-								<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-								<a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-								{% endif %}
-								<a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<header id="header">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="main-logo">
-								<a href="/"><img src="{% static 'images/image copy.png' %}" alt="logo"></a>
-							</div>
-						</div>
-						<div class="col-md-10">
-							<nav id="navbar">
-								<div class="main-menu stellarnav">
-									<ul class="menu-list">
-										<li class="menu-item active"><a href="/main" data-effect="Home">
-												<i class="fa-solid fa-house"></i> Home</a></li>
-										<li class="menu-item has-sub">
-											<a href="/category" class="nav-link" data-effect="Pages">
-												<i class="fa-solid fa-table-list"></i> Categories</a>
-											<ul>
-												<li class="active"><a href="index.html">1</a></li>
-												<li><a href="about.html">2</a></li>
-												<li><a href="styles.html">3</a></li>
-												<li><a href="blog.html">4</a></li>
-												<li><a href="single-post.html">5</a></li>
-												<li><a href="shop.html">6</a></li>
-												<li><a href="single-product.html">7</a></li>
-											</ul>
-										</li>
-										<li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
-											<i class="fa-solid fa-comments"></i> Book Club</a></li>
-										<li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">
-											<i class="fa-regular fa-address-book"></i> About & Contact Us</a></li>
-									</ul>
-								</div>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</header>
-	<!-- Main Image  -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img id="main-imgg" class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
-			</div>
+<body>
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            {% if not 'userID' in request.session %}
+                            <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            {% else %}
+                            <a id="account" href="/user/{{ user.id }}">Welcome, {{ user.first_name }}</a>
+                            <a id="logout" href="/logout" class="logoutbtn mx-2">Logout</a>
+							<a href="/user/{{ user.id }}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart: ({{ total }} $)</span></a>
+                            {% endif %}
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-		
-		
 
-   <!-- first section  -->
-<section id="featured-books">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="/"><img src="{% static 'images/image copy.png' %}" alt="Book Store Logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item active"><a href="/main"><i class="fa-solid fa-house"></i> Home</a></li>
+                                    <li class="menu-item has-sub">
+                                        <a href="/category" class="nav-link"><i class="fa-solid fa-table-list"></i> Categories</a>
+                                        <ul>
+                                            <li><a href="index.html">1</a></li>
+                                            <li><a href="about.html">2</a></li>
+                                            <li><a href="styles.html">3</a></li>
+                                            <li><a href="blog.html">4</a></li>
+                                            <li><a href="single-post.html">5</a></li>
+                                            <li><a href="shop.html">6</a></li>
+                                            <li><a href="single-product.html">7</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item"><a href="/wall"><i class="fa-solid fa-comments"></i> Book Club</a></li>
+                                    <li class="menu-item"><a href="/contact"><i class="fa-regular fa-address-book"></i> About & Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-			<div class="section-header align-center">
-				<div class="title">
-					<span>Some quality items</span>
-				</div>
-				<h2 class="section-title">Favorite Books</h2>
+        <!-- Main Image -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img id="main-img" class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg' %}" alt="Main Banner">
+            </div>
+        </div>
+    </div>
 
-				<!-- -------------------------------------------  -->
-					<!-- <img id="my_cart_icon" src="{%static 'images/cart_thin_icon.png'%}" alt=""> -->
-			 <!-- ----------------------------------------------- -->
-			</div>
-			<div class="product-list" data-aos="fade-up">
-				<div class="row">
-					{% for book in favorite_books %}
-<<<<<<< HEAD
-					<div class="col-md-3">
-						<figure class="product-style">
-							<!-- <div class="image-hvr-effect"> -->
-							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
-							<!-- </div> -->
-								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
+    <!-- Featured Books Section -->
+    <section id="featured-books">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span>Some quality items</span>
+                        </div>
+                        <h2 class="section-title">Favorite Books</h2>
+                    </div>
+                    <div class="product-list" data-aos="fade-up">
+                        <div class="row">
+                            {% for book in favorite_books %}
+                            <div class="col-md-3">
+                                <figure class="product-style">
+                                    <a href="/book/{{ book.id }}"><img id="book-img" src="{{ book.url_image }}" alt="Book Image" class="product-item"></a>
+                                    <p id="author-name">{{ book.author.first_name }} {{ book.author.last_name }}</p>
+                                    <div class="item-price">Price: {{ book.price }} $</div>
+                                    {% if book in order.books.all %}
+                                    <a href="/cart/{{ book.id }}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a>
+                                    {% else %}
+                                    <a href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
+                                    {% endif %}
+                                </figure>
+                            </div>
+                            {% endfor %}
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-								<div style="margin-left: 50px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>								{% if book in order.books.all %}
-                                
-								
-								{% if book in order.books.all %}
-                                <a href="/cart/{{book.id}}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a>
-                                {% else %}
-								
-                                <a href="/cart/{{book.id}}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
+    <!-- Categories Section -->
+    <section id="Categories">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span>Some quality items</span>
+                        </div>
+                        <h2 class="section-title">Categories</h2>
+                    </div>
+                    <div class="product-list" data-aos="fade-up">
+                        <div class="row">
+                            <section id="popular-books" class="bookshelf">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul class="tabs">
+                                                <li class="tab"><a href="/categories#category-fiction">Fiction</a></li>
+                                                <li class="tab"><a href="/categories#category-mystery">Mystery</a></li>
+                                                <li class="tab"><a href="/categories#category-romance">Romance</a></li>
+                                                <li class="tab"><a href="/categories#category-travel">Travel</a></li>
+                                                <li class="tab"><a href="/categories#category-horror">Horror</a></li>
+                                                <li class="tab"><a href="/categories#category-philosophy">Philosophy</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div id="all-genre" data-tab-content class="active">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <figure class="product-style">
+                                                                <img id="category-photo" src="{% static 'images/image.png' %}" alt="Category Image" class="product-item">
+                                                            </figure>
+                                                        </div>
+                                                    </div>                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                {% endif %}
-						
-						</figure>
-					</div>
-					{% endfor %}
-=======
-<div class="col-md-3">
-    <figure class="product-style">
-        <a href="/book/{{ book.id }}"><img id="book-img" src="{{ book.url_image }}" alt="Books" class="product-item"></a>
-        <p id="author-name">{{ book.author.first_name }} {{ book.author.last_name }}</p>
-        <div style="margin-left: 50px; font-size: larger; font-weight: bold;" class="item-price">Price: {{ book.price }} $</div>
-        
-        {% if book in order.books.all %}
-            <a href="/cart/{{ book.id }}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a>
-        {% else %}
-            <a style="margin-left: 20px;" href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
-        {% endif %}
-    </figure>
-</div>
-{% endfor %}
->>>>>>> master
+    <!-- Best Seller Section -->
+    <section id="best-selling" class="leaf-pattern-overlay">
+        <div class="corner-pattern-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="products-thumb">
+                                <img src="{% static 'images/single-image.jpg' %}" alt="Best Selling Book" class="single-image">
+                            </figure>    
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-entry">
+                                <h2 class="section-title divider">Best Selling Book</h2>
+                                <div class="products-content">
+                                    <div class="author-name">By Timbur Hood</div>
+                                    <h3 class="item-title">Birds gonna be happy</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
+                                    <div class="item-price">$ 45.00</div>
+                                    <div class="btn-wrap">
+                                        <a href="#" class="btn-accent-arrow">Shop it now <i class="icon icon-ns-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Popular Books Section -->
+    <section id="featured-books">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header align-center">
+                        <div class="title">
+                            <span>Some quality items</span>
+                        </div>
+                        <h2 class="section-title">Popular Books</h2>
+                    </div>
+                    <div class="product-list" data-aos="fade-up">
+                        <div class="row">
+                            {% for book in popular_books %}
+                            <div class="col-md-3">
+                                <figure class="product-style">
+                                    <a href="/book/{{ book.id }}"><img id="book-img" src="{{ book.url_image }}" alt="Popular Book" class="product-item"></a>
+                                    <p id="author-name">{{ book.author.first_name }} {{ book.author.last_name }}</p>
+                                    <div class="item-price">Price: {{ book.price }} $</div>
+                                    <button type="button" id="view_book_btn" class="add-to-cart">Add To Cart</button>
+                                </figure>
+                            </div>
+                            {% endfor %}
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				</div>				
-			</div>
+    <hr>
 
+    <!-- Quote of the Day Section -->
+    <section id="quotation" class="align-center">
+        <div class="inner-content">
+            <h2 class="section-title divider">Quote of the Day</h2>
+            <blockquote data-aos="fade-up">
+                <q>“The more that you read, the more things you will know. The more that you learn, the more places you’ll go.”</q>
+                <div class="author-name">Dr. Seuss</div>            
+            </blockquote>
+        </div>        
+    </section>
 
-			</div><!--inner-content-->
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				
-			</div>		
-		</div>
-	</div>
-</section>
-<!-- categories section -->
-<section id="Categories">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+    <hr>
 
-			<div class="section-header align-center">
-				<div class="title">
-					<span>Some quality items</span>
-				</div>
-				<h2 class="section-title">Categories</h2>
-			</div>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-item">
+                        <div class="company-brand">
+                            <a href="/"><img src="{% static 'images/image copy.png' %}" alt="Book Store Logo" id="footer-logo" class="footer-logo"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <div class="footer-menu">
+                        <h5 class="footer-title">Discover</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="/main">Home</a></li>
+                            <li class="menu-item"><a href="/category">Books</a></li>
+                            <li class="menu-item"><a href="/wall">Book Club</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer-menu">
+                        <h5 class="footer-title">My Account</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="/login">Sign In</a></li>
+                            <li class="menu-item"><a href="/user/{{ user.id }}">My Cart</a></li>
+                            <li class="menu-item"><a href="/register">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer-menu">
+                        <h5 class="footer-title">About & Contact Us</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="/contact">About & Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-			<div class="product-list" data-aos="fade-up">
-				<div class="row">
-
-
-					<section id="popular-books" class="bookshelf">
-						<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-				
-					   
-								<ul class="tabs">
-									<li data-tab-target="#fiction" class="tab"><a href="/categories#category-fiction">Fiction</a></li>
-									<li data-tab-target="#mystery" class="tab"><a href="/categories#category-mystery">Mystery</a></li>
-									<li data-tab-target="#romance" class="tab"><a href="/categories#category-romance">Romance</a></li>
-									<li data-tab-target="#travel" class="tab"><a href="/categories#category-travel">Travel</a></li>
-									<li data-tab-target="#horror" class="tab"><a href="/categories#category-horror">Horror</a></li>
-									<li data-tab-target="#philosophy" class="tab"><a href="/categories#category-philosophy">Philosophy</a></li>
-								</ul>
-								
-					
-								<div class="tab-content">
-								  <div id="all-genre" data-tab-content class="active">
-									  <div class="row">
-
-					<div class="col-md-3">
-						<figure class="product-style">
-							<img  id="category-photo" src="{% static 'images/image.png'%}" alt="Books" class="product-item"> 
-						</figure>
-					</div>
-
-			    </div>				
-			</div>
-
-
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-12"> 
-
-			
-				
-			</div>		
-		</div>
-	</div>
-</section>
-
-<!-- Best seller section -->
-<section id="best-selling" class="leaf-pattern-overlay">
-	<div class="corner-pattern-overlay"></div>
-	<div class="container">
-		<div class="row">
-
-			<div class="col-md-8 col-md-offset-2">
-
-				<div class="row">
-
-					<div class="col-md-6">
-						<figure class="products-thumb">
-							<img src="{% static 'images/single-image.jpg'%}" alt="book" class="single-image">
-						</figure>	
-					</div>
-
-					<div class="col-md-6">
-						<div class="product-entry">
-							<h2 class="section-title divider">Best Selling Book</h2>
-
-							<div class="products-content">
-								<div class="author-name">By Timbur Hood</div>
-								<h3 class="item-title">Birds gonna be happy</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
-								<div class="item-price">$ 45.00</div>
-								<div class="btn-wrap">
-									<a href="#" class="btn-accent-arrow">shop it now <i class="icon icon-ns-arrow-right"></i></a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
-	 
-
-	<!-- popular books section -->
-</section>
-<section id="featured-books">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-
-			<div class="section-header align-center">
-				<div class="title">
-					<span>Some quality items</span>
-				</div>
-				<h2 class="section-title">Popular Books</h2>
-			</div>
-			<div class="product-list" data-aos="fade-up">
-				<div class="row">
-					{%for book in  pupuler_book%}
-					<div class="col-md-3">
-						<figure class="product-style">
-							<!-- <div class="image-hvr-effect"> -->
-							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
-							<!-- </div> -->
-								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
-								<div style="margin-left: 50px; font-size: larger; font-weight: bold;" class="item-price">Price: {{ book.price }} $</div>
-
-								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-						
-						</figure>
-					</div>
-				{% endfor %}
-
-
-				</div>				
-			</div>
-
-
-			</div><!--inner-content-->
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				
-			</div>		
-		</div>
-	</div>
-</section>
-<hr>
-<section id="quotation" class="align-center">
-	<div class="inner-content">
-		<h2 class="section-title divider">Quote of the day</h2>
-		<blockquote data-aos="fade-up">
-			<q>“The more that you read, the more things you will know. The more that you learn, the more places you’ll go.”</q>
-			<div class="author-name">Dr. Seuss</div>			
-		</blockquote>
-	</div>		
-</section>
-
-<hr>
-<!-- footer -->
-<footer id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="footer-item">
-					<div class="company-brand">
-						<a href="/"><img style="width: 200px; height: 50px; margin-left: 50px;" src="{% static 'images/image copy.png'%}" alt="logo" id="footer-logo"
-								class="footer-logo"></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-2"></div>
-
-			<div class="col-md-2">
-				<div class="footer-menu">
-					<h5 class="footer-title">Discover</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="/main">Home</a>
-						</li>
-						<li class="menu-item">
-							<a href="/category">Books</a>
-						</li>
-						<li class="menu-item">
-							<a href="/wall">Book Club</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div class="footer-menu">
-					<h5 class="footer-title">My account</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="/login">Sign In</a>
-						</li>
-						<li class="menu-item">
-							<a href="/user/{{user.id}}">My Cart</a>
-						</li>
-						<li class="menu-item">
-							<a href="/register">Sign Up</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div class="footer-menu">
-					<h5 class="footer-title">About & Contact Us</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="/contact">About & Contact Us</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/script.js"></script>
-
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
-</html>	
+</html>

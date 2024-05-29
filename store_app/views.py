@@ -136,21 +136,24 @@ def main(request):
     favorite_book_ids = favorite_book.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     favorite_books = Book.objects.filter(id__in=favorite_book_ids.values('book_id'))
     data= {}
-    if  not 'userID' in request.session : 
+    if  not ('userID' in request.session) : 
+       
         data = { 'favorite_books': favorite_books , 
                 'order' : order ,
                 'total': get_total_order(order),
                 'pupuler_book': pupuler_book,
                 }
-    else :    
+    else :
+        
         data = {
-            "user":User.objects.get(id=request.session['userID']),
+            "user":User.objects.get(id=int(request.session['userID'])),
             #'books' : Book.objects.all(), 
             'favorite_books': favorite_books , 
             'order' : order ,
             'total': get_total_order(order),
             'pupuler_book': pupuler_book,
         }
+    
     return render (request, 'the_main_page.html',data)
 
 

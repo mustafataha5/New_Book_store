@@ -41,8 +41,9 @@
                             {% else %}
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-                            {% endif %}
                             <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>
@@ -133,7 +134,7 @@
                             <div class="col-sm-6">
 
                                 {% for book in order.books.all %}
-                                <p class="m-b-10 f-w-600">{{book.title}}  <a style="color:#c5a992; font-size: small; margin-left: 80px;"   href="/cart/{{book.id}}/delete">delete from cart </a></p>
+                                <p class="m-b-10 f-w-600">{{book.title}}  <a style="color:#c5a992; font-size: small; margin-left: 80px;"   href="/cart/{{book.id}}/delete/4">delete from cart </a></p>
 
                                 {% endfor %}
 
