@@ -1,9 +1,9 @@
 from django.shortcuts import render , redirect,HttpResponse
-from .models import User,Book,Post,Comment, Category,Order
-
-from .models import User,Book,Post,Comment,Review
+from .models import User,Book,Post,Comment, Category,Order,Review
 
 
+
+from django.db import models
 from  django.contrib import messages
 from django.http import JsonResponse
 import bcrypt
@@ -130,11 +130,16 @@ def main(request):
     else: 
         order = Order.objects.get(id=int(request.session['orderID']))  
     
-
+    review =Review.objects.all()
+    #populer = review.values('book_id').annotate(review_count=models.Count('book_id'),sum_level=models.Sum('review_level')).order_by('-review_count')[:10]
+    populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:10]
+    pupuler_book = Book.objects.filter(id__in=populer.values('book_id')) 
     data = {
         "user":User.objects.get(id=request.session['userID']),
         'books' : Book.objects.all(), 
+        'order' : order ,
         'total': get_total_order(order),
+        'pupuler_book': pupuler_book,
     }
     return render (request, 'the_main_page.html',data)
 
@@ -305,6 +310,23 @@ def add_to_cart(request,bookID):
         order = Order.objects.get(id=int(request.session['orderID']))
         order.books.add(book)  
     return redirect(f'/book/{bookID}')
+
+def add_to_cart_main(request,bookID):
+    if not 'userID' in request.session: 
+        messages.error(request,'Need to Login/SignUp')
+        return redirect(f'/login') 
+    
+    userID = int(request.session['userID'])
+    user = User.objects.get(id=userID)
+    book = Book.objects.get(id=bookID)
+    if ( not 'orderID' in request.session):
+        order = Order.objects.create(user=user)
+        order.books.add(book)
+        request.session['orderID']= order.id 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID']))
+        order.books.add(book)  
+    return redirect('/')
            
 
 def delete_book_from_order(request,bookID):
@@ -373,7 +395,6 @@ def cat(request):
     }
     
     return render(request, 'catergories.html', data)
-
 
 
 # view user profile

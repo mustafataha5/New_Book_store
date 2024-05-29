@@ -107,7 +107,13 @@
 							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
 							<!-- </div> -->
 								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
-								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
+								<h5>{{book.price}}$</h5>
+								{% if book in order.books.all %}
+                                <a href="/cart/{{book.id}}/delete"><button class="btn add-to-cart">Delete From Cart</button></a>
+                                {% else %}
+								
+                                <a href="/cart/{{book.id}}/addmain"><button class="btn add-to-cart">Add To Cart</button></a>
+                                {%endif%}
 						
 						</figure>
 					</div>
@@ -242,7 +248,7 @@
 			</div>
 			<div class="product-list" data-aos="fade-up">
 				<div class="row">
-					{%for book in books%}
+					{%for book in  pupuler_book%}
 					<div class="col-md-3">
 						<figure class="product-style">
 							<!-- <div class="image-hvr-effect"> -->
