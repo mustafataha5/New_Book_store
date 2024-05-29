@@ -1814,7 +1814,7 @@ span.prev-price {
 
 #post{
   width: 600px;
-  height: 150px;
+  height: 100px;
   margin: 0 auto;
 }
 
@@ -1902,6 +1902,12 @@ span.prev-price {
   margin: 0 auto;
   
 
+}
+
+
+#add-msg{
+  margin: auto;
+  background: linear-gradient(135deg,#FE6D00,#1384C5);
 }
 
 

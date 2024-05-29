@@ -250,7 +250,7 @@ def main_wall(request):
         "posts":Post.objects.all().order_by('-updated_at'),
         "total":get_total_order(order),
     } 
-    return render(request,'wall_page.html',data)
+    return render(request,'new_wall.html',data)
 
 
 

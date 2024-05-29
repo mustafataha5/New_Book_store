@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wall</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/wall_page_style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}">
+  <style>
+    .bubble {
+      width: 400px !important;
+      --r: 1em;  /* the radius */
+      --t: 1.5em; /* the size of the tail */
+      
+      padding: 1em;
+      border-inline: var(--t) solid #0000;
+      border-radius: calc(var(--r) + var(--t))/var(--r);
+      mask: 
+        radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%) 
+          var(--_p) 100%/var(--t) var(--t) no-repeat,
+        linear-gradient(#000 0 0) padding-box;
+      background: linear-gradient(135deg,#FE6D00,#1384C5) border-box;
+      color: #fff;
+      display: inline-block;
+    }
+    .left {
+      --_p: 0;
+      border-bottom-left-radius: 0 0;
+      place-self: start;
+      text-align: center;
+    }
+    .right {
+      --_p: 100%;
+      border-bottom-right-radius: 0 0;
+      place-self: end;
+      text-align: center;
+      align-self: flex-end;
+    }
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-content: center;
+      gap: 20px;
+      font-family: system-ui, sans-serif;
+      background-color: #f3f2ec;
+    }
+
+    .card {
+      background: none;
+      border: none;
+    }
+
+    .username {
+      margin-bottom: 0;
+      font-weight: bold;
+      color: gray;
+      margin-left: 50px;
+      
+    }
+
+    .delete-link {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: lighter;
+      font-size: small;
+    }
+    .delete-link:hover {
+      text-decoration: underline;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .message-container.right {
+      align-items: flex-end;
+    }
+
+    #header{
+        padding: 20px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div id="header-wrap">
+    <div class="top-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <div class="right-element">
+              {% if not 'userID' in request.session %}
+                <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+              {% else %}
+                <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+                <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+              {% endif %}
+              
+              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
+            </div><!--top-right-->
+          </div>
+        </div>
+      </div>
+    </div><!--top-content-->
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="main-logo">
+              <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <nav id="navbar">
+              <div class="main-menu stellarnav">
+                <ul class="menu-list">
+                  <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                  <li class="menu-item has-sub">
+                    <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
+                    <ul>
+                      <li class="active"><a href="index.html">1</a></li>
+                      <li><a href="about.html">2</a></li>
+                      <li><a href="styles.html">3</a></li>
+                      <li><a href="blog.html">4</a></li>
+                      <li><a href="single-post.html">5</a></li>
+                      <li><a href="shop.html">6</a></li>
+                      <li><a href="single-product.html">7</a></li>
+                    </ul>
+                  </li>
+                  <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
+                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div><!--header-wrap-->
+
+  <div class="wallcontainer mt-5" style=" padding-left: 110px;">
+    {% for post in posts reversed %}
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div>
+          <div class="card m-1">
+            <div class="card-body p-1 h-100">
+              <div class="message-container {% if post.user.id == user.id %}right{% else %}left{% endif %}">
+                <p class="username">{{ post.user.first_name }} {{ post.user.last_name }}</p>
+                <div class="bubble {% if post.user.id == user.id %}right{% else %}left{% endif %}">
+                  <p id="text-msg" class="mt-2">{{ post.message }}</p>
+                  {% if post.user.id == user.id %}
+                  <a id="delete-msg" class="delete-link mt-2" href="/deletePost/{{ post.id }}">Delete</a>
+                  {% endif %}
+                </div>
+                <span class="text-muted small">{{ post.updated_at }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--row justify-content-center mt-4-->
+    {% endfor %}
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card p-1 h-100">
+          <div class="card-body h-25">
+            
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == 'error_post_message' %}
+                    <li {% if message.tags %} class="d-inline {{ message.tags }}" {% endif %}>{{ message }}</li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            
+            <form class="d-flex flex-column" action="/addPost" method="post">
+              {% csrf_token %}
+              <textarea class="p-2 custom-textarea" name="post_message" id="post" rows="3"></textarea>
+              <div class="d-flex justify-content-end">
+                <button id="add-msg" class="btn mt-1" type="submit">Add Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!--wallcontainer-->
+
+  <div class="spacer"></div><!-- Add a 50px space before the footer -->
+
+<hr>
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="footer-item">
+            <div class="company-brand">
+              <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="footer-menu">
+            <h5 class="footer-title">Discover</h5>
+            <ul class="menu-list">
+              <li class="menu-item"><a href="/main">Home</a></li>
+              <li class="menu-item"><a href="/category">Books</a></li>
+              <li class="menu-item"><a href="/wall">Book Club</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-menu">
+            <h5 class="footer-title">My account</h5>
+            <ul class="menu-list">
+              <li class="menu-item"><a href="/login">Sign In</a></li>
+              <li class="menu-item"><a href="#">My Cart</a></li>
+              <li class="menu-item"><a href="/register">Sign Up</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-menu">
+            <h5 class="footer-title">About & Contact Us</h5>
+            <ul class="menu-list">
+              <li class="menu-item"><a href="/contact">About & Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!--row-->
+    </div><!--container-->
+
+  </footer>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
