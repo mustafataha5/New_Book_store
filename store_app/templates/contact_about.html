@@ -10,7 +10,6 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
@@ -21,22 +20,6 @@
 
 <body>
 
-<<<<<<< HEAD
-  <div id="header-wrap">
-    <div class="top-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6"></div>
-          <div class="col-md-6">
-            <div class="right-element">
-              {% if not 'userID' in request.session %}
-              <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-              {% else %}
-              <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-              <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-              {% endif %}
-              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
-=======
     <div id="header-wrap">
         <div class="top-content">
             <div class="container">
@@ -50,11 +33,10 @@
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
                         </div>
                     </div>
                 </div>
->>>>>>> master
             </div>
         </div>
 
@@ -83,10 +65,8 @@
                                             <li><a href="single-product.html">7</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="/wall" class="nav-link"
-                                            data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link"
-                                            data-effect="About">About & Contact Us</a></li>
+                                    <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -166,20 +146,16 @@
                 <div class="row">
 
                     <div class="col-md-4">
-
                         <div class="footer-item">
                             <div class="company-brand">
                                 <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo"></a>
                             </div>
                         </div>
-
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-2"></div>
 
-                    </div>
                     <div class="col-md-2">
-
                         <div class="footer-menu">
                             <h5 class="footer-title">Discover</h5>
                             <ul class="menu-list">
@@ -194,10 +170,9 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
-                    <div class="col-md-2">
 
+                    <div class="col-md-2">
                         <div class="footer-menu">
                             <h5 class="footer-title">My account</h5>
                             <ul class="menu-list">
@@ -212,10 +187,9 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
-                    <div class="col-md-2">
 
+                    <div class="col-md-2">
                         <div class="footer-menu">
                             <h5 class="footer-title">About & Contact Us</h5>
                             <ul class="menu-list">
@@ -224,16 +198,13 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
 
                 </div>
                 <!-- / row -->
-
             </div>
         </footer>
     </div>
 </body>
 
 </html>
-
