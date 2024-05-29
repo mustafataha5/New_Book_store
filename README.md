@@ -36,6 +36,7 @@ A theme for Book Store documentation.
 3. 	If the user wants to buy or write review, Need to Login/ Sign in/up.
 4. 	The user can suggest a book to write and he can post also a message, and can be seen by other readers "users" and authors.
 5.	User can send a message to our Gmail by writing his name and email.
+6.	
 ## Administrative features:
 1.	Only admin can add Books.
 2.	Admin can add edit and delete books.
