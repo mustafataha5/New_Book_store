@@ -10,7 +10,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/wall_page_style.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static '/css/vendor.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css'%}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}">
 </head>
 
@@ -28,29 +28,10 @@
               {% else %}
                 <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                 <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-<<<<<<< HEAD
-                {% endif %}
+              {% endif %}
               
               <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
-  
-              <!-- <div class="action-menu">
-  
-                <div class="search-bar">
-                  <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-                    <i class="icon icon-search"></i>
-                  </a>
-                  <form role="search" method="get" class="search-box">
-                    <input class="search-field text search-input" placeholder="Search" type="search">
-                  </form>
-                </div>
-              </div> -->
-  
             </div><!--top-right-->
-=======
-              {% endif %}
-              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
-            </div>
->>>>>>> master
           </div>
         </div>
       </div>
@@ -174,7 +155,6 @@
     </div><!--row justify-content-center mt-4-->
     {% endfor %}
   </div><!--wallcontainer-->
-  </div>
 
   <div class="spacer"></div><!-- Add a 50px space before the footer -->
 
@@ -223,4 +203,3 @@
 </body>
 
 </html>
-
