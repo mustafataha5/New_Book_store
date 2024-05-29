@@ -391,6 +391,12 @@ def account(request, userID):
 
     return render(request, 'profile.html', context)
 
+def edit(request, userID):
+    return render (request, 'editprofile.html')
+
+def checkout(request):
+    pass
+
 
 
 
