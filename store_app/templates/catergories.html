@@ -14,16 +14,10 @@
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-		<style>
-		html {
-    	scroll-behavior: smooth;
-	}
-		</style>
 
 
-		<!-- script
-		================================================== -->
-		<script src="js/modernizr.js"></script>
+
+
 		<style>
 			html {
 				scroll-behavior: smooth;
@@ -40,7 +34,6 @@
 			}
 			.category-section {
 				padding: 20px;
-				border: 1px solid #ccc;
 				margin-top: 20px;
 			}
 		</style>
@@ -66,17 +59,7 @@
 				  
 				  <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
 	  
-				  <!-- <div class="action-menu">
-	  
-					<div class="search-bar">
-					  <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
-						<i class="icon icon-search"></i>
-					  </a>
-					  <form role="search" method="get" class="search-box">
-						<input class="search-field text search-input" placeholder="Search" type="search">
-					  </form>
-					</div>
-				  </div> -->
+			
 	  
 				</div><!--top-right-->
 			  </div>
@@ -113,7 +96,7 @@
 											<li><a href="single-post.html">5</a></li>
 											<li><a href="shop.html">6</a></li>
 											<li><a href="single-product.html">7</a></li>
-										 </ul>
+										</ul>
 	
 									</li>
 									<li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
@@ -134,46 +117,7 @@
 		  <img class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
 		</div>
 	</div>
-
-<!-- first category
-<section id="featured-books">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-
-			<div class="section-header align-center">
-				<div class="title">
-					<span>Some quality items</span>
-				</div>
-				<h2 class="section-title">Categories</h2>
-			</div>
-			<div class="product-list" data-aos="fade-up">
-				<div class="row">
-					<div class="container">
-						{% for category in categories %}
-							<div class="category-section">
-								<h2>{{ category.name }}</h2>
-								<div class="books-grid">
-									{% for book in category.books.all %}
-										<div class="book-item">
-											<a href="/book/{{book.id}}">
-												<img src="{{book.url_image}}" alt="{{ book.title }}">
-											</a>
-											<div class="book-info">
-												<h3>{{ book.title }}</h3>
-												<p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
-												<p>{{ book.price }} $</p>
-												<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-											</div>
-										</div>
-									{% endfor %}
-								</div>
-							</div>
-							<hr>
-						{% endfor %}
-					</div>
-					
-							</div><!--ft-books-slider-->				
+			
 						</div><!--grid-->
 			
 			
@@ -194,45 +138,7 @@
 		</div>
 	</div>
 </section> 
-<!-- <section id="featured-books">
-    <div class="container">
-        {% for category in categories %}
-        <div class="row category-section">
-            <div class="col-md-12">
-                <div class="section-header align-center">
-                    <div class="title">
-                        <span>Some quality items</span>
-                    </div>
-                    <h2 class="section-title">{{ category.name }}</h2>
-                </div>
-                <div class="product-list" data-aos="fade-up">
-                    <div class="row">
-                        {% for book in category.books.all %}
-                        <div class="col-md-3">
-                            <figure class="product-style">
-                                <a href="/book/{{book.id}}">
-                                    <img id="book-img" src="{{book.url_image}}" alt="Books" class="product-item">
-                                </a>
-                                <figcaption>
-                                    <a href="/book/{{book.id}}" class="title_link">{{ book.title }}</a>
-                                    <p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
-                                    <div class="item-price">{{ book.price }} $</div>
-                                </figcaption>
-								{% if book in order.books.all%}
-								<a href="/cart/{{book.id}}/delete"> <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Delete From Cart</button> </a> 
-								{%else%}
-                               <a href="/cart/{{book.id}}/add"> <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button> </a> 
-								{%endif %}
-							</figure>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section> -->
+
 <section id="featured-books">
     <div class="container">
         {% for category in categories %}
@@ -253,16 +159,20 @@
                                     <img id="book-img" src="{{ book.url_image }}" alt="Books" class="product-item">
                                 </a>
                                 <figcaption>
-                                    <a href="/book/{{ book.id }}" class="title_link">{{ book.title }}</a>
+                                    <!-- <a href="/book/{{ book.id }}" class="title_link">{{ book.title }}</a> -->
                                     <p>{{ book.author.first_name }} {{ book.author.last_name }}</p>
-                                    <div class="item-price">{{ book.price }} $</div>
+                                    <div style="margin-left: 50px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>
                                 </figcaption>
+<<<<<<< HEAD
 								{% if book in order.books.all %}
                                 <a href="/cart/{{book.id}}/delete/3"><button class="btn add-to-cart">Delete From Cart</button></a>
                                 {% else %}
 								
                                 <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a>
                                 {%endif%}
+=======
+                                <button type="button" id="add-to-cart-car" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+>>>>>>> master
                             </figure>
                         </div>
                         {% endfor %}
