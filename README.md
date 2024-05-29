@@ -31,19 +31,18 @@ A theme for Book Store documentation.
 3. 	For login the user will be required to enter Email and password only.
 
 ## Features of the Book Store Project:
-1.	User can browse books on the website without LOGIN. (Main Page is open to all. No login required)
-2.	The user can access to the details of the books without log in
-3. 	If the user wants to buy or write review, Need to Login/ Sign in/up
+1.	User can browse books on the website without LOGIN. (Main Page is open to all. No login required).
+2.	The user can access to the details of the books without log in.
+3. 	If the user wants to buy or write review, Need to Login/ Sign in/up.
 4. 	The user can suggest a book to write and he can post also a message, and can be seen by other readers "users" and authors.
-5.	User can send a message to our Gmail by writing his name and email
-
+5.	User can send a message to our Gmail by writing his name and email.
 ## Administrative features:
 1.	Only admin can add Books.
 2.	Admin can add edit and delete books.
 3.	Admin can add edit and delete Category.
 4.	Admin can add edit and delete Language.
 5.	Admin can add Author to book and category to book.
-6.	Admin can search for any books, authors and category
+6.	Admin can search for any books, authors and category.
 
 ## Sample of Data Base Version 1:
 ![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245370265123164240/image.png?ex=665880f1&is=66572f71&hm=fe0acde0101d01bcf1620222722551a4fe2b3de767b2c2c489a09e90ce7e2f52&=&format=webp&quality=lossless&width=888&height=527)
