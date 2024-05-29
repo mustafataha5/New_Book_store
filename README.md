@@ -37,7 +37,7 @@ A theme for Book Store documentation.
 4. 	The user can suggest a book to write and he can post also a message in the book club to interactive with other users.
 5.	User can send a Suggustions and Complaints to Admin of the website by writing his name and email.
 6.	The user can add a book to his favorite book.
-### 7.	in the next upgrade of the website, User can search for a book or author by book title or author names or Publish Date or Categories.
+##### 7.	in the next upgrade of the website, User can search for a book or author by book title or author names or Publish Date or Categories.
 
 ## Administrative features:
 1.	Only admin can add Books.
