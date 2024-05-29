@@ -120,26 +120,24 @@
                         <div class="m-b-25">
                             <img src="{%static 'images/user-profile-icon-free-vector.jpg'%}" class="img-radius" alt="User-Profile-Image">
                         </div>
-<<<<<<< HEAD
-                        <h6 class="f-w-600">USER NAME</h6>
+
+                        <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
                         <a href="/user/{{user.id}}/edit"><button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button></a>                    </div>
-=======
+<!-- =======
                         <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
                         <button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button>                    </div>
->>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
+>>>>>>> f2f681655731333d0273a2fff4c4a27898397f68 -->
                 </div>
                 <div class="col-sm-8">
                     <div class="card-block">
                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
                         <div class="row">
                             <div class="col-sm-6">
-<<<<<<< HEAD
+
                                 <p class="m-b-10 f-w-600">User Name</p>
-                                <h6 class="text-muted f-w-400"></h6>
-=======
-                                <p class="m-b-10 f-w-600">NickName</p>
+
                                 <h6 class="text-muted f-w-400">{{user.first_name}} {{user.last_name}}</h6>
->>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
+
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Email</p>
@@ -157,38 +155,28 @@
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
                         <div class="row">
                             <div class="col-sm-6">
-<<<<<<< HEAD
-                                <p class="m-b-10 f-w-600">item 1</p>
-                                <p class="m-b-10 f-w-600">item 2</p>
-                                <p class="m-b-10 f-w-600">item 3</p>
-                                <p>Total: </p>
-                                
-=======
+
                                 {% for book in order.books.all %}
                                 <p class="m-b-10 f-w-600">{{book.title}}  <a href="/cart/{{book.id}}/delete">del</a></p>
                                 {% endfor %}
->>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
+
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600"></p>
                                 <h6 class="text-muted f-w-400"></h6>
                             </div>
                         </div>
-<<<<<<< HEAD
-                        <a href="/checkout"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">CheckOut</button></a>
-=======
+
     
-                        <a href="/cart/confirm"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Check Out</button></a>
->>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
+                        <a href="/cart/confirm"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">CheckOut</button></a>
+
                         <hr>
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
                         <ul>
                             {% for book in user.likes_books.all %}
-<<<<<<< HEAD
+
                             <a class="fav-profile" href="/book/{{book.id}}"><li>{{book.title}} </li></a>
-=======
-                            <li>{{book.title}} </li>
->>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
+
                             {% endfor %}
                         </ul>
                         <div class="row">
