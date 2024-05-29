@@ -20,13 +20,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
        <!-- <link rel="stylesheet" href="./css/style.css"> -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
 		<!-- script
 		================================================== -->
 		<script src="js/modernizr.js"></script>
 
 	</head>
 <body>
+    
     <div id="header-wrap">
         <div class="top-content">
             <div class="container">
@@ -41,8 +42,7 @@
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
-                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
-                                    $)</span></a>
+                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="main-logo">
-                            <a href="/"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
+                            <a href="/"><img style="height: 45px;" src="{% static 'images/image copy.png' %}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -62,27 +62,16 @@
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
                                     <li class="menu-item active"><a href="/main" data-effect="Home">
-                                            <i class="fa-solid fa-house"></i>
-                                            Home</a></li>
+                                            <i class="fa-solid fa-house"></i> Home</a></li>
                                     <li class="menu-item has-sub">
                                         <a href="/category" class="nav-link" data-effect="Pages">
-                                            <i class="fa-solid fa-table-list"></i>
-                                            Categories</a>
-                                        <ul>
-                                            <li class="active"><a href="index.html">1</a></li>
-                                            <li><a href="about.html">2</a></li>
-                                            <li><a href="styles.html">3</a></li>
-                                            <li><a href="blog.html">4</a></li>
-                                            <li><a href="single-post.html">5</a></li>
-                                            <li><a href="shop.html">6</a></li>
-                                            <li><a href="single-product.html">7</a></li>
-                                        </ul>
+                                            <i class="fa-solid fa-table-list"></i> Categories</a>
+                                
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
-                                        <i class="fa-solid fa-comments"></i> 
-                                        Book Club</a></li>
+                                        <i class="fa-solid fa-comments"></i> Book Club</a></li>
                                     <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">
-                                        <i class="fa-regular fa-address-book"></i>About & Contact Us</a></li>
+                                        <i class="fa-regular fa-address-book"></i> About & Contact Us</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -90,7 +79,7 @@
                 </div>
             </div>
         </header>
-
+<!-- Main Image  -->
     <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">
@@ -144,7 +133,8 @@
                             <div class="col-sm-6">
 
                                 {% for book in order.books.all %}
-                                <p class="m-b-10 f-w-600">{{book.title}}  <a href="/cart/{{book.id}}/delete/4">del</a></p>
+                                <p class="m-b-10 f-w-600">{{book.title}}  <a style="color:#c5a992; font-size: small; margin-left: 80px;"   href="/cart/{{book.id}}/delete">delete from cart </a></p>
+
                                 {% endfor %}
 
                             </div>

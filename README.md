@@ -26,16 +26,18 @@ A theme for Book Store documentation.
 3. ![#daa556](https://placehold.co/15x15/daa556/daa556.png) #daa556
 
 ## Site access features:
-1.	User should not be logged in to access the Book Store.
-2.  For signup (registration) user is required to give first name, last name, Gender, Birthday, e-mail address, password, Type of the User (Author, Normal)
+1.	User should not be logged in to access and Visit the Book Store.
+2.  For signup (registration) user is required to give first name, last name, Gender, Birthday, e-mail address, password.
 3. 	For login the user will be required to enter Email and password only.
 
 ## Features of the Book Store Project:
-1.	User can browse books on the website without LOGIN. (Main Page is open to all. No login required)
-2.	The user can access to the details of the books without log in
-3. 	If the user wants to buy or write review, Need to Login/ Sign in/up
-4. 	The user can suggest a book to write and he can post also a message, and can be seen by other readers "users" and authors.
-5.	User can search for any books, authors and category.
+1.	User can browse books on the website without LOGIN. (Main Page is open to all. No login required).
+2.	The user can access to the details of the books without log in.
+3. 	If the user wants to buy or write review, Need to Login/ Sign in/up.
+4. 	The user can suggest a book to write and he can post also a message in the book club to interactive with other users.
+5.	User can send a Suggustions and Complaints to Admin of the website by writing his name and email.
+6.	The user can add a book to his favorite book.
+#### 7.	in the next upgrade of the website, User can search for a book or author by book title or author names or Publish Date or Categories.
 
 ## Administrative features:
 1.	Only admin can add Books.
@@ -43,7 +45,7 @@ A theme for Book Store documentation.
 3.	Admin can add edit and delete Category.
 4.	Admin can add edit and delete Language.
 5.	Admin can add Author to book and category to book.
-6.	Admin can search for any books, authors and category
+6.	Admin can search for any books, authors and category.
 
 ## Sample of Data Base Version 1:
 ![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245370265123164240/image.png?ex=665880f1&is=66572f71&hm=fe0acde0101d01bcf1620222722551a4fe2b3de767b2c2c489a09e90ce7e2f52&=&format=webp&quality=lossless&width=888&height=527)

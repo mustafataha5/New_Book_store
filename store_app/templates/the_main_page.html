@@ -47,7 +47,7 @@
 					<div class="row">
 						<div class="col-md-2">
 							<div class="main-logo">
-								<a href="/"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
+								<a href="/"><img src="{% static 'images/image copy.png' %}" alt="logo"></a>
 							</div>
 						</div>
 						<div class="col-md-10">
@@ -83,7 +83,7 @@
 	<!-- Main Image  -->
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
+              <img id="main-imgg" class="d-block w-100" src="{% static 'images/blog-fullscreen-1-1920x700.jpg'%}" alt="First slide">
 			</div>
         </div>
 		
@@ -114,12 +114,16 @@
 							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
 							<!-- </div> -->
 								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
-								<h5>{{book.price}}$</h5>
+
+								<div style="margin-left: 50px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>								{% if book in order.books.all %}
+                                
+								
 								{% if book in order.books.all %}
                                 <a href="/cart/{{book.id}}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a>
                                 {% else %}
 								
                                 <a href="/cart/{{book.id}}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
+
                                 {%endif%}
 						
 						</figure>
@@ -296,75 +300,65 @@
 <hr>
 <!-- footer -->
 <footer id="footer">
-  <div class="container">
-	<div class="row">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="footer-item">
+					<div class="company-brand">
+						<a href="/"><img style="width: 200px; height: 50px; margin-left: 50px;" src="{% static 'images/image copy.png'%}" alt="logo" id="footer-logo"
+								class="footer-logo"></a>
+					</div>
+				</div>
+			</div>
 
-	  <div class="col-md-4">
-		
-		<div class="footer-item">
-		  <div class="company-brand">
-			<img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo">
-		  </div>
+			<div class="col-md-2"></div>
+
+			<div class="col-md-2">
+				<div class="footer-menu">
+					<h5 class="footer-title">Discover</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="/main">Home</a>
+						</li>
+						<li class="menu-item">
+							<a href="/category">Books</a>
+						</li>
+						<li class="menu-item">
+							<a href="/wall">Book Club</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="footer-menu">
+					<h5 class="footer-title">My account</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="/login">Sign In</a>
+						</li>
+						<li class="menu-item">
+							<a href="/user/{{user.id}}">My Cart</a>
+						</li>
+						<li class="menu-item">
+							<a href="/register">Sign Up</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="footer-menu">
+					<h5 class="footer-title">About & Contact Us</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="/contact">About & Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		
-	  </div>
-
-	  <div class="col-md-2">
-
-	  </div>
-	  <div class="col-md-2">
-
-		<div class="footer-menu">
-		  <h5 class="footer-title">Discover</h5>
-		  <ul class="menu-list">
-			<li class="menu-item">
-			  <a href="/main">Home</a>
-			</li>
-			<li class="menu-item">
-			  <a href="/category">Books</a>
-			</li>
-			<li class="menu-item">
-			  <a href="/wall">Book Club</a>
-			</li>
-		  </ul>
-		</div>
-
-	  </div>
-	  <div class="col-md-2">
-
-		<div class="footer-menu">
-		  <h5 class="footer-title">My account</h5>
-		  <ul class="menu-list">
-			<li class="menu-item">
-			  <a href="/login">Sign In</a>
-			</li>
-			<li class="menu-item">
-			  <a href="/user/{{user.id}}">My Cart</a>
-			</li>
-			<li class="menu-item">
-			  <a href="/register">Sign Up</a>
-			</li>
-		  </ul>
-		</div>
-
-	  </div>
-	  <div class="col-md-2">
-
-		<div class="footer-menu">
-		  <h5 class="footer-title">About & Contact Us</h5>
-		  <ul class="menu-list">
-			<li class="menu-item">
-			  <a href="/contact">About & Contact Us</a>
-			</li>
-		  </ul>
-		</div>
-
-	  </div>
-
 	</div>
-
-
-  </div>
 </footer>
 
 <script src="js/jquery-1.11.0.min.js"></script>
