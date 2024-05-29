@@ -132,11 +132,16 @@ def main(request):
     
     review =Review.objects.all()
     #populer = review.values('book_id').annotate(review_count=models.Count('book_id'),sum_level=models.Sum('review_level')).order_by('-review_count')[:10]
-    populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:10]
+    populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     pupuler_book = Book.objects.filter(id__in=populer.values('book_id')) 
+    favorite_book = Book.liked_by_users.through.objects.all()
+    favorite_book_ids = favorite_book.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
+    favorite_books = Book.objects.filter(id__in=favorite_book_ids.values('book_id'))
+    
     data = {
         "user":User.objects.get(id=request.session['userID']),
-        'books' : Book.objects.all(), 
+        #'books' : Book.objects.all(), 
+        'favorite_books': favorite_books , 
         'order' : order ,
         'total': get_total_order(order),
         'pupuler_book': pupuler_book,
