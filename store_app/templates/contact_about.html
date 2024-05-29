@@ -21,6 +21,22 @@
 
 <body>
 
+<<<<<<< HEAD
+  <div id="header-wrap">
+    <div class="top-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="right-element">
+              {% if not 'userID' in request.session %}
+              <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+              {% else %}
+              <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+              <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+              {% endif %}
+              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
+=======
     <div id="header-wrap">
         <div class="top-content">
             <div class="container">
@@ -38,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+>>>>>>> master
             </div>
         </div>
 
