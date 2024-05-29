@@ -239,8 +239,8 @@ def ajax_delete_review(request):
 
 def main_wall(request):
     if not 'userID' in request.session:
-        #messages.warning(request,'You need to regiester or login',extra_tags='invalid_accuess')
-        return redirect('/')
+        messages.error(request,'You need to regiester or login',extra_tags='invalid_accuess')
+        return redirect('/login')
     if not 'orderID' in  request.session : 
         order = '' 
     else: 
@@ -319,14 +319,18 @@ def delete_book_from_order(request,bookID):
     return redirect(f'/user/{userID}')
 
 def confirm_order(request): 
-    if not 'userID' in request.session or  not 'orderID' in request.session: 
+    if not 'userID' in request.session :
         messages.error(request,'No order yet , Need to Login/SignUp')
         return redirect(f'/login')  
+    
+    userID = request.session['userID']
+    if  not 'orderID' in request.session: 
+        messages.error(request,'No order yet')
+        return redirect(f'/user/{userID}')
     if  'orderID' in  request.session :  
         order = Order.objects.get(id=int(request.session['orderID'])) 
         order.confirm_buy = True
         del request.session['orderID']
-        userID = request.session['userID']
         return redirect(f'/user/{userID}')
 
 
@@ -391,8 +395,45 @@ def account(request, userID):
 
     return render(request, 'profile.html', context)
 
-def edit(request, userID):
-    return render (request, 'editprofile.html')
+def edit_user(request):
+    if not 'userID' in request.session:
+        messages.error(request,'Please Loing/SignUp !')
+        return redirect('/login')
+    user = User.objects.get(id=request.session['userID'])
+    if not 'orderID' in  request.session : 
+        order = '' 
+    else: 
+        order = Order.objects.get(id=int(request.session['orderID'])) 
+    
+    data = {
+        'user': user ,
+        'order': order , 
+        'total' : get_total_order(order),
+    }
+    return render (request, 'editprofile.html',data)
+
+def update_user(request):
+    if not 'userID' in request.session:
+        messages.error(request,'Please Loing/SignUp !')
+        return redirect('/login')
+    userID = request.session['userID']
+    errors = User.objects.update_validation(request.POST,userID)
+    if len(errors): 
+        for key,val in errors.items():
+            messages.error(request,val,extra_tags=key)
+        return redirect('/user/edit')
+     
+    
+    user = User.objects.get(id=userID) 
+    
+    user.email = request.POST['email']
+    user.first_name = request.POST['first_name'].capitalize()
+    user.last_name = request.POST['last_name'].capitalize()
+    user.address = request.POST['address'].capitalize()
+    user.phone = request.POST['phone']
+    user.save()
+    return redirect(f'/user/{userID}')
+    
 
 def checkout(request):
     pass

@@ -28,10 +28,18 @@
               {% else %}
                 <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                 <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+
               {% endif %}
               
               <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
             </div><!--top-right-->
+
+
+              {% endif %}
+              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+            </div>
+
+
           </div>
         </div>
       </div>
