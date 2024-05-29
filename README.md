@@ -26,8 +26,8 @@ A theme for Book Store documentation.
 3. ![#daa556](https://placehold.co/15x15/daa556/daa556.png) #daa556
 
 ## Site access features:
-1.	User should not be logged in to access the Book Store.
-2.  For signup (registration) user is required to give first name, last name, Gender, Birthday, e-mail address, password, Type of the User (Author, Normal)
+1.	User should not be logged in to access and Visit the Book Store.
+2.  For signup (registration) user is required to give first name, last name, Gender, Birthday, e-mail address, password.
 3. 	For login the user will be required to enter Email and password only.
 
 ## Features of the Book Store Project:
@@ -35,7 +35,7 @@ A theme for Book Store documentation.
 2.	The user can access to the details of the books without log in
 3. 	If the user wants to buy or write review, Need to Login/ Sign in/up
 4. 	The user can suggest a book to write and he can post also a message, and can be seen by other readers "users" and authors.
-5.	User can search for any books, authors and category.
+5.	User can send a message to our Gmail by writing his name and email
 
 ## Administrative features:
 1.	Only admin can add Books.
