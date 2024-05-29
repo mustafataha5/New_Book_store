@@ -42,7 +42,26 @@ class UserManager(models.Manager):
             user = User.objects.get(email=postData['email'])
             if not bcrypt.checkpw(postData['password'].encode(),user.password.encode()) : 
                 errors['login_password'] = "Wrong password"
-        return errors   
+        return errors
+    
+    def update_validation(self,postData,userID): 
+        errors = {}
+        if len(postData['first_name']) < 2: 
+            errors['first_name'] = 'First name must be at least 2 charcter'
+        if len(postData['last_name']) < 2: 
+            errors['last_name'] = 'Last name must be at least 2 charcter' 
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern            
+            errors['email'] = "Invalid email address!"
+        user = User.objects.get(id=userID)    
+        check_user = User.objects.filter(email=postData['email'])   
+        if len(check_user) == 1 and not user in  check_user.all():
+             errors['email'] = "Email already used!by other user!"
+        if len(postData['address']) < 2 : 
+            errors['address'] = 'Address must be at least 2 charcter'
+        if len(postData['phone']) < 10 : 
+            errors['phone'] = 'Phone must be at least 10 charcter'    
+        return errors    
 
 class PostManager(models.Manager):
     def post_validation(self,postData):
@@ -140,6 +159,8 @@ class User(models.Model):
     password = models.CharField(max_length=64)
     birthday = models.DateField(null=True)
     gender = models.CharField(max_length=7)
+    phone = models.CharField(max_length=30,default='')
+    address = models.CharField(max_length=255,default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()

@@ -44,7 +44,7 @@
                             <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
                             
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
     
                             <!-- <div class="action-menu">
     
@@ -97,8 +97,7 @@
     
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
                                 </ul>
     
                             </div>
@@ -120,7 +119,7 @@
                         <div class="m-b-25">
                             <img src="{%static 'images/user-profile-icon-free-vector.jpg'%}" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600">USER NAME</h6>
+                        <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
                         <!-- <button id="edit-profile" type="button" class="add-to-cart" ">Edit Profile</button>  -->
                 </div>
                 </div>
@@ -129,24 +128,33 @@
                 <div class="col-sm-8">
                     <div class="card-block">
                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Edit Information</h6>
-                        <form method="post" action="user/{{user.id}}/edit">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}</h5>
+                        {% endfor %}
+                        {% endif %}
+                        <form method="post" action="/user/update">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">User Name</p>
-                                    <input type="text" name="first_name" class="form-control" value="{{ first_name }}">
+                                    <p class="m-b-10 f-w-600">First Name</p>
+                                    <input type="text" name="first_name" class="form-control" value="{{ user.first_name }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Last Name</p>
+                                    <input type="text" name="last_name" class="form-control" value="{{ user.last_name }}">
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Email</p>
-                                    <input type="email" name="email" class="form-control" value="{{ email }}">
+                                    <input type="email" name="email" class="form-control" value="{{ user.email }}">
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Address</p>
-                                    <input type="text" name="address" class="form-control" value="{{ address }}">
+                                    <input type="text" name="address" class="form-control" value="{{ user.address }}">
                                 </div>
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Phone</p>
-                                    <input type="text" name="phone_number" class="form-control" value="{{ phone_number }}">
+                                    <input type="text" name="phone" class="form-control" value="{{ user.phone_number }}">
                                 </div>
                             </div>
                             <button id="save-btn" type="submit" class="add-to-cart">Save Changes</button>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- script -->
     <script src="js/modernizr.js"></script>
 </head>
@@ -27,12 +27,14 @@
                     <div class="col-md-6">
                         <div class="right-element">
                             {% if not 'userID' in request.session %}
-                            <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+                            <a href="/login" class="user-account for-buy"><i
+                                    class="icon icon-user"></i><span>Account</span></a>
                             {% else %}
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
+                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
+                                    $)</span></a>
                         </div>
                     </div>
                 </div>
@@ -51,9 +53,13 @@
                         <nav id="navbar">
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
-                                    <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
+                                    <li class="menu-item active"><a href="/main" data-effect="Home">
+                                            <i class="fa-solid fa-house"></i>
+                                            Home</a></li>
                                     <li class="menu-item has-sub">
-                                        <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
+                                        <a href="/category" class="nav-link" data-effect="Pages">
+                                            <i class="fa-solid fa-table-list"></i>
+                                            Categories</a>
                                         <ul>
                                             <li class="active"><a href="index.html">1</a></li>
                                             <li><a href="about.html">2</a></li>
@@ -64,8 +70,12 @@
                                             <li><a href="single-product.html">7</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
+                                    <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
+                                        <i class="fa-solid fa-comments"></i> 
+                                        Book Club</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">
+                                        <i class="fa-regular fa-address-book"></i>
+                                        About & Contact Us</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -74,7 +84,7 @@
             </div>
         </header>
 
-        <div class="header">
+        <div class="header1">
             <div class="container1">
                 <h1>About Us</h1>
                 <p>Learn more about our Book Store</p>
@@ -85,7 +95,12 @@
             <div class="row section">
                 <div class="col-md-6">
                     <h2 class="title">Our Mission</h2>
-                    <p class="text">At Galaxy Book Store, our mission is to cultivate a deep appreciation for literature and learning within our community. We strive to provide a welcoming space where readers can explore new ideas, discover new favorites, and engage with fellow book lovers. Our goal is to make reading accessible and enjoyable for everyone, whether you're seeking the latest bestseller, a rare find, or educational resources. We are committed to supporting our local community, authors, and artists through various events and programs.</p>
+                    <p class="text">At Galaxy Book Store, our mission is to cultivate a deep appreciation for literature
+                        and learning within our community. We strive to provide a welcoming space where readers can
+                        explore new ideas, discover new favorites, and engage with fellow book lovers. Our goal is to
+                        make reading accessible and enjoyable for everyone, whether you're seeking the latest
+                        bestseller, a rare find, or educational resources. We are committed to supporting our local
+                        community, authors, and artists through various events and programs.</p>
                 </div>
             </div>
         </div>
@@ -94,7 +109,13 @@
             <div class="row section">
                 <div class="col-md-6">
                     <h2 class="title">Our Values</h2>
-                    <p class="text">Our core values are rooted in our passion for books and our commitment to our community. We believe in promoting diversity and inclusivity through our selection of books and our programming. We value exceptional customer service and strive to provide personalized recommendations to each visitor. By hosting book clubs, author signings, and community events, we aim to create a vibrant cultural space where everyone feels welcome. We also prioritize sustainability and ethical sourcing in our business practices, ensuring that our bookstore positively impacts both people and the planet.</p>
+                    <p class="text">Our core values are rooted in our passion for books and our commitment to our
+                        community. We believe in promoting diversity and inclusivity through our selection of books and
+                        our programming. We value exceptional customer service and strive to provide personalized
+                        recommendations to each visitor. By hosting book clubs, author signings, and community events,
+                        we aim to create a vibrant cultural space where everyone feels welcome. We also prioritize
+                        sustainability and ethical sourcing in our business practices, ensuring that our bookstore
+                        positively impacts both people and the planet.</p>
                 </div>
             </div>
         </div>
@@ -103,7 +124,13 @@
             <div class="row section">
                 <div class="col-md-6">
                     <h2 class="title">Our Team</h2>
-                    <p class="text">The team at Galaxy Book Store is comprised of dedicated book lovers who are passionate about sharing their love of reading with you. Our knowledgeable staff is always on hand to help you find your next great read, recommend a new favorite, or simply chat about books. Each team member brings their own unique perspective and expertise, from children's literature to contemporary fiction and non-fiction. We believe that our bookstore is defined by the people who work here, and we are proud to have a team that is as diverse and dynamic as the stories on our shelves.</p>
+                    <p class="text">The team at Galaxy Book Store is comprised of dedicated book lovers who are
+                        passionate about sharing their love of reading with you. Our knowledgeable staff is always on
+                        hand to help you find your next great read, recommend a new favorite, or simply chat about
+                        books. Each team member brings their own unique perspective and expertise, from children's
+                        literature to contemporary fiction and non-fiction. We believe that our bookstore is defined by
+                        the people who work here, and we are proud to have a team that is as diverse and dynamic as the
+                        stories on our shelves.</p>
                 </div>
             </div>
         </div>
@@ -146,7 +173,8 @@
                     <div class="col-md-4">
                         <div class="footer-item">
                             <div class="company-brand">
-                                <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo"></a>
+                                <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo"
+                                        class="footer-logo"></a>
                             </div>
                         </div>
                     </div>
@@ -178,7 +206,7 @@
                                     <a href="/login">Sign In</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#">My Cart</a>
+                                    <a href="/user/{{user.id}}">My Cart</a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="/register">Sign Up</a>
@@ -189,7 +217,7 @@
 
                     <div class="col-md-2">
                         <div class="footer-menu">
-                            <h5 class="footer-title">About & Contact Us</h5>
+                            <h5 class="footer-title1">About & Contact Us</h5>
                             <ul class="menu-list">
                                 <li class="menu-item">
                                     <a href="/contact">About & Contact Us</a>

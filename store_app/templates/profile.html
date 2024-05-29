@@ -44,7 +44,7 @@
                             <a  id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
                             
-                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{tatal}} $)</span></a>
+                            <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
     
                             <!-- <div class="action-menu">
     
@@ -97,8 +97,8 @@
     
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About</a></li>
-                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="Contact">Contact</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
+                                    
                                 </ul>
     
                             </div>
@@ -122,7 +122,7 @@
                         </div>
 
                         <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
-                        <a href="/user/{{user.id}}/edit"><button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button></a>                    </div>
+                        <a href="/user/edit"><button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button></a>                    </div>
 <!-- =======
                         <h6 class="f-w-600">{{user.first_name}} {{user.last_name}}</h6>
                         <button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button>                    </div>
@@ -145,14 +145,19 @@
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Address</p>
-                                <h6 class="text-muted f-w-400">{{user.email}}</h6>
+                                <h6 class="text-muted f-w-400">{{user.address}}</h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="m-b-10 f-w-600">Phone</p>
-                                <h6 class="text-muted f-w-400">98979989898</h6>
+                                <h6 class="text-muted f-w-400">{{user.phone}}</h6>
                             </div>
                         </div>
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}</h5>
+                        {% endfor %}
+                        {% endif %}
                         <div class="row">
                             <div class="col-sm-6">
 
