@@ -51,11 +51,13 @@ urlpatterns = [
 
 
 
-
-
-path('category', views.cat),
+path('categories', views.cat,),
 path('user/<int:user>', views.account),
 path('addFav/<int:bookID>', views.add_fev_book),
 path('removeFav/<int:bookID>', views.unfav_book),
+path('user/edit', views.edit_user),
+path('user/update', views.update_user),
+path('checkout', views.checkout),
+
 
 ]

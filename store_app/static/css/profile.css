@@ -1,5 +1,5 @@
 body {
-    background-color: #f3f2ec
+    background-color: #f3f2ec !important
 }
 
 .padding {
@@ -38,6 +38,7 @@ body {
 
 .user-profile {
     padding: 20px 0;
+    height: auto;
 }
 
 .card-block {
@@ -55,7 +56,11 @@ body {
     width: 200px;
 
 }
-
+.error{
+    color: #f12b1d;
+    list-style-type: none;
+    font-size: 15px;    
+}
 
  
 h6 {
@@ -140,7 +145,7 @@ p {
 }
 
 .user-card-full {
-    height: 600px; /* Adjust height as needed */
+    height: auto; /* Adjust height as needed */
     margin-left: 150px;
 }
 
@@ -162,4 +167,10 @@ p {
     height: 45px;
     width: 120px
 
+}
+
+
+.fav-profile{
+    list-style-type: none;
+    color: #C5A992;
 }

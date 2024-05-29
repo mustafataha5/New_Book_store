@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<title>Book Store</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="">
+	    <meta name="keywords" content="">
+	    <meta name="description" content="">
+<!--  -->
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
+	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
+	    <link rel="stylesheet" type="text/css" href="{%static 'css/profile.css'%}">
+          <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+       <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    
+		<!-- script
+		================================================== -->
+		<script src="js/modernizr.js"></script>
+
+	</head>
+<body>
+    <div class="container">
+        <div class="card-block">
+            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Checkout</h6>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">First Name</p>
+                        <input type="text" name="first_name" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Last Name</p>
+                        <input type="text" name="last_name" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Email</p>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Phone</p>
+                        <input type="tel" name="phone_num" class="form-control" required>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="m-b-10 f-w-600">Address</p>
+                        <input type="text" name="address" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">City</p>
+                        <input type="text" name="city" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Postal Code</p>
+                        <input type="text" name="postal_code" class="form-control" required>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="m-b-10 f-w-600">Country</p>
+                        <input type="text" name="country" class="form-control" required>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="m-b-10 f-w-600">Credit Card Number</p>
+                        <input type="text" name="card_number" class="form-control" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="m-b-10 f-w-600">Expiration Date</p>
+                        <input type="text" name="exp_date" class="form-control" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="m-b-10 f-w-600">CVV</p>
+                        <input type="text" name="cvv" class="form-control" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="m-b-10 f-w-600">Cardholder Name</p>
+                        <input type="text" name="cardholder_name" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Place Order</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

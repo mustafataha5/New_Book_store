@@ -63,6 +63,8 @@
 		</div>
 	</div><!--top-content-->
 
+	<!-- nav bar -->
+
 	<header id="header">
 		<div class="container">
 			<div class="row">
@@ -130,17 +132,19 @@
 					{%for book in books%}
 					<div class="col-md-3">
 						<figure class="product-style">
+							<!-- <div class="image-hvr-effect"> -->
 							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
+							<!-- </div> -->
 								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
-								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">View Book</button>
+								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
 						
 						</figure>
 					</div>
 				{% endfor %}
 
 
-				</div><!--ft-books-slider-->				
-			</div><!--grid-->
+				</div>				
+			</div>
 
 
 			</div><!--inner-content-->
@@ -152,6 +156,7 @@
 		</div>
 	</div>
 </section>
+<!-- categories section -->
 <section id="Categories">
 	<div class="container">
 		<div class="row">
@@ -175,15 +180,14 @@
 				
 					   
 								<ul class="tabs">
-								  <li data-tab-target="#all-genre" class="active tab">All Categories</li>
-								  <li  data-tab-target="#business" class="tab">Fiction</li>
-								  <li href="/category"  data-tab-target="#technology" class="tab">Mystery</li>
-								  <li href="/category"  data-tab-target="#romantic" class="tab">Romance</li>
-								  <li href="/category"  data-tab-target="#adventure" class="tab">Travel</li>
-								  <li href="/category"  data-tab-target="#fictional" class="tab">Horror</li>
-								  <li href="/category"  data-tab-target="#fictional" class="tab">Philosophy</li>
-
+									<li data-tab-target="#fiction" class="tab"><a href="/categories#category-fiction">Fiction</a></li>
+									<li data-tab-target="#mystery" class="tab"><a href="/categories#category-mystery">Mystery</a></li>
+									<li data-tab-target="#romance" class="tab"><a href="/categories#category-romance">Romance</a></li>
+									<li data-tab-target="#travel" class="tab"><a href="/categories#category-travel">Travel</a></li>
+									<li data-tab-target="#horror" class="tab"><a href="/categories#category-horror">Horror</a></li>
+									<li data-tab-target="#philosophy" class="tab"><a href="/categories#category-philosophy">Philosophy</a></li>
 								</ul>
+								
 					
 								<div class="tab-content">
 								  <div id="all-genre" data-tab-content class="active">
@@ -195,26 +199,24 @@
 						</figure>
 					</div>
 
-			    </div><!--ft-books-slider-->				
-			</div><!--grid-->
+			    </div>				
+			</div>
 
 
-			</div><!--inner-content-->
+			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-md-12"> 
 
-				<div class="btn-wrap align-right">
-					<a href="/category" class="btn-accent-arrow">View all products <i class="icon icon-ns-arrow-right"></i></a>
-				</div>
+			
 				
 			</div>		
 		</div>
 	</div>
 </section>
 
-
+<!-- Best seller section -->
 <section id="best-selling" class="leaf-pattern-overlay">
 	<div class="corner-pattern-overlay"></div>
 	<div class="container">
@@ -252,13 +254,14 @@
 
 		</div>
 	</div>
-	
-</section>
+	 
 
-<section id="popular-books" class="bookshelf">
+	<!-- popular books section -->
+</section>
+<section id="featured-books">
 	<div class="container">
-	<div class="row">
-		<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
 
 			<div class="section-header align-center">
 				<div class="title">
@@ -266,67 +269,32 @@
 				</div>
 				<h2 class="section-title">Popular Books</h2>
 			</div>
-			<div class="tab-content">
-			  <div id="all-genre" data-tab-content class="active">
-			  	<div class="row">
-
-				  	<div class="col-md-3">
-					  	<figure class="product-style">
-							<img src="{% static 'images/tab-item1.jpg'%}" alt="Books" class="product-item">
-							<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-							<figcaption>
-								<h3>Portrait photography</h3>
-								<p>Adam Silber</p>
-								<div class="item-price">$ 40.00</div>
-							</figcaption>
-						</figure>
-					</div>
-
-				  	<div class="col-md-3">
-					  	<figure class="product-style">
-							<img src="{% static 'images/tab-item2.jpg'%}" alt="Books" class="product-item">
-							<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-							<figcaption>
-								<h3>Once upon a time</h3>
-								<p>Klien Marry</p>
-								<div class="item-price">$ 35.00</div>
-							</figcaption>
-						</figure>
-					</div>
-
-				  	<div class="col-md-3">
-					  	<figure class="product-style">
-							<img src="{% static 'images/tab-item3.jpg'%}" alt="Book" class="product-item">
-							<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-							<figcaption>
-								<h3>Tips of simple lifestyle</h3>
-								<p>Bratt Smith</p>
-								<div class="item-price">$ 40.00</div>
-							</figcaption>
-						</figure>
-					</div>
-
-				  	<div class="col-md-3">
-					  	<figure class="product-style">
-							<img src="{% static 'images/tab-item4.jpg'%}" alt="Books" class="product-item">
-							<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
-							<figcaption>
-								<h3>Just felt from outside</h3>
-								<p>Nicole Wilson</p>
-								<div class="item-price">$ 40.00</div>
-							</figcaption>
-						</figure>
-					</div>
-
-				</div>
+			<div class="product-list" data-aos="fade-up">
 				<div class="row">
-		    	 </div>
-			  </div>
+					{%for book in books%}
+					<div class="col-md-3">
+						<figure class="product-style">
+							<!-- <div class="image-hvr-effect"> -->
+							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
+							<!-- </div> -->
+								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
+								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
+						
+						</figure>
+					</div>
+				{% endfor %}
 
+
+				</div>				
 			</div>
 
-		</div><!--inner-tabs-->
-			
+
+			</div><!--inner-content-->
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				
+			</div>		
 		</div>
 	</div>
 </section>
@@ -342,6 +310,7 @@
 </section>
 
 <hr>
+<!-- footer -->
 <footer id="footer">
   <div class="container">
 	<div class="row">
@@ -409,7 +378,7 @@
 	  </div>
 
 	</div>
-	<!-- / row -->
+
 
   </div>
 </footer>
