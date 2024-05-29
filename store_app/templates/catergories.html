@@ -146,8 +146,8 @@
                                 </a>
                                 <figcaption>
                                     <!-- <a href="/book/{{ book.id }}" class="title_link">{{ book.title }}</a> -->
-                                    <p style="margin-left: 30px;">{{ book.author.first_name }} {{ book.author.last_name }}</p>
-                                    <div style="margin-left: 50px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>
+                                    <p style="margin-left: 40px;">{{ book.author.first_name }} {{ book.author.last_name }}</p>
+                                    <div style="margin-left: 35px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>
                                 </figcaption>
 
 								{% if book in order.books.all %}
@@ -156,9 +156,14 @@
 								
                                 <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a>
                                 {%endif%}
+<<<<<<< HEAD
 <!-- =======
                                 <button type="button" id="add-to-cart-car" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
 >>>>>>> master -->
+=======
+
+
+>>>>>>> master
                             </figure>
                         </div>
                         {% endfor %}

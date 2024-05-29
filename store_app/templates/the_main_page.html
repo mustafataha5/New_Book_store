@@ -108,6 +108,7 @@
 			<div class="product-list" data-aos="fade-up">
 				<div class="row">
 					{% for book in favorite_books %}
+<<<<<<< HEAD
 					<div class="col-md-3">
 						<figure class="product-style">
 							<!-- <div class="image-hvr-effect"> -->
@@ -129,6 +130,22 @@
 						</figure>
 					</div>
 					{% endfor %}
+=======
+<div class="col-md-3">
+    <figure class="product-style">
+        <a href="/book/{{ book.id }}"><img id="book-img" src="{{ book.url_image }}" alt="Books" class="product-item"></a>
+        <p id="author-name">{{ book.author.first_name }} {{ book.author.last_name }}</p>
+        <div style="margin-left: 50px; font-size: larger; font-weight: bold;" class="item-price">Price: {{ book.price }} $</div>
+        
+        {% if book in order.books.all %}
+            <a href="/cart/{{ book.id }}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a>
+        {% else %}
+            <a style="margin-left: 20px;" href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
+        {% endif %}
+    </figure>
+</div>
+{% endfor %}
+>>>>>>> master
 
 
 				</div>				
@@ -266,6 +283,8 @@
 							<a href="/book/{{book.id}}" ><img id="book-img" src="{{book.url_image}}"  alt="Books" class="product-item"></a>
 							<!-- </div> -->
 								<p id="author-name">{{book.author.first_name}}  {{book.author.last_name}}</p>
+								<div style="margin-left: 50px; font-size: larger; font-weight: bold;" class="item-price">Price: {{ book.price }} $</div>
+
 								<a href="/book/{{book.id}}"></a><button type="button" id="view_book_btn" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
 						
 						</figure>
