@@ -46,7 +46,8 @@
                         <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                         {% endif %}
 
-                        <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:(0 $)</span></a>
+                        <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}}
+                                $)</span></a>
 
                         <!-- <div class="action-menu">
 
@@ -139,8 +140,19 @@
                                         Favorite</button></a>
 
                                 {%endif%}
+<<<<<<< HEAD
                                 <a href="/add_to_cart"><button  id="addToCart-details-btn" class="btn add-to-cart">Add To Cart</button></a>
+=======
+                                {% if book in order.books.all %}
+                                <a href="/cart/{{book.id}}/delete"><button class="btn add-to-cart">Delete From
+                                        Cart</button></a>
+>>>>>>> f2f681655731333d0273a2fff4c4a27898397f68
 
+                                {% else %}
+                                <a href="/cart/{{book.id}}/add"><button class="btn add-to-cart">Add To
+                                        Cart</button></a>
+                                {%endif%}
+                           
                             </div><!--banner-content-->
 
                             <img id="details-img"src="{{book.url_image}}" alt="banner" class="banner-image">

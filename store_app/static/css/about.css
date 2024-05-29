@@ -160,6 +160,7 @@ body {
 }
 #content1 {
     height: 100px;
+    margin-left: 10px;
 }
 #content > * {
     color: black;

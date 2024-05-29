@@ -72,11 +72,17 @@ class BookManager(models.Manager):
 class OrderManger(models.Manager):
     def order_validation(self,postData): 
         errors = {}
-        
+
         
         
         return errors   
-
+    def has_open_order(self,userID):
+        orders = Order.objects.filter(user__id=userID)
+        if len(orders) > 0 : 
+            for i in orders: 
+                if i.confirm_buy == False : 
+                    return True
+        return False 
 
 class CommentManger(models.Manager):
     def comment_validation(self,postData,postID,userID): 

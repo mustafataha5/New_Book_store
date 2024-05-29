@@ -23,8 +23,9 @@ urlpatterns = [
     path('ajax/<int:bookID>',views.get_ajax),
     path('ajax/review/create',views.ajax_create_review),
     path('ajax/review/delete',views.ajax_delete_review),
-    path('add_to_cart',views.add_to_cart),
-  
+    path('cart/<int:bookID>/add',views.add_to_cart),
+    path('cart/<int:bookID>/delete',views.delete_book_from_order),
+    path('cart/confirm',views.confirm_order),
 
 
 
