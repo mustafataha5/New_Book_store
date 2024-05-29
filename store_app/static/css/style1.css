@@ -1777,8 +1777,8 @@ span.prev-price {
 
 #category-photo{
   max-width: none;
-  width: 1100px;
-  margin-left: 150px;
+  width: 1200px;
+  margin-left: 15px;
 }
 
 
@@ -1793,7 +1793,9 @@ span.prev-price {
 }
 
 #author-name{
-  margin-left: 40px;
+  text-align: center;
+  font-size: larger;
+
 }
 
 .product-style{
@@ -1809,37 +1811,41 @@ span.prev-price {
   display: block;
 }
 
-<<<<<<< HEAD
+
 #post{
-  width: 700px;
+  width: 600px;
   height: 150px;
   margin: 0 auto;
 }
 
-=======
-
-.logoutbtn{
-  background-color: #C5A992;
-  color: white;
-
+#details-footer{
+  width:  300px;
 }
+
+
+
+
 
 #logout{
   margin-right: 50px;
-  color: #6F6F6F;
+  color: #daa556;
   padding: 5px 15px;
   font-size: large;
-  border: 1px solid #6F6F6F;
+  border: 2px solid #daa556;
+  box-shadow: 2px -2px #daa556;
+  background-color: #f3f2ec;
 }
 
 
 #account{
-  color: #6F6F6F;
+  color: #daa556;
   padding: 4.5px 5px;
   font-weight: normal;
+  border: 2px solid #daa556;
+  box-shadow: 2px -2px #daa556;
   margin-top: -3px;
   font-size: large;
-  border: 1px solid #6F6F6F;
+  
 
 } 
 
@@ -1848,12 +1854,60 @@ span.prev-price {
 #book-img{
   width: 220px;
   height: 319px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* Initial style for the image */
+.image-hvr-effect img.book-image {
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effect */
+.image-hvr-effect img.book-image:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+#save-btn{
+  width: 150px;
+  height:40px;
+  margin-top: 20px;
+  margin-left: 220px;
+  padding: 10px;
+}
+
+#details-img{
+  width: 680px;
+  height: 1000px;
+}
+
+#book-price{
+  size: larger;
+}
+
+
+#addToCart-details-btn{
+  width: 195px;
+}
+
+#review-section{
+  
+  align-items: center;
+  width: 970px;
+  justify-content: center;
+  height: auto;
+  margin: 0 auto;
+  
 
 }
 
 
 
->>>>>>> master
+
+
 
 
 

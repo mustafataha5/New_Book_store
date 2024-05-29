@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
     <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
-
     <link rel="stylesheet" type="text/css" href="{%static 'css/star.css'%}">
 
 
@@ -131,6 +130,7 @@
                                 <h2 class="banner-title">{{book.title}}</h2>
                                 <h4>By: {{book.author.first_name}} {{book.author.last_name}}</h4>
                                 <p>{{book.description}}</p>
+                                <h2>Price: {{book.price}} $</h2>
                                 {% if user in book.liked_by_users.all %}
                                 <a href="/removeFav/{{book.id}}"><button id="fav-btn"
                                         class="btn  ">UnFavorite</button></a>
@@ -139,22 +139,23 @@
                                         Favorite</button></a>
 
                                 {%endif%}
-                                <a href="/add_to_cart"><button  class="btn add-to-cart">Add To Cart</button></a>
+                                <a href="/add_to_cart"><button  id="addToCart-details-btn" class="btn add-to-cart">Add To Cart</button></a>
 
                             </div><!--banner-content-->
 
-                            <img src="{{book.url_image}}" alt="banner" class="banner-image">
+                            <img id="details-img"src="{{book.url_image}}" alt="banner" class="banner-image">
                         </div>
-                        <footer class="mt-5">
+                        <!-- review section -->
+                        <section class="mt-5" id="review-section">
                             <hr>
 
                             <div class="container1">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-4">Reviews:</h3>
+                                        <h3 style="text-align: center;" class="mb-4">Reviews:</h3>
                                         <p id="review_error"></p>
                                         {% if messages %}
-                                        <ul class="messages">
+                                        <ul  class="messages">
                                             {% for message in messages %}
                                             <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message}}
                                                 </li>
@@ -165,7 +166,7 @@
                                             {% csrf_token %}
                                             <div class="card">
                                                 <input type="hidden" name="review_level" id="review_level" value="0">
-                                                <span onclick="gfg(1)" class="star">★
+                                                <span onclick="gfg(1)" style="margin-left: 400px;" class="star">★
                                                 </span>
                                                 <span onclick="gfg(2)" class="star">★
                                                 </span>
@@ -176,12 +177,12 @@
                                                 <span onclick="gfg(5)" class="star">★
                                                 </span>
                                                 <!-- <h3 id="output">
-                                                      Rating is: 0/5
-                                                  </h3> -->
+                                                Rating is: 0/5
+                                                </h3> -->
                                             </div>
 
                                             <div class="form-group">
-                                                <textarea id="review_message" name="review_message" class="texts"
+                                                <textarea style="margin-left: 250px;" id="review_message" name="review_message" class="texts"
                                                     class="form-control" placeholder="Write your review here..."
                                                     rows="3"></textarea>
                                             </div>
@@ -191,15 +192,15 @@
                                 </div>
                             </div>
                             {%if 'userID' in request.session %}
-                            <button id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit Review</button>
+                            <button style="margin-left: 400px;" id="load-items" onclick="postData({{book.id}},{{user.id}})">Submit Review</button>
                             <!-- <button id="load-items" onclick="get_ajax({{book.id}})">Load Items</button> -->
                             {%else%}
                             <a href="/login"> <button>Login To Make Review</button></a>
                             {% endif %}
-                            <h3>Latest Reviews</h3>
+                            <h3 style="margin-left: 400px;">Latest Reviews</h3>
                             <div id="reviews-container">
                                 {% for review in reviews%}
-                                <div class="row review_row">
+                                <div style="margin-left: 300px;" class="row review_row">
                                     <div class="col-md-12 mt-5 reviews review_card">
                                         <h4 class="user_review"> {{review.user.first_name}} {{review.user.last_name}}
                                         </h4>
@@ -230,7 +231,79 @@
 
                             <ul id="items-list"></ul>
 
-    </section>
+                        </section>
+                        <hr>
+                        <footer id="details-footer">
+                            <div class="container">
+                              <div class="row">
+                          
+                                <div class="col-md-4">
+                                  
+                                  <div class="footer-item">
+                                    <div class="company-brand">
+                                      <img src="{% static 'images/main-logo.png'%}" alt="logo" id="footer-logo" class="footer-logo">
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                          
+                                <div class="col-md-2">
+                          
+                                </div>
+                                <div class="col-md-2">
+                          
+                                  <div class="footer-menu">
+                                    <h5 class="footer-title">Discover</h5>
+                                    <ul class="menu-list">
+                                      <li class="menu-item">
+                                        <a href="/main">Home</a>
+                                      </li>
+                                      <li class="menu-item">
+                                        <a href="/category">Books</a>
+                                      </li>
+                                      <li class="menu-item">
+                                        <a href="/wall">Book Club</a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                          
+                                </div>
+                                <div class="col-md-2">
+                          
+                                  <div class="footer-menu">
+                                    <h5 class="footer-title">My account</h5>
+                                    <ul class="menu-list">
+                                      <li class="menu-item">
+                                        <a href="/login">Sign In</a>
+                                      </li>
+                                      <li class="menu-item">
+                                        <a href="#">My Cart</a>
+                                      </li>
+                                      <li class="menu-item">
+                                        <a href="/register">Sign Up</a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                          
+                                </div>
+                                <div class="col-md-2">
+                          
+                                  <div class="footer-menu">
+                                    <h5 class="footer-title">About & Contact Us</h5>
+                                    <ul class="menu-list">
+                                      <li class="menu-item">
+                                        <a href="/contact">About & Contact Us</a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                          
+                                </div>
+                          
+                              </div>
+                              <!-- / row -->
+                          
+                            </div>
+                          </footer>
     <script src="{%static 'js/reviews.js'%}"></script>
 </body>
 

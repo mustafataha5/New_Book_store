@@ -121,76 +121,84 @@
                             <img src="{%static 'images/user-profile-icon-free-vector.jpg'%}" class="img-radius" alt="User-Profile-Image">
                         </div>
                         <h6 class="f-w-600">USER NAME</h6>
-                        <a href="/user/{{user.id}}/edit"><button id="edit-profile" type="button" class="add-to-cart" data-product-tile="add-to-cart">Edit Profile</button></a>                    </div>
+                        <!-- <button id="edit-profile" type="button" class="add-to-cart" ">Edit Profile</button>  -->
                 </div>
+                </div>
+
+                <!-- edit profile's form -->
                 <div class="col-sm-8">
                     <div class="card-block">
-                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">User Name</p>
-                                <h6 class="text-muted f-w-400"></h6>
+                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Edit Information</h6>
+                        <form method="post" action="user/{{user.id}}/edit">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">User Name</p>
+                                    <input type="text" name="first_name" class="form-control" value="{{ first_name }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Email</p>
+                                    <input type="email" name="email" class="form-control" value="{{ email }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Address</p>
+                                    <input type="text" name="address" class="form-control" value="{{ address }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600">Phone</p>
+                                    <input type="text" name="phone_number" class="form-control" value="{{ phone_number }}">
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Email</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Address</p>
-                                <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">Phone</p>
-                                <h6 class="text-muted f-w-400">98979989898</h6>
-                            </div>
-                        </div>
-                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600">item 1</p>
-                                <p class="m-b-10 f-w-600">item 2</p>
-                                <p class="m-b-10 f-w-600">item 3</p>
-                                <p>Total: </p>
-                                
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600"></p>
-                                <h6 class="text-muted f-w-400"></h6>
-                            </div>
-                        </div>
-                        <a href="/checkout"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">CheckOut</button></a>
-                        <hr>
-                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
-                        <ul>
-                            {% for book in user.likes_books.all %}
-                            <a class="fav-profile" href="/book/{{book.id}}"><li>{{book.title}} </li></a>
-                            {% endfor %}
-                        </ul>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600"></p>
-                                <p class="m-b-10 f-w-600"></p>
-                                <p class="m-b-10 f-w-600"></p>
-                                
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="m-b-10 f-w-600"></p>
-                                <h6 class="text-muted f-w-400"></h6>
-                            </div>
-                        </div>
+                            <button id="save-btn" type="submit" class="add-to-cart">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">My Cart</h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">item 1</p>
+                        <p class="m-b-10 f-w-600">item 2</p>
+                        <p class="m-b-10 f-w-600">item 3</p>
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600"></p>
+                        <h6 class="text-muted f-w-400"></h6>
+                    </div>
+                </div>
+                <button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">Check Out</button>
+                <hr>
+                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
+                <ul>
+                    {% for book in user_likes %}
+                    <li>{{book.title}} </li>
+                    {% endfor %}
+                </ul>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600"></p>
+                        <p class="m-b-10 f-w-600"></p>
+                        <p class="m-b-10 f-w-600"></p>
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600"></p>
+                        <h6 class="text-muted f-w-400"></h6>
                     </div>
                 </div>
             </div>
         </div>
+    </div> -->
     </div>
-        </div>
-        </div>
+    </div>
+    </div>
+    </div>
     </div>
 
-      <!-- Script JS -->
 
-      <!--$%analytics%$-->
-   </body>
+</body>
 </html>
 </body>
 </html>
+
+
