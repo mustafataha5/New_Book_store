@@ -357,7 +357,7 @@ def cat(request):
         data = {
             'categories': categories,
         }
-        return render(request, 'the_main_page.html', data)
+        return render(request, 'catergories.html', data)
     if not 'orderID' in  request.session : 
         order = '' 
     else: 
