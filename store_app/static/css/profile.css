@@ -163,9 +163,11 @@ p {
 #buy-btn{
     background-color: #C5A992;
     border: 1px solid #eedabd;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     height: 45px;
-    width: 120px
+    width: 120px;
+    text-align: center;
+    
 
 }
 
