@@ -37,10 +37,10 @@
   border: 1px solid gray;
   border-radius: 25px;
   margin: 5px 10px ;
-  width: 50%;
+  
 }
 
-#account {
+/* #account {
   color: #6F6F6F;
   padding: 4.5px 5px;
   font-weight: normal;
@@ -59,4 +59,4 @@
 }
 #logout {
   background-color: #C5A992;
-}
+} */
