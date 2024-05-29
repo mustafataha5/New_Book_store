@@ -50,8 +50,9 @@
 							{% else %}
 							<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
 							<a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-							{% endif %}
 							<a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
+							{% endif %}
+							
 						</div>
 					</div>
 				</div>
@@ -156,7 +157,6 @@
 								
                                 <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a>
                                 {%endif%}
-
 
                             </figure>
                         </div>
