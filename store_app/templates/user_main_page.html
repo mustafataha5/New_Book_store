@@ -74,7 +74,7 @@
     <div class="">
         <h2 class="mx-5 mt-5">Favorite Books</h2>
         <div class="row mt-2 justify-content-center">
-            {%for book in books%}
+            {%for book in favorite_books%}
             <div class="col-sm-3 mt-1 mx-1">
                 <div class="card text-center ">
                     <a href="/book/{{book.id}}"> <img class="card_img" src="{{book.url_image}}" class="card-img-top" alt="{{book.title}} image"> </a>  
