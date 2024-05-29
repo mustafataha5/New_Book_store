@@ -1922,7 +1922,18 @@ span.prev-price {
   margin-left: 20px;
 }
 
-
+#my_cart_icon{
+  position:fixed;
+  bottom: 0px;
+  right:  20px;
+  color: white;
+  background-color: #daa556;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 90px;
+  width: 128px;
+  height: 128px;
+}
 
 
 

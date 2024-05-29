@@ -14,7 +14,7 @@ urlpatterns = [
     path('create_user',views.create_user), 
     path('book/<int:bookID>',views.show_book),
     path('contact',views.about),
-    path('main', views.main,name='main'),
+    path('main',views.main,name='main'),
     path('wall',views.main_wall,name='wall'),
     path('addPost',views.add_post),
     path('addComment/<int:postID>',views.add_comment),
