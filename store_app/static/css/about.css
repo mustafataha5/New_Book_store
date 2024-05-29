@@ -10,6 +10,7 @@ body {
     margin-bottom: 20px;
 }
 
+
 .header {
     background: #f8f9fa;
     color: black;
@@ -86,9 +87,10 @@ body {
 
 .section .text {
     font-size: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
     line-height: 1.5;
     color: white;
-    text-justify: auto;
 }
 
 /* Specific Backgrounds for Each Section */
