@@ -132,11 +132,16 @@ def main(request):
     
     review =Review.objects.all()
     #populer = review.values('book_id').annotate(review_count=models.Count('book_id'),sum_level=models.Sum('review_level')).order_by('-review_count')[:10]
-    populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:10]
+    populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     pupuler_book = Book.objects.filter(id__in=populer.values('book_id')) 
+    favorite_book = Book.liked_by_users.through.objects.all()
+    favorite_book_ids = favorite_book.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
+    favorite_books = Book.objects.filter(id__in=favorite_book_ids.values('book_id'))
+    
     data = {
         "user":User.objects.get(id=request.session['userID']),
-        'books' : Book.objects.all(), 
+        #'books' : Book.objects.all(), 
+        'favorite_books': favorite_books , 
         'order' : order ,
         'total': get_total_order(order),
         'pupuler_book': pupuler_book,
@@ -293,7 +298,7 @@ def delete_post(request,postID):
 
 
 
-def add_to_cart(request,bookID):
+def add_to_cart(request,bookID,fromID):
     if not 'userID' in request.session: 
         messages.error(request,'Need to Login/SignUp')
         return redirect(f'/login') 
@@ -308,28 +313,33 @@ def add_to_cart(request,bookID):
         request.session['orderID']= order.id 
     else: 
         order = Order.objects.get(id=int(request.session['orderID']))
-        order.books.add(book)  
-    return redirect(f'/book/{bookID}')
-
-def add_to_cart_main(request,bookID):
-    if not 'userID' in request.session: 
-        messages.error(request,'Need to Login/SignUp')
-        return redirect(f'/login') 
-    
-    userID = int(request.session['userID'])
-    user = User.objects.get(id=userID)
-    book = Book.objects.get(id=bookID)
-    if ( not 'orderID' in request.session):
-        order = Order.objects.create(user=user)
-        order.books.add(book)
-        request.session['orderID']= order.id 
+        order.books.add(book) 
+    if fromID == 2 :      
+        return redirect(f'/book/{bookID}')
+    elif fromID == 3 : 
+        return redirect('/category')
     else: 
-        order = Order.objects.get(id=int(request.session['orderID']))
-        order.books.add(book)  
-    return redirect('/')
+        return redirect('/')
+
+# def add_to_cart_main(request,bookID):
+#     if not 'userID' in request.session: 
+#         messages.error(request,'Need to Login/SignUp')
+#         return redirect(f'/login') 
+    
+#     userID = int(request.session['userID'])
+#     user = User.objects.get(id=userID)
+#     book = Book.objects.get(id=bookID)
+#     if ( not 'orderID' in request.session):
+#         order = Order.objects.create(user=user)
+#         order.books.add(book)
+#         request.session['orderID']= order.id 
+#     else: 
+#         order = Order.objects.get(id=int(request.session['orderID']))
+#         order.books.add(book)  
+#     return redirect('/')
            
 
-def delete_book_from_order(request,bookID):
+def delete_book_from_order(request,bookID,fromID):
     if not 'userID' in request.session or  not 'orderID' in request.session: 
         messages.error(request,'No order yet , Need to Login/SignUp')
         return redirect(f'/login') 
@@ -338,7 +348,17 @@ def delete_book_from_order(request,bookID):
     order = Order.objects.get(id=orderID)
     book = Book.objects.get(id=bookID)
     order.books.remove(book)
-    return redirect(f'/user/{userID}')
+    if len(order.books.all()) == 0 : 
+        del request.session['orderID'] 
+    if fromID == 2 :
+        return redirect(f'/book/{bookID}')
+    elif fromID == 4: 
+         return redirect(f'/user/{userID}')
+    elif fromID == 3 : 
+        return redirect('/category')     
+    else: 
+        return redirect('/')
+
 
 def confirm_order(request): 
     if not 'userID' in request.session :

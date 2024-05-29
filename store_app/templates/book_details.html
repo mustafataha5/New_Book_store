@@ -115,12 +115,12 @@
                                 {%endif%}
 
                                 {% if book in order.books.all %}
-                                <a href="/cart/{{book.id}}/delete"><button class="btn add-to-cart">Delete From
+                                <a href="/cart/{{book.id}}/delete/2"><button class="btn add-to-cart">Delete From
                                         Cart</button></a>
 
 
                                 {% else %}
-                                <a href="/cart/{{book.id}}/add"><button class="btn add-to-cart">Add To
+                                <a href="/cart/{{book.id}}/add/2"><button class="btn add-to-cart">Add To
                                         Cart</button></a>
                                 {%endif%}
                            

@@ -149,7 +149,16 @@
                                     <p style="margin-left: 30px;">{{ book.author.first_name }} {{ book.author.last_name }}</p>
                                     <div style="margin-left: 50px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>
                                 </figcaption>
+<<<<<<< HEAD
+								{% if book in order.books.all %}
+                                <a href="/cart/{{book.id}}/delete/3"><button class="btn add-to-cart">Delete From Cart</button></a>
+                                {% else %}
+								
+                                <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a>
+                                {%endif%}
+=======
                                 <button type="button" id="add-to-cart-car" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+>>>>>>> master
                             </figure>
                         </div>
                         {% endfor %}
