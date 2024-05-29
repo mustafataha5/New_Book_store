@@ -109,8 +109,11 @@ body.no-scroll {
     overflow: hidden;
 }
 a {
-  color: var(--accent-color);
+  color: gray;
   transition: 0.3s color ease-out;
+  text-decoration: none;
+  font-size: large;
+  
 }
 a:hover {
   color: #111;
@@ -232,7 +235,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-decoration: none;
 }
 p {
-   margin: 0 0 20px 0;
+  margin: 20px 20px 20px 40px;
+  font-size: large;
+
 }
 p:empty {
   display: none;
@@ -1912,6 +1917,10 @@ span.prev-price {
 
 
 
+
+#add-to-cart-car{
+  margin-left: 20px;
+}
 
 
 

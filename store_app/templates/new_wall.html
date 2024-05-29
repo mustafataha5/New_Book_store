@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css'%}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style1.css'%}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
     .bubble {
       width: 400px !important;
@@ -93,63 +95,70 @@
 </head>
 
 <body>
-  <div id="header-wrap">
-    <div class="top-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-          </div>
-          <div class="col-md-6">
-            <div class="right-element">
-              {% if not 'userID' in request.session %}
-                <a href="/login" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
-              {% else %}
-                <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
-                <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-              {% endif %}
-              
-              <a href="#" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart:({{total}} $)</span></a>
-            </div><!--top-right-->
-          </div>
-        </div>
-      </div>
-    </div><!--top-content-->
-
-    <header id="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="main-logo">
-              <a href="/"><img src="{% static 'images/main-logo.png'%}" alt="logo"></a>
+    <div id="header-wrap">
+        <div class="top-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="right-element">
+                            {% if not 'userID' in request.session %}
+                            <a href="/login" class="user-account for-buy"><i
+                                    class="icon icon-user"></i><span>Account</span></a>
+                            {% else %}
+                            <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
+                            <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+                            {% endif %}
+                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
+                                    $)</span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-10">
-            <nav id="navbar">
-              <div class="main-menu stellarnav">
-                <ul class="menu-list">
-                  <li class="menu-item active"><a href="/main" data-effect="Home">Home</a></li>
-                  <li class="menu-item has-sub">
-                    <a href="/category" class="nav-link" data-effect="Pages">Categories</a>
-                    <ul>
-                      <li class="active"><a href="index.html">1</a></li>
-                      <li><a href="about.html">2</a></li>
-                      <li><a href="styles.html">3</a></li>
-                      <li><a href="blog.html">4</a></li>
-                      <li><a href="single-post.html">5</a></li>
-                      <li><a href="shop.html">6</a></li>
-                      <li><a href="single-product.html">7</a></li>
-                    </ul>
-                  </li>
-                  <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">Book Club</a></li>
-                  <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">About & Contact Us</a></li>
-                </ul>
-              </div>
-            </nav>
-          </div>
         </div>
-      </div>
-    </header>
-  </div><!--header-wrap-->
+
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="main-logo">
+                            <a href="/"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <nav id="navbar">
+                            <div class="main-menu stellarnav">
+                                <ul class="menu-list">
+                                    <li class="menu-item active"><a href="/main" data-effect="Home">
+                                            <i class="fa-solid fa-house"></i>
+                                            Home</a></li>
+                                    <li class="menu-item has-sub">
+                                        <a href="/category" class="nav-link" data-effect="Pages">
+                                            <i class="fa-solid fa-table-list"></i>
+                                            Categories</a>
+                                        <ul>
+                                            <li class="active"><a href="index.html">1</a></li>
+                                            <li><a href="about.html">2</a></li>
+                                            <li><a href="styles.html">3</a></li>
+                                            <li><a href="blog.html">4</a></li>
+                                            <li><a href="single-post.html">5</a></li>
+                                            <li><a href="shop.html">6</a></li>
+                                            <li><a href="single-product.html">7</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
+                                        <i class="fa-solid fa-comments"></i> 
+                                        Book Club</a></li>
+                                    <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">
+                                        <i class="fa-regular fa-address-book"></i>
+                                        About & Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
 
   <div class="wallcontainer mt-5" style=" padding-left: 110px;">
     {% for post in posts reversed %}
