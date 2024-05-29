@@ -43,8 +43,7 @@
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
                             {% endif %}
-                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
-                                    $)</span></a>
+                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
                         </div>
                     </div>
                 </div>
@@ -56,36 +55,24 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="main-logo">
-                            <a href="/"><img src="{% static 'images/main-logo.png' %}" alt="logo"></a>
+                            <a href="/"><img style="margin-left: -100px;"   src="{% static 'images/image copy.png' %}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-md-10">
                         <nav id="navbar">
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
-                                    <li class="menu-item active"><a href="/main" data-effect="Home">
-                                            <i class="fa-solid fa-house"></i>
-                                            Home</a></li>
+                                    <li class="margin-left:0px;" class="menu-item active"><a href="/main" data-effect="Home">
+                                            <i  class="fa-solid fa-house"></i> Home</a></li>
                                     <li class="menu-item has-sub">
                                         <a href="/category" class="nav-link" data-effect="Pages">
-                                            <i class="fa-solid fa-table-list"></i>
-                                            Categories</a>
-                                        <ul>
-                                            <li class="active"><a href="index.html">1</a></li>
-                                            <li><a href="about.html">2</a></li>
-                                            <li><a href="styles.html">3</a></li>
-                                            <li><a href="blog.html">4</a></li>
-                                            <li><a href="single-post.html">5</a></li>
-                                            <li><a href="shop.html">6</a></li>
-                                            <li><a href="single-product.html">7</a></li>
-                                        </ul>
+                                            <i class="fa-solid fa-table-list"></i> Categories</a>
+                                    
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
-                                        <i class="fa-solid fa-comments"></i> 
-                                        Book Club</a></li>
+                                        <i class="fa-solid fa-comments"></i> Book Club</a></li>
                                     <li class="menu-item"><a href="/contact" class="nav-link" data-effect="About">
-                                        <i class="fa-regular fa-address-book"></i>
-                                        About & Contact Us</a></li>
+                                        <i class="fa-regular fa-address-book"></i> About & Contact Us</a></li>
                                 </ul>
                             </div>
                         </nav>
