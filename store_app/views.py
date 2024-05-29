@@ -293,7 +293,7 @@ def delete_post(request,postID):
 
 
 
-def add_to_cart(request,bookID):
+def add_to_cart(request,bookID,fromID):
     if not 'userID' in request.session: 
         messages.error(request,'Need to Login/SignUp')
         return redirect(f'/login') 
@@ -308,28 +308,33 @@ def add_to_cart(request,bookID):
         request.session['orderID']= order.id 
     else: 
         order = Order.objects.get(id=int(request.session['orderID']))
-        order.books.add(book)  
-    return redirect(f'/book/{bookID}')
-
-def add_to_cart_main(request,bookID):
-    if not 'userID' in request.session: 
-        messages.error(request,'Need to Login/SignUp')
-        return redirect(f'/login') 
-    
-    userID = int(request.session['userID'])
-    user = User.objects.get(id=userID)
-    book = Book.objects.get(id=bookID)
-    if ( not 'orderID' in request.session):
-        order = Order.objects.create(user=user)
-        order.books.add(book)
-        request.session['orderID']= order.id 
+        order.books.add(book) 
+    if fromID == 2 :      
+        return redirect(f'/book/{bookID}')
+    elif fromID == 3 : 
+        return redirect('/category')
     else: 
-        order = Order.objects.get(id=int(request.session['orderID']))
-        order.books.add(book)  
-    return redirect('/')
+        return redirect('/')
+
+# def add_to_cart_main(request,bookID):
+#     if not 'userID' in request.session: 
+#         messages.error(request,'Need to Login/SignUp')
+#         return redirect(f'/login') 
+    
+#     userID = int(request.session['userID'])
+#     user = User.objects.get(id=userID)
+#     book = Book.objects.get(id=bookID)
+#     if ( not 'orderID' in request.session):
+#         order = Order.objects.create(user=user)
+#         order.books.add(book)
+#         request.session['orderID']= order.id 
+#     else: 
+#         order = Order.objects.get(id=int(request.session['orderID']))
+#         order.books.add(book)  
+#     return redirect('/')
            
 
-def delete_book_from_order(request,bookID):
+def delete_book_from_order(request,bookID,fromID):
     if not 'userID' in request.session or  not 'orderID' in request.session: 
         messages.error(request,'No order yet , Need to Login/SignUp')
         return redirect(f'/login') 
@@ -338,7 +343,17 @@ def delete_book_from_order(request,bookID):
     order = Order.objects.get(id=orderID)
     book = Book.objects.get(id=bookID)
     order.books.remove(book)
-    return redirect(f'/user/{userID}')
+    if len(order.books.all()) == 0 : 
+        del request.session['orderID'] 
+    if fromID == 2 :
+        return redirect(f'/book/{bookID}')
+    elif fromID == 4: 
+         return redirect(f'/user/{userID}')
+    elif fromID == 3 : 
+        return redirect('/category')     
+    else: 
+        return redirect('/')
+
 
 def confirm_order(request): 
     if not 'userID' in request.session :
