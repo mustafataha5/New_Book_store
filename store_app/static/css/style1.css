@@ -1926,6 +1926,7 @@ span.prev-price {
   margin-left: 20px;
 }
 
+
 #welcoming{
   text-align: center;
   margin-right: 100px;
@@ -1941,7 +1942,62 @@ span.prev-price {
   border: 1px solid #daa556;
 
   
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#my_cart_icon{
+  position:fixed;
+  bottom: 10px;
+  right:  10px;
+  color: white;
+  background-color: #daa556;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 90px;
+  width: 100px;
+  height: 100px;
+  z-index: 900;
+}
+ #my_cart_total{
+  background-color: #f3f2ec;
+  padding: 0px 11px;
+  border-radius: 70px;
+  position: fixed;
+  bottom: 30px;
+  right: 43px;
+  z-index: 1000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

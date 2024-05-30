@@ -42,9 +42,15 @@
                             {% else %}
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
+<<<<<<< HEAD
                             {% endif %}
                             <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
                                     $)</span></a>
+=======
+                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
+                            {% endif %}
+                            
+>>>>>>> c8bdf22749e18fa7c1e23efc0606f9113f77559e
                         </div>
                     </div>
                 </div>

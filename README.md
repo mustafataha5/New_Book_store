@@ -1,6 +1,11 @@
 # Project Name: ReadEase
-A theme for Book Store documentation.
 
+## About Our project:
+ReadEase website is an online book store, that gives the user the chance to view a book details, and reviews from other useres. Also, our website provide a space for readers to communicate and share thier thoughts, opinions, and knowldge. 
+
+
+A theme for Book Store documentation.
+[click here](http://13.50.247.112/)
 
 ![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245360343589589012/Screenshot_2024-05-29_at_3.56.31_PM.png?ex=665877b3&is=66572633&hm=477882b7c9a81ac55cb09d34eeb4448a39f6b9d4cdeb086ed0d1743130da3402&=&format=webp&quality=lossless&width=888&height=501)
 
