@@ -9,9 +9,9 @@ class UserManager(models.Manager):
         errors = {}
         
         if len(postData['first_name']) < 2: 
-            errors['first_name'] = 'First name must be at least 2 charcter'
+            errors['first_name'] = 'First name must be at least 2 characters'
         if len(postData['last_name']) < 2: 
-            errors['last_name'] = 'Last name must be at least 2 charcter' 
+            errors['last_name'] = 'Last name must be at least 2 characters' 
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern            
             errors['email'] = "Invalid email address!"
@@ -47,9 +47,9 @@ class UserManager(models.Manager):
     def update_validation(self,postData,userID): 
         errors = {}
         if len(postData['first_name']) < 2: 
-            errors['first_name'] = 'First name must be at least 2 charcter'
+            errors['first_name'] = 'First name must be at least 2 characters'
         if len(postData['last_name']) < 2: 
-            errors['last_name'] = 'Last name must be at least 2 charcter' 
+            errors['last_name'] = 'Last name must be at least 2 characters' 
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern            
             errors['email'] = "Invalid email address!"
@@ -58,9 +58,9 @@ class UserManager(models.Manager):
         if len(check_user) == 1 and not user in  check_user.all():
              errors['email'] = "Email already used!by other user!"
         if len(postData['address']) < 2 : 
-            errors['address'] = 'Address must be at least 2 charcter'
+            errors['address'] = 'Address must be at least 2 characters'
         if len(postData['phone']) < 10 : 
-            errors['phone'] = 'Phone must be at least 10 charcter'    
+            errors['phone'] = 'Phone must be at least 10 characters'    
         return errors    
 
 class PostManager(models.Manager):
@@ -130,8 +130,7 @@ class LanguageManger(models.Manager):
         
         return errors    
         
-        
-        return errors  
+          
     
 class ReviewManger(models.Manager):
     def review_validation(self,postData,userId,bookID): 
