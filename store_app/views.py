@@ -132,6 +132,8 @@ def main(request):
     #populer = review.values('book_id').annotate(review_count=models.Count('book_id'),sum_level=models.Sum('review_level')).order_by('-review_count')[:10]
     populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     pupuler_book = Book.objects.filter(id__in=populer.values('book_id')) 
+    print('-------------',review)
+    print('-------------',pupuler_book)
     favorite_book = Book.liked_by_users.through.objects.all()
     favorite_book_ids = favorite_book.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     favorite_books = Book.objects.filter(id__in=favorite_book_ids.values('book_id'))
@@ -380,6 +382,7 @@ def confirm_order(request):
     if  'orderID' in  request.session :  
         order = Order.objects.get(id=int(request.session['orderID'])) 
         order.confirm_buy = True
+        messages.success(request,'Order confirmed, please check your email')
         del request.session['orderID']
         return redirect(f'/user/{userID}')
 

@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="main-logo">
-                            <a href="/"><img style="height: 45px;" src="{% static 'images/image copy.png' %}" alt="logo"></a>
+                            <a href="/"><img src="{% static 'images/image copy.png' %}" alt="logo"></a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -67,7 +67,15 @@
                                     <li class="menu-item has-sub">
                                         <a href="/category" class="nav-link" data-effect="Pages">
                                             <i class="fa-solid fa-table-list"></i> Categories</a>
-                                
+                                        <ul>
+                                            <li class="active"><a href="index.html">1</a></li>
+                                            <li><a href="about.html">2</a></li>
+                                            <li><a href="styles.html">3</a></li>
+                                            <li><a href="blog.html">4</a></li>
+                                            <li><a href="single-post.html">5</a></li>
+                                            <li><a href="shop.html">6</a></li>
+                                            <li><a href="single-product.html">7</a></li>
+                                        </ul>
                                     </li>
                                     <li class="menu-item"><a href="/wall" class="nav-link" data-effect="Articles">
                                         <i class="fa-solid fa-comments"></i> Book Club</a></li>
@@ -134,7 +142,10 @@
                             <div class="col-sm-6">
 
                                 {% for book in order.books.all %}
-                                <p class="m-b-10 f-w-600">{{book.title}} {{book.price}} <a style="color:#c5a992; font-size: small; margin-left: 80px;"   href="/cart/{{book.id}}/delete/4">del</a></p>
+
+                                <p class="m-b-10 f-w-600">{{book.title}}  <a style="color:#c5a992; font-size: small; margin-left: 20px;"   href="/cart/{{book.id}}/delete/4">del </a></p>
+
+
                                 {% endfor %}
                                 <p class="m-b-10 f-w-600 ">Total : {{total}}</p>
                             </div>
@@ -145,7 +156,7 @@
                         </div>
 
     
-                        <a href="/cart/confirm"><button id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">CheckOut</button></a>
+                        <a href="/cart/confirm"><button  id="buy-btn" type="button" class="add-to-cart" data-product-tile="add-to-cart">CheckOut</button></a>
 
                         <hr>
                         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Favorited Books</h6>
@@ -177,7 +188,7 @@
         </div>
     </div>
 
-      <!-- Script JS -->
+   
 
       <!--$%analytics%$-->
    </body>
