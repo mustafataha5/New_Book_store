@@ -42,15 +42,10 @@
                             {% else %}
                             <a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
                             <a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-<<<<<<< HEAD
-                            {% endif %}
-                            <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}}
-                                    $)</span></a>
-=======
+
                             <a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
                             {% endif %}
                             
->>>>>>> c8bdf22749e18fa7c1e23efc0606f9113f77559e
                         </div>
                     </div>
                 </div>
@@ -150,7 +145,7 @@
                                                 <div class="col-sm-6">
                                                     <p class="m-b-10 f-w-600">Phone</p>
                                                     <input type="text" name="phone" class="form-control"
-                                                        value="{{ user.phone_number }}">
+                                                        value="{{ user.phone }}">
                                                 </div>
                                             </div>
                                             <button id="save-btn" type="submit" class="add-to-cart">Save

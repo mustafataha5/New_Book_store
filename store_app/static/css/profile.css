@@ -165,7 +165,7 @@ p {
     border: 1px solid #eedabd;
     /* margin-top: 10px; */
     height: 45px;
-    width: 120px;
+    width: 145px;
     text-align: center;
     
 
@@ -175,4 +175,9 @@ p {
 .fav-profile{
     list-style-type: none;
     color: #C5A992;
+}
+.success{
+    color: #089865;
+    list-style-type: none;
+    font-size: 15px;
 }

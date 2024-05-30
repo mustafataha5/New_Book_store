@@ -168,6 +168,13 @@
         {% endfor %}
     </div>
 </section>
+{% if 'userID' in request.session %}
+                        <a href="/user/{{user.id}}">
+                            <img  id='my_cart_icon' src="{%static 'images/cart_thin_icon.png'%}" alt="">
+                        
+                            <p id="my_cart_total">{{order.books.all|length}}</p>
+                        </a>
+                        {% endif %}
 <footer id="footer">
 	<div class="container">
 		<div class="row">
