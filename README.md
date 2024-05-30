@@ -1,4 +1,9 @@
 # Project Name: ReadEase
+
+## About Our project:
+ReadEase website is an online book store, that gives the user the chance to view a book details, and reviews from otjer useres. Also, our website provide a space for readers to communicate and share thier thoughts, opinions, and knowldge. 
+
+
 A theme for Book Store documentation.
 [click here](http://13.50.247.112/)
 
