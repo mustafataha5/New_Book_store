@@ -125,6 +125,7 @@ function post_data_from_ajax(data){
                             <p class="user_review">${review.message}</p>
                             <p class="user_review">${r_date.toLocaleDateString("en-US", options)}</p>
                         </div>
+                        <button onclick='deleteReview(${review.id})'> delete</button>
                     </div>`;
                 
                 container.appendChild(reviewDiv);
@@ -169,7 +170,18 @@ function deleteReview(reviewID){
           data: dataToSend,
           dataType: 'json',
           success: function(response) {
-            console.log(response);  // Handle the response
+            if ('error' in response){  // Handle the response
+                show_review_error(response)
+                gfg(0);
+                review_message.value = ''
+            }
+            else{
+                post_data_from_ajax(response);
+                show_review_error({'error':''});
+                gfg(0);
+                review_message.value = ''
+                 
+            }
           },
           error: function(xhr, status, error) {
               console.error('Error:', error);
