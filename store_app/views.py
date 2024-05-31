@@ -328,6 +328,10 @@ def add_to_cart(request,bookID,fromID):
         return redirect(f'/book/{bookID}')
     elif fromID == 3 : 
         return redirect('/category')
+    elif fromID == 5 : 
+        data = {'total_item':len(order.books.all()),
+                'total':get_total_order(order),}
+        return JsonResponse(data)
     else: 
         return redirect('/')
 
@@ -358,6 +362,7 @@ def delete_book_from_order(request,bookID,fromID):
     order = Order.objects.get(id=orderID)
     book = Book.objects.get(id=bookID)
     order.books.remove(book)
+    
     if len(order.books.all()) == 0 : 
         del request.session['orderID'] 
     if fromID == 2 :
@@ -365,7 +370,11 @@ def delete_book_from_order(request,bookID,fromID):
     elif fromID == 4: 
          return redirect(f'/user/{userID}')
     elif fromID == 3 : 
-        return redirect('/category')     
+        return redirect('/category')  
+    elif fromID == 5 : 
+        data = {'total_item':len(order.books.all()),
+                'total':get_total_order(order),}
+        return JsonResponse(data)   
     else: 
         return redirect('/')
 

@@ -11,6 +11,7 @@
 	    <meta name="keywords" content="">
 	    <meta name="description" content="">
 		{%load static%}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{%static '/css/vendor.css'%}">
 	    <link rel="stylesheet" type="text/css" href="{%static 'css/style1.css'%}">
@@ -50,7 +51,7 @@
 							{% else %}
 							<a id="account" href="/user/{{user.id}}">Welcome, {{user.first_name}}</a>
 							<a id="logout" href="/logout" class="logoutbtn mx-2">logout</a>
-							<a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span> Cart:({{total}} $)</span></a>
+							<a href="/user/{{user.id}}" class="cart for-buy"><i class="fa-solid fa-cart-plus"></i><span id="total_order"> Cart:({{total}} $)</span></a>
 							{% endif %}
 							
 						</div>
@@ -152,11 +153,15 @@
                                 </figcaption>
 
 								{% if book in order.books.all %}
-                                <a href="/cart/{{book.id}}/delete/3"><button class="btn add-to-cart">Delete From Cart</button></a>
+								<button value="1" onclick="delete_book_from_cart(this,{{book.id}})" class="btn add-to-cart"> Delete From Cart</button>
+                                
+                                <!-- <a href="/cart/{{book.id}}/delete/3"><button class="btn add-to-cart">Delete From Cart</button></a> -->
                                 {% else %}
-								
-                                <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a>
+								<button value="0" onclick="add_book_to_cart(this,{{book.id}})" class="btn add-to-cart"> Add To Cart</button>
+                                <!-- <a href="/cart/{{book.id}}/add/3"><button class="btn add-to-cart">Add To Cart</button></a> -->
                                 {%endif%}
+								
+
 
                             </figure>
                         </div>
@@ -238,6 +243,7 @@
 </footer>
 
 
+<script src="{% static 'js/cart.js' %}"></script>
 
 </body>
 </html>
