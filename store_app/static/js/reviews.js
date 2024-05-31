@@ -107,7 +107,7 @@ function get_ajax(bookID) {
     xhr.send();
 } 
 
-function post_data_from_ajax(data){
+function post_data_from_ajax(data,userID){
     var container = document.getElementById('reviews-container');
         container.innerHTML = '';
         data['reviews_list'].forEach(function(review) {
@@ -115,7 +115,7 @@ function post_data_from_ajax(data){
         reviewDiv.className = 'row';
         let r_date = new Date(review.updated_at)
         var options = {  year: 'numeric', month: 'long', day: 'numeric',hour:'numeric',minute:'numeric',second:'numeric'};
-        reviewDiv.innerHTML = `
+        myhtml = `
                     <div class="col-md-12 mt-5 reviews review_card">
                         <h4 class="user_review">${full_username(data['user_list'], review.user_id)}</h4>
                         <div class=" myshow" value="${review.review_level}">
@@ -124,10 +124,16 @@ function post_data_from_ajax(data){
                         <div class="form-group">
                             <p class="user_review">${review.message}</p>
                             <p class="user_review">${r_date.toLocaleDateString("en-US", options)}</p>
-                        </div>
-                        <button onclick='deleteReview(${review.id})'> delete</button>
+                        </div>`;
+                if (review.user_id == userID){                    
+                    myhtml +=`<button onclick='deleteReview(${review.id},${userID})'> delete</button> 
                     </div>`;
-                
+                }
+                else{
+                    myhtml +=`</div>`;
+                }
+
+                reviewDiv.innerHTML = myhtml;
                 container.appendChild(reviewDiv);
         });
         light_star_ajax();
@@ -140,6 +146,8 @@ function full_username(data,id){
         }
     }
 }
+
+
 
 function generateStars(reviewLevel) {
     // Generate stars based on review level
@@ -156,7 +164,7 @@ function show_review_error(data){
     review_error.classList.add('error')
 }
 
-function deleteReview(reviewID){
+function deleteReview(reviewID,userID){
     dataToSend = {
         'reviewID': reviewID ,  
     }
@@ -209,12 +217,12 @@ function postData(bookID,userID) {
           success: function(response) {
             console.log(response);  // Handle the response
             if ('error' in response){  // Handle the response
-                show_review_error(response)
+                show_review_error(response,userID)
                 gfg(0);
                 review_message.value = ''
             }
             else{
-                post_data_from_ajax(response);
+                post_data_from_ajax(response,userID);
                 show_review_error({'error':''});
                 gfg(0);
                 review_message.value = ''
