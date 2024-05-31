@@ -194,7 +194,7 @@ def ajax_create_review(request):
         #Review.objects.create(message=review_message,review_level=review_level,user=user,book=book)
         Review.objects.create(message=review_message,review_level=review_level,user=user,book=book)
        
-        reviews = book.reviews.all().values() 
+        reviews = book.reviews.all().order_by('-updated_at').values() 
         user_ids = book.reviews.all().values('user') 
         users = User.objects.filter(id__in=user_ids).values('id','first_name','last_name')
         data = {

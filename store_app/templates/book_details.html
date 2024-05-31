@@ -209,9 +209,9 @@
                                             <p class="user_review">{{review.message}}</p>
                                             <p class="user_review">{{review.updated_at}}</p>
                                         </div>
-
-                                        <button onclick='deleteReview({{review.id}})' type="submit" class="btn  delete_review ">delete</button>
-
+                                        {% if 'userID' in request.session and  review.user_id == user.id %}
+                                            <button onclick='deleteReview({{review.id}})' type="submit" class="btn  delete_review ">delete</button>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 {% endfor %}
