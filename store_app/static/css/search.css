@@ -1,0 +1,11 @@
+.error{
+    color: #f12b1d;
+    list-style-type: none;
+    font-size: 15px;    
+}
+
+.warning{
+    color: #f1dd25;
+    list-style-type: none;
+    font-size: 12px;  
+}

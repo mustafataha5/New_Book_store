@@ -28,7 +28,8 @@ urlpatterns = [
     path('cart/<int:bookID>/delete/<int:fromID>',views.delete_book_from_order),
     path('cart/confirm',views.confirm_order),
     #path('test',views.test),
-
+    path('search',views.search),
+    path('search/<int:typeID>',views.get_info_search),
 
 
     path('category', views.cat),
