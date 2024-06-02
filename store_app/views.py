@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
-from .models import User,Book,Post,Comment, Category,Order,Review
+from .models import User,Book,Post,Comment, Category,Order,Review,Author
 
-
+from django.db.models import Q 
 
 from django.db import models
 from  django.contrib import messages
@@ -132,8 +132,8 @@ def main(request):
     #populer = review.values('book_id').annotate(review_count=models.Count('book_id'),sum_level=models.Sum('review_level')).order_by('-review_count')[:10]
     populer = review.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     pupuler_book = Book.objects.filter(id__in=populer.values('book_id')) 
-    print('-------------',review)
-    print('-------------',pupuler_book)
+   # print('-------------',review)
+   # print('-------------',pupuler_book)
     favorite_book = Book.liked_by_users.through.objects.all()
     favorite_book_ids = favorite_book.values('book_id').annotate(review_count=models.Count('book_id')).order_by('-review_count')[:8]
     favorite_books = Book.objects.filter(id__in=favorite_book_ids.values('book_id'))
@@ -501,11 +501,36 @@ def checkout(request):
 
 
 
-
+def search(request): 
+    return render(request,'search.html')
     
-
+def get_info_search(request,typeID):
     
-
+    if request.method == "POST": 
+        # errors= Book.objects.validate() 
+        books = ''
+        query = request.POST['data']
+        if len(query) > 50 : 
+            messages.error('Search can not be more than 50 characters')
+        
+        if typeID == 1: 
+            #books = Book.objects.filter(title__istartswith=query)
+            books = Book.objects.filter(title__icontains=query)
+            authors = {}
+            for i in books: 
+                authors[i.id] = i.author.first_name+" "+i.author.last_name 
+            data = {
+            'books_list': list(books.values()) , 
+            'authors_list': authors,
+            }    
+        elif typeID == 2 : 
+             authors = Author.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) )
+             #books = Book.objects.filter(author_id__in=authors.values('id'))         
+             data = {
+              #  'books_list': list(books.values()) , 
+                'authors_list': list(authors.values()),
+            }
+        return JsonResponse(data)
 
 
 
