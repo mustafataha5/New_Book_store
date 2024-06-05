@@ -118,14 +118,17 @@
 										<p style="margin-left: 40px;">{{ book.author.first_name }} {{ book.author.last_name }}</p>
 										<div style="margin-left: 35px; font-size: larger; font-weight: bold;"   class="item-price">Price: {{ book.price }} $</div>
 									</figcaption>
-                                    {% if book in order.books.all %}
-                                    <!-- <a href="/cart/{{ book.id }}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a> -->
-                                    <button value="1" onclick="delete_book_from_cart(this,{{book.id}})"> Delete From Cart</button>
+                                    {% if not 'userID' in request.session%}
+                                        <a href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a>
                                     {% else %}
-                                    <!-- <a href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a> -->
-                                    <button value="0" onclick="add_book_to_cart(this,{{book.id}})"> Add To Cart</button>
+                                        {% if book in order.books.all %}
+                                            <!-- <a href="/cart/{{ book.id }}/delete/1"><button class="btn add-to-cart">Delete From Cart</button></a> -->
+                                            <button value="1" onclick="delete_book_from_cart(this,{{book.id}})"> Delete From Cart</button>
+                                        {% else %}
+                                            <!-- <a href="/cart/{{ book.id }}/add/1"><button class="btn add-to-cart">Add To Cart</button></a> -->
+                                            <button value="0" onclick="add_book_to_cart(this,{{book.id}},'{{user.id}}')"> Add To Cart</button>
+                                        {% endif %}
                                     {% endif %}
-                                    
                                 </figure>
                             </div>
                             {% endfor %}

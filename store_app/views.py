@@ -309,9 +309,15 @@ def delete_post(request,postID):
 
 
 def add_to_cart(request,bookID,fromID):
+    
+    
+    print(">>>>>>>",(not 'userID' in request.session) )
     if not 'userID' in request.session: 
+        print(">>>>>>> Need to login" )
         messages.error(request,'Need to Login/SignUp')
-        return redirect(f'/login') 
+        if (fromID == 5): 
+            return JsonResponse({'error':10})
+        return redirect('/login') 
     
     userID = int(request.session['userID'])
     user = User.objects.get(id=userID)

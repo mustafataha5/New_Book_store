@@ -9,6 +9,12 @@ let total_order = document.querySelector('#total_order')
 
 
 function add_book_to_cart(ele,bookID){
+
+    //print('>>>>>>>>>>>...',userID.length)
+    // if (userID == 'None'){
+    //     window.location.href = '/login';
+    //     return 
+    // }
     dataToSend = {
       
         'bookID':bookID,   

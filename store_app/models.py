@@ -36,12 +36,12 @@ class UserManager(models.Manager):
         errors= {}
         
         if len(User.objects.filter(email=postData['email'])) == 0 : 
-            errors['login_email'] = "Wrong email address "
-            errors['login_password'] = "Wrong password"
+            errors['login_email'] = "Incorrect email or  password "
+            # errors['login_password'] = "Wrong password"
         else: 
             user = User.objects.get(email=postData['email'])
             if not bcrypt.checkpw(postData['password'].encode(),user.password.encode()) : 
-                errors['login_password'] = "Wrong password"
+                errors['login_password'] = "Incorrect email or  password"
         return errors
     
     def update_validation(self,postData,userID): 
