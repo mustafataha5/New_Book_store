@@ -29,7 +29,7 @@ urlpatterns = [
     path('cart/confirm',views.confirm_order),
     #path('test',views.test),
     path('search',views.search),
-    path('search/<int:typeID>',views.get_info_search),
+    path('search/book',views.get_info_search),
 
 
     path('category', views.cat),
