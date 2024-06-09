@@ -510,12 +510,13 @@ def checkout(request):
 def search(request): 
     return render(request,'search.html')
     
-def get_info_search(request,typeID):
+def get_info_search(request):
     
     if request.method == "POST": 
         # errors= Book.objects.validate() 
         books = ''
         query = request.POST['data']
+        typeID = int(request.POST['typeID'])
         if len(query) > 50 : 
             messages.error('Search can not be more than 50 characters')
         
