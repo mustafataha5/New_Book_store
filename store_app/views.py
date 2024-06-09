@@ -370,6 +370,8 @@ def delete_book_from_order(request,bookID,fromID):
     order.books.remove(book)
     
     if len(order.books.all()) == 0 : 
+        order = Order.objects.get(int(request.session['orderID']))
+        order.delete() 
         del request.session['orderID'] 
     if fromID == 2 :
         return redirect(f'/book/{bookID}')
