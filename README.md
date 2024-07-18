@@ -7,14 +7,13 @@ ReadEase website is an online book store, that gives the user the chance to view
 A theme for Book Store documentation.
 [click here](http://13.50.247.112/)
 
-![Screenshot](https://private-user-images.githubusercontent.com/30458715/334808913-1745efe0-2793-4cd0-a4e8-ccd214c41c42.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTc5NDEzNzAsIm5iZiI6MTcxNzk0MTA3MCwicGF0aCI6Ii8zMDQ1ODcxNS8zMzQ4MDg5MTMtMTc0NWVmZTAtMjc5My00Y2QwLWE0ZTgtY2NkMjE0YzQxYzQyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA2MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNjA5VDEzNTExMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWI0MmRhMmI5NGVlYmVjOTAyNTU4MjAxOGY1NmQ5ZWMzYWI1MGY4MTRiNmIzNDZmOWZjN2E0MDYzYzkzOWZmZTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.prSkp1dim5OMBZ1HyaC1kODt56QL7omvT5N7LLmvehA)
 
-![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245364685566378004/Screenshot_2024-05-29_at_4.14.01_PM.png?ex=66587bbe&is=66572a3e&hm=44919b3be586f754f360353155ac4dbe338b30f032abd8ab7e85d1e017d2134b&=&format=webp&quality=lossless&width=888&height=501)
+![Screenshot](https://github.com/mustafataha5/New_Book_store/blob/master/book1.png)
 
-![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245367968611831808/Screenshot_2024-05-29_at_4.26.52_PM.png?ex=66587ecd&is=66572d4d&hm=3ca725c48ea878e647afb241590a9e45e513d8e18c5505dce74e95f48cff607a&=&format=webp&quality=lossless&width=888&height=501)
+![Screenshot](https://github.com/mustafataha5/New_Book_store/blob/master/book2.png)
 
+![Screenshot](https://github.com/mustafataha5/New_Book_store/blob/master/book3.png)
 
-![Screenshot](https://media.discordapp.net/attachments/1243238652193144908/1245368533026603029/Screenshot_2024-05-29_at_4.29.14_PM.png?ex=66587f54&is=66572dd4&hm=661f0faba5abd7cc015f12947ebd58bc225caaf29bee1f291133e22eab8fa08c&=&format=webp&quality=lossless&width=888&height=501)
 
 
 ### Built With:
